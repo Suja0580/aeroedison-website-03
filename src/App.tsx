@@ -9,6 +9,7 @@ import FeedingSchedule from "./pages/FeedingSchedule";
 import VetAppointment from "./pages/VetAppointment";
 import NotFound from "./pages/NotFound";
 import PetRegistration from "./pages/PetRegistration";
+import Wireframe from "./pages/Wireframe";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/feeding" element={<FeedingSchedule />} />
           <Route path="/vet" element={<VetAppointment />} />
           <Route path="/register-pet" element={<PetRegistration />} />
+          <Route path="/wireframe" element={<Wireframe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
