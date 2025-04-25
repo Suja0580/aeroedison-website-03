@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import HealthCheckSchedule from "./pages/HealthCheckSchedule";
 import FeedingSchedule from "./pages/FeedingSchedule";
 import VetAppointment from "./pages/VetAppointment";
 import NotFound from "./pages/NotFound";
+import PetRegistration from "./pages/PetRegistration";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +23,7 @@ const App = () => (
           <Route path="/health-checks" element={<HealthCheckSchedule />} />
           <Route path="/feeding" element={<FeedingSchedule />} />
           <Route path="/vet" element={<VetAppointment />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/register-pet" element={<PetRegistration />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
