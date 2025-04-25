@@ -2,7 +2,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { 
@@ -15,29 +14,23 @@ import {
   FormMessage 
 } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PetType } from '@/types';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
-
-const petSchema = z.object({
-  name: z.string().min(2, { message: "Pet name must be at least 2 characters" }),
-  type: z.enum(['dog', 'cat', 'fish', 'bird', 'other']),
-  breed: z.string().optional(),
-  age: z.coerce.number().min(0).max(30).optional(),
-  weight: z.coerce.number().min(0).max(500).optional(),
-});
+import { petRegistrationSchema, type PetRegistrationFormData } from '@/schemas/petRegistration';
 
 const PetRegistration = () => {
-  const form = useForm<z.infer<typeof petSchema>>({
-    resolver: zodResolver(petSchema),
+  // Initialize form with zod resolver and default values
+  const form = useForm<PetRegistrationFormData>({
+    resolver: zodResolver(petRegistrationSchema),
     defaultValues: {
       name: '',
       type: 'dog',
     }
   });
 
-  const onSubmit = (data: z.infer<typeof petSchema>) => {
+  // Handle form submission
+  const onSubmit = (data: PetRegistrationFormData) => {
     // TODO: Implement actual pet registration logic
     toast.success(`${data.name} registered successfully!`);
     console.log('Pet Data:', data);
@@ -55,6 +48,7 @@ const PetRegistration = () => {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              {/* Pet Name Field */}
               <FormField
                 control={form.control}
                 name="name"
@@ -69,6 +63,7 @@ const PetRegistration = () => {
                 )}
               />
 
+              {/* Pet Type Field */}
               <FormField
                 control={form.control}
                 name="type"
@@ -94,6 +89,7 @@ const PetRegistration = () => {
                 )}
               />
 
+              {/* Breed Field (Optional) */}
               <FormField
                 control={form.control}
                 name="breed"
@@ -112,6 +108,7 @@ const PetRegistration = () => {
               />
 
               <div className="grid grid-cols-2 gap-4">
+                {/* Age Field (Optional) */}
                 <FormField
                   control={form.control}
                   name="age"
@@ -126,6 +123,7 @@ const PetRegistration = () => {
                   )}
                 />
 
+                {/* Weight Field (Optional) */}
                 <FormField
                   control={form.control}
                   name="weight"
