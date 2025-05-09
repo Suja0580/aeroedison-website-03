@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,10 +92,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
+/* Enhanced Pet Card Styling */
 .pet-card {
   @apply relative overflow-hidden transition-all duration-300 hover:shadow-lg;
 }
@@ -120,6 +123,15 @@
   transform-origin: bottom left;
 }
 
+.pet-card .pet-type-icon {
+  @apply transition-all duration-300;
+}
+
+.pet-card:hover .pet-type-icon {
+  @apply animate-float;
+}
+
+/* Sidebar Menu Items */
 .menu-item {
   @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-pet-soft-blue;
 }
@@ -128,6 +140,15 @@
   @apply bg-pet-soft-blue font-medium text-pet-blue;
 }
 
+.menu-item-icon {
+  @apply transition-transform duration-300;
+}
+
+.menu-item:hover .menu-item-icon {
+  @apply transform scale-110;
+}
+
+/* Loading Animation */
 .paw-print-loader {
   @apply flex items-center justify-center gap-1;
 }
@@ -135,4 +156,23 @@
 .paw-print-loader span {
   @apply bg-pet-blue rounded-full w-2 h-2 animate-pulse-gentle;
   animation-delay: calc(var(--index) * 0.2s);
+}
+
+/* Custom Calendar Styling */
+.calendar-day {
+  @apply relative rounded-md transition-all hover:bg-pet-soft-blue cursor-pointer;
+}
+
+.calendar-day.has-events::after {
+  content: '';
+  @apply absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-pet-blue;
+}
+
+/* Form Improvements */
+.form-container {
+  @apply space-y-6 max-w-md mx-auto p-6 rounded-xl bg-white shadow-sm border;
+}
+
+.form-heading {
+  @apply text-2xl font-display font-semibold mb-6 text-center;
 }
