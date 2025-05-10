@@ -1,3 +1,4 @@
+
 export type PetType = 'dog' | 'cat' | 'fish' | 'bird' | 'other';
 
 export interface Pet {
