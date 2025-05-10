@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +11,8 @@ import VetAppointment from "./pages/VetAppointment";
 import NotFound from "./pages/NotFound";
 import PetRegistration from "./pages/PetRegistration";
 import Wireframe from "./pages/Wireframe";
+import RecommendationDashboard from "./pages/RecommendationDashboard";
+import SystemArchitecture from "./pages/SystemArchitecture";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +29,8 @@ const App = () => (
           <Route path="/vet" element={<VetAppointment />} />
           <Route path="/register-pet" element={<PetRegistration />} />
           <Route path="/wireframe" element={<Wireframe />} />
+          <Route path="/recommendations" element={<RecommendationDashboard />} />
+          <Route path="/system-architecture" element={<SystemArchitecture />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -9,6 +9,8 @@ export interface Pet {
   age?: number;
   weight?: number;
   imageUrl?: string;
+  healthStatus?: string;
+  healthDescription?: string;
 }
 
 export interface HealthCheck {
