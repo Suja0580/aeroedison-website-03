@@ -1,4 +1,3 @@
-
 export type PetType = 'dog' | 'cat' | 'fish' | 'bird' | 'other';
 
 export interface Pet {
@@ -35,4 +34,36 @@ export interface VetAppointment {
   clinicName: string;
   reason: string;
   completed: boolean;
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  instructor: string;
+  rating: number;
+  reviewCount: number;
+  enrollmentCount: number;
+  duration: string;
+  level: string;
+  categories: string[];
+  recommended: boolean;
+  isSaved: boolean;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  icon: React.ElementType;
+}
+
+export interface LearningPath {
+  id: string;
+  title: string;
+  description: string;
+  level: string;
+  duration: string;
+  courseCount: number;
+  category: string;
 }

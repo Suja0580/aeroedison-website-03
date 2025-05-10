@@ -1,10 +1,10 @@
 
-import { useState } from "react";
-import Dashboard from "./Dashboard";
+import { useState, useEffect } from "react";
+import RecommendationDashboard from "./RecommendationDashboard";
 import AppNavbar from "@/components/AppNavbar";
 import AppSidebar from "@/components/AppSidebar";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect } from "react";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 const Index = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,8 +16,8 @@ const Index = () => {
     if (!showedWelcome) {
       setTimeout(() => {
         toast({
-          title: "Welcome to Paw-fect Health Hub!",
-          description: "Keep track of your pets' health and wellbeing all in one place.",
+          title: "Welcome to Learning Hub!",
+          description: "Discover personalized course recommendations just for you.",
           duration: 5000,
         });
         localStorage.setItem("showed_welcome", "true");
@@ -31,7 +31,7 @@ const Index = () => {
       <AppSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       
       <div className="lg:ml-72">
-        <Dashboard />
+        <RecommendationDashboard />
       </div>
     </div>
   );
