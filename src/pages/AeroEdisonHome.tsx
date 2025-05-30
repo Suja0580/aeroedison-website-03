@@ -19,6 +19,15 @@ const AeroEdisonHome = () => {
         ></div>
         <div className="relative container mx-auto px-6 py-20">
           <div className="max-w-4xl mx-auto text-center">
+            {/* Airplane Image */}
+            <div className="mb-8 flex justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                alt="Modern aircraft representing aviation consulting excellence"
+                className="w-48 h-32 object-cover rounded-lg shadow-lg border-2 border-blue-400/30"
+              />
+            </div>
+            
             <h1 className="text-5xl font-bold mb-6 leading-tight">
               Welcome to <span className="text-blue-300">AeroEdison</span> Consulting
             </h1>
