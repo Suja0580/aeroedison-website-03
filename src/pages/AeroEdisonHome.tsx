@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Plane, Zap, Cpu, Award, Users, ArrowRight, Mail, Phone } from "lucide-react";
 
 const AeroEdisonHome = () => {
@@ -43,9 +44,21 @@ const AeroEdisonHome = () => {
                 Explore Our Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
-                View Reports Marketplace
-              </Button>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
+                    View Reports Marketplace
+                  </Button>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-80">
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold">View Reports Marketplace</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Access our comprehensive collection of aviation industry reports, market intelligence, and strategic insights.
+                    </p>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
             </div>
           </div>
         </div>
