@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -46,7 +45,7 @@ const AeroEdisonHome = () => {
               </Button>
               <HoverCard>
                 <HoverCardTrigger asChild>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                     View Reports Marketplace
                   </Button>
                 </HoverCardTrigger>
