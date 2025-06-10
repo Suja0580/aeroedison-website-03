@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -191,7 +190,6 @@ const AeroEdisonHome = () => {
                   </p>
                 </div>
                 <div className="mt-4 space-y-2">
-                  <p className="text-sm text-gray-500"><strong>Education:</strong> M.S. Mechanical Systems Design | MBA Marketing</p>
                   <p className="text-sm text-gray-500"><strong>Credentials:</strong> Executive Program in Aviation Management (IIMB & TBS)</p>
                   <p className="text-sm text-blue-600 font-medium">Top 20 Global Influencers in Market Intelligence</p>
                 </div>
@@ -223,7 +221,6 @@ const AeroEdisonHome = () => {
                   </p>
                 </div>
                 <div className="mt-4 space-y-2">
-                  <p className="text-sm text-gray-500"><strong>Education:</strong> M.Tech Mathematical Modeling | Executive MBA Project Management</p>
                   <p className="text-sm text-gray-500"><strong>Expertise:</strong> Strategic Leadership, Technology Implementation, Stakeholder Management</p>
                 </div>
               </CardContent>
