@@ -296,7 +296,7 @@ const AeroEdisonHome = () => {
               <Mail className="mr-2 h-5 w-5" />
               Get In Touch
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900">
+            <Button size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
               <Phone className="mr-2 h-5 w-5" />
               Schedule Consultation
             </Button>
