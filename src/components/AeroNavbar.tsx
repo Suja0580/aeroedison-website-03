@@ -27,9 +27,9 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
 
       <div className="hidden md:flex items-center space-x-6">
         <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
-        <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About</Link>
+        <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About Us</Link>
         <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium">Services</Link>
-        <a href="#reports" className="text-gray-700 hover:text-blue-600 font-medium">Reports</a>
+        <Link to="/industries" className="text-gray-700 hover:text-blue-600 font-medium">Industries</Link>
         <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
       </div>
 
