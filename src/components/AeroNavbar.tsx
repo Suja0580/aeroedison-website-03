@@ -1,13 +1,20 @@
 
 import { Button } from "@/components/ui/button";
-import { Plane, Menu, Mail, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Plane, Menu, Mail, Phone, ChevronDown } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface AeroNavbarProps {
   onMenuClick?: () => void;
 }
 
 const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <nav className="flex items-center justify-between p-4 bg-white shadow-sm border-b">
       <div className="flex items-center">
@@ -29,7 +36,36 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
         <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About Us</Link>
         <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium">Services</Link>
-        <Link to="/industries" className="text-gray-700 hover:text-blue-600 font-medium">Industries</Link>
+        
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 font-medium p-0 h-auto">
+              Industries
+              <ChevronDown className="ml-1 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-64 bg-white border shadow-lg z-50">
+            <DropdownMenuItem 
+              onClick={() => handleNavigate("/aviation-sector")}
+              className="cursor-pointer hover:bg-blue-50"
+            >
+              ✈️ Aviation Sector
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => handleNavigate("/energy-sector")}
+              className="cursor-pointer hover:bg-blue-50"
+            >
+              ⚡ Energy Sector
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => handleNavigate("/digital-transformation")}
+              className="cursor-pointer hover:bg-blue-50"
+            >
+              🔄 Cross-Industry Digital Transformation
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        
         <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
       </div>
 
