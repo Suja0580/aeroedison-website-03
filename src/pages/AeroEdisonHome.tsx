@@ -1,39 +1,15 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Plane, Zap, Cpu, Award, Users, ArrowRight, Mail, Phone, Star, Globe, ChevronRight } from "lucide-react";
+import AeroNavbar from "@/components/AeroNavbar";
 
 const AeroEdisonHome = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="bg-blue-600 w-8 h-8 rounded flex items-center justify-center text-white mr-3">
-                <Plane className="h-5 w-5" />
-              </div>
-              <div>
-                <h1 className="text-xl font-semibold text-gray-900">AeroEdison</h1>
-                <p className="text-xs text-gray-600">Consulting</p>
-              </div>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
-              <a href="#insights" className="text-gray-700 hover:text-blue-600 font-medium">Insights</a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
-              <a href="#careers" className="text-gray-700 hover:text-blue-600 font-medium">Careers</a>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Contact Us
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <AeroNavbar />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
