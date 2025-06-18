@@ -15,6 +15,10 @@ import PetRegistration from "./pages/PetRegistration";
 import Wireframe from "./pages/Wireframe";
 import RecommendationDashboard from "./pages/RecommendationDashboard";
 import SystemArchitecture from "./pages/SystemArchitecture";
+import Industries from "./pages/Industries";
+import AviationSector from "./pages/AviationSector";
+import EnergySector from "./pages/EnergySector";
+import DigitalTransformation from "./pages/DigitalTransformation";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +32,10 @@ const App = () => (
           <Route path="/" element={<AeroEdisonHome />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/aviation-sector" element={<AviationSector />} />
+          <Route path="/energy-sector" element={<EnergySector />} />
+          <Route path="/digital-transformation" element={<DigitalTransformation />} />
           <Route path="/health-checks" element={<HealthCheckSchedule />} />
           <Route path="/feeding" element={<FeedingSchedule />} />
           <Route path="/vet" element={<VetAppointment />} />
