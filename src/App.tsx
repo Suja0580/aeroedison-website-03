@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AeroEdisonHome from "./pages/AeroEdisonHome";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
+import ContactUs from "./pages/ContactUs";
 import HealthCheckSchedule from "./pages/HealthCheckSchedule";
 import FeedingSchedule from "./pages/FeedingSchedule";
 import VetAppointment from "./pages/VetAppointment";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/" element={<AeroEdisonHome />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/aviation-sector" element={<AviationSector />} />
           <Route path="/energy-sector" element={<EnergySector />} />

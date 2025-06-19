@@ -66,11 +66,11 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           </DropdownMenuContent>
         </DropdownMenu>
         
-        <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+        <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm" className="hidden sm:flex">
+        <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => handleNavigate("/contact")}>
           <Mail className="h-4 w-4 mr-2" />
           Contact Us
         </Button>
