@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Plane, Menu, Mail, Phone, ChevronDown } from "lucide-react";
+import { Menu, Mail, Phone, ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 interface AeroNavbarProps {
@@ -22,13 +22,11 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           <Menu className="h-5 w-5" />
         </Button>
         <Link to="/" className="flex items-center">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 w-10 h-10 rounded-lg flex items-center justify-center text-white mr-3">
-            <Plane className="h-6 w-6" />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-gray-900">AeroEdison</h1>
-            <p className="text-xs text-gray-600">Consulting</p>
-          </div>
+          <img 
+            src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
+            alt="AeroEdison Logo" 
+            className="h-12 mr-3"
+          />
         </Link>
       </div>
 

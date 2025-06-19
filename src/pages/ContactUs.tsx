@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -272,13 +271,11 @@ const ContactUs = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <div className="bg-blue-600 w-8 h-8 rounded flex items-center justify-center text-white mr-3">
-                  <Plane className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">AeroEdison</h3>
-                  <p className="text-sm text-gray-600">Consulting</p>
-                </div>
+                <img 
+                  src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
+                  alt="AeroEdison Logo" 
+                  className="h-8 mr-3"
+                />
               </div>
               <p className="text-gray-600 text-sm">
                 Navigating the future of Aviation, Energy, and Digital Transformation.

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plane, ArrowLeft } from "lucide-react";
@@ -157,6 +156,58 @@ const AviationSector = () => {
           </Button>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-50 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
+                  alt="AeroEdison Logo" 
+                  className="h-8 mr-3"
+                />
+              </div>
+              <p className="text-gray-600 text-sm">
+                Navigating the future of Aviation, Energy, and Digital Transformation.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li><a href="#" className="hover:text-blue-600">Aviation Consulting</a></li>
+                <li><a href="#" className="hover:text-blue-600">Energy Solutions</a></li>
+                <li><a href="#" className="hover:text-blue-600">Digital Transformation</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li><a href="/about" className="hover:text-blue-600">About Us</a></li>
+                <li><a href="#" className="hover:text-blue-600">Our Team</a></li>
+                <li><a href="#" className="hover:text-blue-600">Careers</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>info@aeroedison.com</li>
+                <li>+1 (555) 123-4567</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-200 mt-8 pt-8 text-center">
+            <p className="text-sm text-gray-600">
+              © 2024 AeroEdison Consulting. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
