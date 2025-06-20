@@ -23,8 +23,8 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         </Button>
         <Link to="/" className="flex items-center">
           <img 
-            src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
-            alt="AeroEdison Logo" 
+            src="/lovable-uploads/39b06832-79e7-438a-8c2b-ddc99578b7be.png" 
+            alt="Company Logo" 
             className="h-12 mr-3"
           />
         </Link>
@@ -37,7 +37,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 font-medium p-0 h-auto">
+            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium p-0 h-auto">
               Industries
               <ChevronDown className="ml-1 h-4 w-4" />
             </Button>
@@ -45,21 +45,21 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           <DropdownMenuContent className="w-64 bg-white border shadow-lg z-50">
             <DropdownMenuItem 
               onClick={() => handleNavigate("/aviation-sector")}
-              className="cursor-pointer hover:bg-blue-50"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
             >
-              ✈️ Aviation Sector
+              Aviation Sector
             </DropdownMenuItem>
             <DropdownMenuItem 
               onClick={() => handleNavigate("/energy-sector")}
-              className="cursor-pointer hover:bg-blue-50"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
             >
-              ⚡ Energy Sector
+              Energy Sector
             </DropdownMenuItem>
             <DropdownMenuItem 
               onClick={() => handleNavigate("/digital-transformation")}
-              className="cursor-pointer hover:bg-blue-50"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
             >
-              🔄 Cross-Industry Digital Transformation
+              Cross-Industry Digital Transformation
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
