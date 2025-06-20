@@ -45,19 +45,19 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           <DropdownMenuContent className="w-64 bg-white border shadow-lg z-50">
             <DropdownMenuItem 
               onClick={() => handleNavigate("/aviation-sector")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
             >
               Aviation Sector
             </DropdownMenuItem>
             <DropdownMenuItem 
               onClick={() => handleNavigate("/energy-sector")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
             >
               Energy Sector
             </DropdownMenuItem>
             <DropdownMenuItem 
               onClick={() => handleNavigate("/digital-transformation")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600"
+              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
             >
               Cross-Industry Digital Transformation
             </DropdownMenuItem>
