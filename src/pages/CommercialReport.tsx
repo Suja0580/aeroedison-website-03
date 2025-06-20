@@ -10,7 +10,7 @@ const CommercialReport = () => {
       <AeroNavbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-950 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold mb-6">Commercial Reports</h1>
@@ -41,7 +41,7 @@ const CommercialReport = () => {
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Preview Link
                     </Button>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
                       <Download className="h-4 w-4 mr-2" />
                       Buy Now
                     </Button>
@@ -63,7 +63,7 @@ const CommercialReport = () => {
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Preview Link
                     </Button>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
                       <Download className="h-4 w-4 mr-2" />
                       Buy Now
                     </Button>
@@ -85,7 +85,7 @@ const CommercialReport = () => {
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Preview Link
                     </Button>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
                       <Download className="h-4 w-4 mr-2" />
                       Buy Now
                     </Button>
@@ -107,7 +107,7 @@ const CommercialReport = () => {
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Preview Link
                     </Button>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
                       <Download className="h-4 w-4 mr-2" />
                       Buy Now
                     </Button>
@@ -121,13 +121,13 @@ const CommercialReport = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-blue-900 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Need Custom Research?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Get tailored market insights and strategic analysis specific to your business needs.
           </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+          <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
             Contact Our Research Team
           </Button>
         </div>
