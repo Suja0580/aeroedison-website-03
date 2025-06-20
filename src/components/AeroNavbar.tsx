@@ -64,6 +64,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           </DropdownMenuContent>
         </DropdownMenu>
         
+        <Link to="/commercial-report" className="text-gray-700 hover:text-blue-600 font-medium">Commercial Report</Link>
         <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
       </div>
 
