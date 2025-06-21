@@ -37,7 +37,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium p-0 h-auto focus:outline-none focus:ring-0 border-none">
+            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium p-0 h-auto focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none">
               Industries
               <ChevronDown className="ml-1 h-4 w-4" />
             </Button>
@@ -66,16 +66,6 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         
         <Link to="/commercial-report" className="text-gray-700 hover:text-blue-600 font-medium">Commercial Report</Link>
         <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
-      </div>
-
-      <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => handleNavigate("/contact")}>
-          <Mail className="h-4 w-4 mr-2" />
-          Contact Us
-        </Button>
-        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-          Get Started
-        </Button>
       </div>
     </nav>
   );
