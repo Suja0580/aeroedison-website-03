@@ -25,12 +25,12 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           <img 
             src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
             alt="Company Logo" 
-            className="h-15 mr-3"
+            className="h-12 mr-3"
           />
         </Link>
       </div>
 
-      <div className="hidden md:flex items-center justify-center space-x-6 flex-1">
+      <div className="hidden md:flex items-center space-x-6">
         <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
         <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About Us</Link>
         <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium">Services</Link>
