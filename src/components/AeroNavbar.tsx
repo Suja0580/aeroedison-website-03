@@ -25,7 +25,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           <img 
             src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
             alt="Company Logo" 
-            className="h-12 mr-3"
+            className="h-16 mr-3"
           />
         </Link>
       </div>
