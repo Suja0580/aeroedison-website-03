@@ -1,27 +1,19 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Download } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
-import PaymentDialog from "@/components/PaymentDialog";
 
 const CommercialReport = () => {
-  const [paymentDialog, setPaymentDialog] = useState<{
-    open: boolean;
-    reportTitle: string;
-    price: string;
-  }>({
-    open: false,
-    reportTitle: "",
-    price: "",
-  });
+  const navigate = useNavigate();
 
   const handleBuyNow = (title: string, price: string) => {
-    setPaymentDialog({
-      open: true,
-      reportTitle: title,
-      price: price,
+    navigate("/payment", {
+      state: {
+        reportTitle: title,
+        price: price,
+      },
     });
   };
 
@@ -168,13 +160,6 @@ const CommercialReport = () => {
           </div>
         </div>
       </footer>
-
-      <PaymentDialog
-        open={paymentDialog.open}
-        onOpenChange={(open) => setPaymentDialog(prev => ({ ...prev, open }))}
-        reportTitle={paymentDialog.reportTitle}
-        price={paymentDialog.price}
-      />
     </div>
   );
 };
