@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import RecommendationDashboard from "./RecommendationDashboard";
 import AppNavbar from "@/components/AppNavbar";
-import AppSidebar from "@/components/AppSidebar";
 import { useToast } from "@/hooks/use-toast";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
@@ -28,7 +27,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <AppNavbar onMenuClick={() => setSidebarOpen(true)} />
-      <AppSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       
       <div className="lg:ml-72">
         <RecommendationDashboard />
