@@ -131,38 +131,6 @@ const Services = () => {
                   </Button>
                 </CardContent>
               </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                    <Users className="h-8 w-8 text-orange-600" />
-                  </div>
-                  <CardTitle className="text-2xl">Digital Transformation</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-gray-600 mb-6">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      Technology strategy and roadmaps
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      Data analytics and AI implementation
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      Digital operating model design
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      Change management and training
-                    </li>
-                  </ul>
-                  <Button variant="outline" className="w-full">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
