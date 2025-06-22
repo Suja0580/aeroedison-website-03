@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, Users, Lightbulb, Settings, ArrowRight, CheckCircle } from "lucide-react";
@@ -15,8 +14,7 @@ const Services = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold mb-6">Our Services</h1>
             <p className="text-xl leading-relaxed">
-              Comprehensive consulting solutions designed to drive transformation, optimize operations, 
-              and unlock new opportunities across aviation, energy, and digital domains.
+              At AeroEdison Consulting, we offer comprehensive consulting solutions at the intersection of Aviation, Energy, and Digital Transformation. Our integrated approach allows us to deliver innovative strategies that drive efficiency, sustainability, and growth for our clients.
             </p>
           </div>
         </div>
@@ -28,15 +26,18 @@ const Services = () => {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center">Core Service Areas</h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                     <BarChart3 className="h-8 w-8 text-blue-600" />
                   </div>
-                  <CardTitle className="text-2xl">Strategy Consulting</CardTitle>
+                  <CardTitle className="text-2xl">Aviation Consulting</CardTitle>
                 </CardHeader>
                 <CardContent>
+                  <p className="text-gray-600 mb-6">
+                    Optimizing operations, enhancing safety, and driving innovation in the aviation sector.
+                  </p>
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -66,9 +67,12 @@ const Services = () => {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <Lightbulb className="h-8 w-8 text-green-600" />
                   </div>
-                  <CardTitle className="text-2xl">Market Research & Intelligence</CardTitle>
+                  <CardTitle className="text-2xl">Energy Consulting</CardTitle>
                 </CardHeader>
                 <CardContent>
+                  <p className="text-gray-600 mb-6">
+                    Guiding the transition to sustainable energy solutions and improving energy efficiency.
+                  </p>
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -98,9 +102,12 @@ const Services = () => {
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                     <Settings className="h-8 w-8 text-purple-600" />
                   </div>
-                  <CardTitle className="text-2xl">Operational Excellence</CardTitle>
+                  <CardTitle className="text-2xl">Digital Transformation Consulting</CardTitle>
                 </CardHeader>
                 <CardContent>
+                  <p className="text-gray-600 mb-6">
+                    Leveraging cutting-edge technologies to revolutionize business processes and customer experiences.
+                  </p>
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
