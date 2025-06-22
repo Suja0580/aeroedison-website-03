@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plane, ArrowLeft } from "lucide-react";
@@ -89,10 +90,29 @@ const AviationSector = () => {
                 <CardTitle>Core Offerings</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-6">
                   <div>
                     <h3 className="text-xl font-semibold mb-4">Strategy Consulting</h3>
+                  </div>
+                  <div>
                     <h3 className="text-xl font-semibold mb-4">Market Research and Intelligence</h3>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Work Products */}
+            <Card className="mb-12">
+              <CardHeader>
+                <CardTitle>Work Products</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-6">
+                  Work products and ICPs with Strategy and Market Research and Intelligence as core offerings for AeroEdison Consulting (AE).
+                </p>
+                
+                <div className="space-y-6">
+                  <div>
                     <h4 className="font-semibold mb-3">Work Products in Demand:</h4>
                     <ul className="space-y-2 text-gray-600">
                       <li>• Aviation Market Trend Analysis Reports</li>
@@ -105,8 +125,8 @@ const AviationSector = () => {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-3">Ideal Customer Profile (ICP):</h4>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-3">Ideal Customer Profiles (ICPs):</h4>
+                    <div className="bg-blue-50 p-6 rounded-lg">
                       <p className="font-semibold mb-2">Organization: Global Airline Alliance</p>
                       <p className="text-sm text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
                       <p className="text-sm text-gray-600 mb-4">Location: Worldwide operations, headquarters in a major global city</p>
