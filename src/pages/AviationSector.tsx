@@ -66,7 +66,7 @@ const AviationSector = () => {
 
             {/* We Work With */}
             <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-blue-400 text-white">
+              <CardHeader className="bg-gray-500 text-white">
                 <CardTitle>We work with:</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -101,7 +101,7 @@ const AviationSector = () => {
 
             {/* Core Offerings */}
             <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-blue-400 text-white">
+              <CardHeader className="bg-gray-500 text-white">
                 <CardTitle>Core Offerings</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -118,7 +118,7 @@ const AviationSector = () => {
 
             {/* Work Products */}
             <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-blue-400 text-white">
+              <CardHeader className="bg-gray-500 text-white">
                 <CardTitle>Work Products</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
