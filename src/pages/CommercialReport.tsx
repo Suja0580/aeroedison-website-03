@@ -1,10 +1,53 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Download } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
+import PaymentDialog from "@/components/PaymentDialog";
 
 const CommercialReport = () => {
+  const [paymentDialog, setPaymentDialog] = useState<{
+    open: boolean;
+    reportTitle: string;
+    price: string;
+  }>({
+    open: false,
+    reportTitle: "",
+    price: "",
+  });
+
+  const handleBuyNow = (title: string, price: string) => {
+    setPaymentDialog({
+      open: true,
+      reportTitle: title,
+      price: price,
+    });
+  };
+
+  const reports = [
+    {
+      title: "India's MRO Growth Opportunity – 2025 Outlook",
+      description: "Comprehensive analysis of India's Maintenance, Repair, and Overhaul market opportunities for 2025.",
+      price: "$299"
+    },
+    {
+      title: "eVTOL Regulatory & Market Landscape",
+      description: "In-depth analysis of electric Vertical Take-Off and Landing aircraft regulations and market dynamics.",
+      price: "$399"
+    },
+    {
+      title: "Hydrogen Strategy India: Policy, Players, and Investments",
+      description: "Strategic overview of India's hydrogen economy including policy framework, key players, and investment landscape.",
+      price: "$349"
+    },
+    {
+      title: "Digital Aviation Readiness – Benchmarking Top OEMs",
+      description: "Benchmarking study of digital transformation readiness across leading Original Equipment Manufacturers.",
+      price: "$449"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <AeroNavbar />
@@ -27,93 +70,34 @@ const CommercialReport = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               
-              {/* Report 1 */}
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl">India's MRO Growth Opportunity – 2025 Outlook</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Comprehensive analysis of India's Maintenance, Repair, and Overhaul market opportunities for 2025.
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <Button variant="outline" className="w-full">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Preview Link
-                    </Button>
-                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
-                      <Download className="h-4 w-4 mr-2" />
-                      Buy Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Report 2 */}
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl">eVTOL Regulatory & Market Landscape</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    In-depth analysis of electric Vertical Take-Off and Landing aircraft regulations and market dynamics.
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <Button variant="outline" className="w-full">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Preview Link
-                    </Button>
-                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
-                      <Download className="h-4 w-4 mr-2" />
-                      Buy Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Report 3 */}
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-xl">Hydrogen Strategy India: Policy, Players, and Investments</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Strategic overview of India's hydrogen economy including policy framework, key players, and investment landscape.
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <Button variant="outline" className="w-full">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Preview Link
-                    </Button>
-                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
-                      <Download className="h-4 w-4 mr-2" />
-                      Buy Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Report 4 */}
-              <Card className="hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-1">
-                <CardHeader>
-                  <CardTitle className="text-xl">Digital Aviation Readiness – Benchmarking Top OEMs</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
-                    Benchmarking study of digital transformation readiness across leading Original Equipment Manufacturers.
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    <Button variant="outline" className="w-full">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Preview Link
-                    </Button>
-                    <Button className="w-full bg-blue-900 hover:bg-blue-950">
-                      <Download className="h-4 w-4 mr-2" />
-                      Buy Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              {reports.map((report, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{report.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">
+                      {report.description}
+                    </p>
+                    <div className="mb-6">
+                      <span className="text-2xl font-bold text-blue-900">{report.price}</span>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      <Button variant="outline" className="w-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Preview Link
+                      </Button>
+                      <Button 
+                        className="w-full bg-blue-900 hover:bg-blue-950"
+                        onClick={() => handleBuyNow(report.title, report.price)}
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Buy Now
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
 
             </div>
           </div>
@@ -184,6 +168,13 @@ const CommercialReport = () => {
           </div>
         </div>
       </footer>
+
+      <PaymentDialog
+        open={paymentDialog.open}
+        onOpenChange={(open) => setPaymentDialog(prev => ({ ...prev, open }))}
+        reportTitle={paymentDialog.reportTitle}
+        price={paymentDialog.price}
+      />
     </div>
   );
 };
