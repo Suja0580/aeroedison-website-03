@@ -11,7 +11,7 @@ const AviationSector = () => {
       <AeroNavbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-slate-900 to-blue-900 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Link to="/industries" className="inline-flex items-center text-blue-200 hover:text-white mb-8 transition-colors">
@@ -37,27 +37,27 @@ const AviationSector = () => {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Key Focus Areas</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-800">Next-generation air traffic management systems</h3>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-800">Sustainable aviation fuels and practices</h3>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-800">Passenger experience enhancement through digital technologies</h3>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-800">Unmanned aerial systems (UAS) integration</h3>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300">
+              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-800">Aviation cybersecurity</h3>
                 </CardContent>
@@ -65,7 +65,7 @@ const AviationSector = () => {
             </div>
 
             {/* We Work With */}
-            <Card className="mb-12 shadow-lg">
+            <Card className="mb-12 shadow-lg bg-white">
               <CardHeader className="bg-blue-600 text-white">
                 <CardTitle>We work with:</CardTitle>
               </CardHeader>
@@ -100,7 +100,7 @@ const AviationSector = () => {
             </Card>
 
             {/* Core Offerings */}
-            <Card className="mb-12 shadow-lg">
+            <Card className="mb-12 shadow-lg bg-white">
               <CardHeader className="bg-slate-700 text-white">
                 <CardTitle>Core Offerings</CardTitle>
               </CardHeader>
@@ -117,18 +117,18 @@ const AviationSector = () => {
             </Card>
 
             {/* Work Products */}
-            <Card className="mb-12 shadow-lg">
+            <Card className="mb-12 shadow-lg bg-white">
               <CardHeader className="bg-slate-600 text-white">
                 <CardTitle>Work Products</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <p className="text-gray-700 mb-6 font-medium">
+                <p className="text-gray-700 mb-6 font-bold">
                   Work products and ICPs with Strategy and Market Research and Intelligence as core offerings for AeroEdison Consulting (AE).
                 </p>
                 
                 <div className="space-y-8">
                   <div className="bg-gray-50 p-6 rounded-lg">
-                    <h4 className="font-semibold mb-4 text-gray-900">Work Products in Demand:</h4>
+                    <h4 className="font-bold mb-4 text-gray-900">Work Products in Demand:</h4>
                     <ul className="space-y-2 text-gray-700">
                       <li className="flex items-center">
                         <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
@@ -158,16 +158,16 @@ const AviationSector = () => {
                   </div>
                   
                   <div className="bg-white p-6 rounded-lg border border-gray-200">
-                    <h4 className="font-semibold mb-4 text-gray-900">Ideal Customer Profiles (ICPs):</h4>
+                    <h4 className="font-bold mb-4 text-gray-900">Ideal Customer Profiles (ICPs):</h4>
                     
                     <div className="bg-gray-50 p-6 rounded-lg">
-                      <p className="font-semibold mb-2 text-gray-900">Organization: Global Airline Alliance</p>
+                      <p className="font-bold mb-2 text-gray-900">Organization: Global Airline Alliance</p>
                       <p className="text-sm text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
                       <p className="text-sm text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
                       
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <h5 className="font-semibold mb-3 text-gray-800">Challenges:</h5>
+                          <h5 className="font-bold mb-3 text-gray-800">Challenges:</h5>
                           <ul className="text-sm text-gray-700 space-y-2">
                             <li>– Navigating post-pandemic recovery strategies</li>
                             <li>– Adapting to changing consumer behaviors and expectations</li>
@@ -177,7 +177,7 @@ const AviationSector = () => {
                         </div>
                         
                         <div>
-                          <h5 className="font-semibold mb-3 text-gray-800">Goals:</h5>
+                          <h5 className="font-bold mb-3 text-gray-800">Goals:</h5>
                           <ul className="text-sm text-gray-700 space-y-2">
                             <li>– Develop alliance-wide strategic plans</li>
                             <li>– Identify new market opportunities</li>
@@ -188,7 +188,7 @@ const AviationSector = () => {
                       </div>
                       
                       <div className="mt-6">
-                        <h5 className="font-semibold mb-3 text-gray-800">Decision Makers:</h5>
+                        <h5 className="font-bold mb-3 text-gray-800">Decision Makers:</h5>
                         <ul className="text-sm text-gray-700 space-y-1">
                           <li>– Alliance CEO</li>
                           <li>– Head of Strategy and Business Development</li>
@@ -197,7 +197,7 @@ const AviationSector = () => {
                       </div>
                       
                       <div className="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
-                        <p className="text-sm font-semibold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
+                        <p className="text-sm font-bold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
                       </div>
                     </div>
                   </div>
