@@ -9,18 +9,14 @@ import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
 import CommercialReport from "./pages/CommercialReport";
-import HealthCheckSchedule from "./pages/HealthCheckSchedule";
-import FeedingSchedule from "./pages/FeedingSchedule";
-import VetAppointment from "./pages/VetAppointment";
 import NotFound from "./pages/NotFound";
-import PetRegistration from "./pages/PetRegistration";
-import Wireframe from "./pages/Wireframe";
-import RecommendationDashboard from "./pages/RecommendationDashboard";
-import SystemArchitecture from "./pages/SystemArchitecture";
 import Industries from "./pages/Industries";
 import AviationSector from "./pages/AviationSector";
 import EnergySector from "./pages/EnergySector";
 import DigitalTransformation from "./pages/DigitalTransformation";
+import RecommendationDashboard from "./pages/RecommendationDashboard";
+import SystemArchitecture from "./pages/SystemArchitecture";
+import Wireframe from "./pages/Wireframe";
 
 const queryClient = new QueryClient();
 
@@ -40,13 +36,9 @@ const App = () => (
           <Route path="/aviation-sector" element={<AviationSector />} />
           <Route path="/energy-sector" element={<EnergySector />} />
           <Route path="/digital-transformation" element={<DigitalTransformation />} />
-          <Route path="/health-checks" element={<HealthCheckSchedule />} />
-          <Route path="/feeding" element={<FeedingSchedule />} />
-          <Route path="/vet" element={<VetAppointment />} />
-          <Route path="/register-pet" element={<PetRegistration />} />
-          <Route path="/wireframe" element={<Wireframe />} />
           <Route path="/recommendations" element={<RecommendationDashboard />} />
           <Route path="/system-architecture" element={<SystemArchitecture />} />
+          <Route path="/wireframe" element={<Wireframe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
