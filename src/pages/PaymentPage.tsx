@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,18 +10,95 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import AeroNavbar from "@/components/AeroNavbar";
 
+declare global {
+  interface Window {
+    paypal?: any;
+  }
+}
+
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { reportTitle, price } = location.state || {};
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [paypalLoaded, setPaypalLoaded] = useState(false);
   const { toast } = useToast();
 
+  // Extract numeric value from price string (e.g., "$299" -> "299")
+  const numericPrice = price ? price.replace(/[^0-9.]/g, '') : '0';
+
+  useEffect(() => {
+    // Load PayPal SDK
+    const loadPayPalScript = () => {
+      if (window.paypal) {
+        setPaypalLoaded(true);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD'; // Using sandbox client-id
+      script.async = true;
+      script.onload = () => {
+        setPaypalLoaded(true);
+      };
+      document.head.appendChild(script);
+    };
+
+    loadPayPalScript();
+  }, []);
+
+  useEffect(() => {
+    if (paypalLoaded && window.paypal && paymentMethod === "paypal") {
+      // Clear any existing PayPal buttons
+      const paypalContainer = document.getElementById('paypal-button-container');
+      if (paypalContainer) {
+        paypalContainer.innerHTML = '';
+      }
+
+      // Render PayPal button
+      window.paypal.Buttons({
+        createOrder: (data: any, actions: any) => {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: numericPrice
+              },
+              description: reportTitle
+            }]
+          });
+        },
+        onApprove: (data: any, actions: any) => {
+          return actions.order.capture().then((details: any) => {
+            toast({
+              title: "Payment Successful!",
+              description: `PayPal payment completed. Transaction ID: ${details.id}`,
+            });
+            console.log('PayPal payment completed:', details);
+            navigate("/commercial-report");
+          });
+        },
+        onError: (err: any) => {
+          console.error('PayPal payment error:', err);
+          toast({
+            title: "Payment Failed",
+            description: "There was an error processing your PayPal payment.",
+            variant: "destructive",
+          });
+        }
+      }).render('#paypal-button-container');
+    }
+  }, [paypalLoaded, paymentMethod, numericPrice, reportTitle, toast, navigate]);
+
   const handlePayment = async () => {
+    if (paymentMethod === "paypal") {
+      // PayPal payment is handled by the PayPal button
+      return;
+    }
+
     setIsProcessing(true);
     
-    // Simulate payment processing
+    // Simulate payment processing for other methods
     setTimeout(() => {
       toast({
         title: "Payment Successful!",
@@ -130,9 +207,10 @@ const PaymentPage = () => {
                     </CardHeader>
                     {paymentMethod === "paypal" && (
                       <CardContent className="pt-0">
-                        <p className="text-sm text-gray-600">
-                          You will be redirected to PayPal to complete your payment.
-                        </p>
+                        <div id="paypal-button-container" className="mt-4"></div>
+                        {!paypalLoaded && (
+                          <p className="text-sm text-gray-600">Loading PayPal...</p>
+                        )}
                       </CardContent>
                     )}
                   </Card>
@@ -156,14 +234,16 @@ const PaymentPage = () => {
                   </Card>
                 </RadioGroup>
 
-                <Button 
-                  onClick={handlePayment} 
-                  className="w-full bg-blue-900 hover:bg-blue-950 mt-6"
-                  disabled={isProcessing}
-                  size="lg"
-                >
-                  {isProcessing ? "Processing..." : `Pay ${price}`}
-                </Button>
+                {paymentMethod !== "paypal" && (
+                  <Button 
+                    onClick={handlePayment} 
+                    className="w-full bg-blue-900 hover:bg-blue-950 mt-6"
+                    disabled={isProcessing}
+                    size="lg"
+                  >
+                    {isProcessing ? "Processing..." : `Pay ${price}`}
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>
