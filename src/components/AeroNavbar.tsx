@@ -30,7 +30,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         </Link>
       </div>
 
-      <div className="hidden md:flex items-center space-x-6">
+      <div className="hidden md:flex items-center justify-center space-x-6 flex-1">
         <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link>
         <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About Us</Link>
         <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium">Services</Link>
