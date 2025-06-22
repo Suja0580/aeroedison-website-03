@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plane, ArrowLeft } from "lucide-react";
@@ -105,13 +104,43 @@ const AviationSector = () => {
                 <CardTitle>Core Offerings</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-l-blue-600">
                     <h3 className="text-xl font-semibold text-gray-900">Strategy Consulting</h3>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-l-blue-600">
                     <h3 className="text-xl font-semibold text-gray-900">Market Research and Intelligence</h3>
                   </div>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-bold mb-4 text-gray-900">Work Products in Demand:</h4>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Aviation Market Trend Analysis Reports
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Competitive Landscape Assessments
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Strategic Growth Plans for Airlines and Airports
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Sustainable Aviation Technology Adoption Strategies
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Regulatory Impact Analyses
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      Future of Air Mobility Studies
+                    </li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
@@ -127,36 +156,6 @@ const AviationSector = () => {
                 </p>
                 
                 <div className="space-y-8">
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <h4 className="font-bold mb-4 text-gray-900">Work Products in Demand:</h4>
-                    <ul className="space-y-2 text-gray-700">
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Aviation Market Trend Analysis Reports
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Competitive Landscape Assessments
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Strategic Growth Plans for Airlines and Airports
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Sustainable Aviation Technology Adoption Strategies
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Regulatory Impact Analyses
-                      </li>
-                      <li className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                        Future of Air Mobility Studies
-                      </li>
-                    </ul>
-                  </div>
-                  
                   <div className="bg-white p-6 rounded-lg border border-gray-200">
                     <h4 className="font-bold mb-4 text-gray-900">Ideal Customer Profiles (ICPs):</h4>
                     
