@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -23,6 +22,7 @@ const PaymentPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [isProcessing, setIsProcessing] = useState(false);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [upiId, setUpiId] = useState("");
   const { toast } = useToast();
   const paypalContainerRef = useRef<HTMLDivElement>(null);
   const paypalInitialized = useRef(false);
@@ -116,9 +116,68 @@ const PaymentPage = () => {
     }
   }, [paymentMethod]);
 
+  const generateUPILink = (app: string) => {
+    const merchantId = "your-merchant-id"; // Replace with actual merchant ID
+    const amount = numericPrice;
+    const note = `Payment for ${reportTitle}`;
+    
+    switch (app) {
+      case 'gpay':
+        return `tez://upi/pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+      case 'phonepe':
+        return `phonepe://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+      case 'amazonpay':
+        return `https://pay.amazon.in/upi/pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+      case 'paytm':
+        return `paytmmp://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+      default:
+        return `upi://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+    }
+  };
+
+  const handleUPIPayment = (app?: string) => {
+    if (!upiId) {
+      toast({
+        title: "UPI ID Required",
+        description: "Please enter a valid UPI ID to proceed.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const upiLink = app ? generateUPILink(app) : generateUPILink('default');
+    
+    // Try to open the UPI app
+    window.open(upiLink, '_self');
+    
+    // Simulate payment processing after a delay
+    setTimeout(() => {
+      toast({
+        title: "Payment Initiated",
+        description: "Please complete the payment in your UPI app.",
+      });
+      setIsProcessing(true);
+      
+      // Simulate payment completion
+      setTimeout(() => {
+        toast({
+          title: "Payment Successful!",
+          description: `Your UPI payment has been processed successfully.`,
+        });
+        setIsProcessing(false);
+        navigate("/commercial-report");
+      }, 3000);
+    }, 1000);
+  };
+
   const handlePayment = async () => {
     if (paymentMethod === "paypal") {
       return; // PayPal handles its own flow
+    }
+
+    if (paymentMethod === "upi") {
+      handleUPIPayment();
+      return;
     }
 
     setIsProcessing(true);
@@ -261,13 +320,64 @@ const PaymentPage = () => {
                     </CardHeader>
                     {paymentMethod === "upi" && (
                       <CardContent className="pt-0">
-                        <Input placeholder="Enter UPI ID (e.g., user@paytm)" />
+                        <div className="space-y-4">
+                          <Input 
+                            placeholder="Enter UPI ID (e.g., user@paytm)" 
+                            value={upiId}
+                            onChange={(e) => setUpiId(e.target.value)}
+                          />
+                          
+                          <div className="space-y-3">
+                            <p className="text-sm font-medium text-gray-700">Pay with your favorite UPI app:</p>
+                            <div className="grid grid-cols-2 gap-3">
+                              <Button
+                                variant="outline"
+                                onClick={() => handleUPIPayment('gpay')}
+                                disabled={!upiId || isProcessing}
+                                className="flex items-center space-x-2"
+                              >
+                                <div className="w-5 h-5 bg-blue-500 rounded"></div>
+                                <span>Google Pay</span>
+                              </Button>
+                              
+                              <Button
+                                variant="outline"
+                                onClick={() => handleUPIPayment('phonepe')}
+                                disabled={!upiId || isProcessing}
+                                className="flex items-center space-x-2"
+                              >
+                                <div className="w-5 h-5 bg-purple-600 rounded"></div>
+                                <span>PhonePe</span>
+                              </Button>
+                              
+                              <Button
+                                variant="outline"
+                                onClick={() => handleUPIPayment('amazonpay')}
+                                disabled={!upiId || isProcessing}
+                                className="flex items-center space-x-2"
+                              >
+                                <div className="w-5 h-5 bg-orange-500 rounded"></div>
+                                <span>Amazon Pay</span>
+                              </Button>
+                              
+                              <Button
+                                variant="outline"
+                                onClick={() => handleUPIPayment('paytm')}
+                                disabled={!upiId || isProcessing}
+                                className="flex items-center space-x-2"
+                              >
+                                <div className="w-5 h-5 bg-blue-700 rounded"></div>
+                                <span>Paytm</span>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
                       </CardContent>
                     )}
                   </Card>
                 </RadioGroup>
 
-                {paymentMethod !== "paypal" && (
+                {(paymentMethod !== "paypal" && paymentMethod !== "upi") && (
                   <Button 
                     onClick={handlePayment} 
                     className="w-full bg-blue-900 hover:bg-blue-950 mt-6"
@@ -275,6 +385,17 @@ const PaymentPage = () => {
                     size="lg"
                   >
                     {isProcessing ? "Processing..." : `Pay ${price}`}
+                  </Button>
+                )}
+
+                {paymentMethod === "upi" && (
+                  <Button 
+                    onClick={handlePayment} 
+                    className="w-full bg-blue-900 hover:bg-blue-950 mt-6"
+                    disabled={isProcessing || !upiId}
+                    size="lg"
+                  >
+                    {isProcessing ? "Processing..." : `Pay ${price} via UPI`}
                   </Button>
                 )}
               </div>
