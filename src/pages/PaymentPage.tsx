@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -21,85 +22,75 @@ const PaymentPage = () => {
   const { reportTitle, price } = location.state || {};
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [paypalReady, setPaypalReady] = useState(false);
   const [paypalError, setPaypalError] = useState(false);
   const [upiId, setUpiId] = useState("");
   const { toast } = useToast();
   const paypalContainerRef = useRef<HTMLDivElement>(null);
-  const paypalInitialized = useRef(false);
 
   // Extract numeric value from price string
   const numericPrice = price ? price.replace(/[^0-9.]/g, '') : '0';
 
-  // Load PayPal SDK with proper test client ID
+  // Load PayPal SDK
   useEffect(() => {
-    if (window.paypal || paypalLoaded) {
-      console.log('PayPal already available');
-      setPaypalLoaded(true);
-      return;
-    }
+    const loadPayPalSDK = () => {
+      if (window.paypal) {
+        console.log('PayPal SDK already loaded');
+        setPaypalReady(true);
+        return;
+      }
 
-    console.log('Loading PayPal SDK...');
-    const script = document.createElement('script');
-    // Using PayPal's official test client ID for demo purposes
-    script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD';
-    script.async = true;
-    
-    script.onload = () => {
-      console.log('PayPal SDK loaded successfully');
-      if (window.paypal && typeof window.paypal.Buttons === 'function') {
-        setPaypalLoaded(true);
-        setPaypalError(false);
-      } else {
-        console.error('PayPal SDK loaded but Buttons not available');
+      console.log('Loading PayPal SDK...');
+      const script = document.createElement('script');
+      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD';
+      script.async = true;
+      
+      script.onload = () => {
+        console.log('PayPal SDK loaded');
+        if (window.paypal) {
+          setPaypalReady(true);
+        } else {
+          setPaypalError(true);
+        }
+      };
+      
+      script.onerror = () => {
+        console.error('Failed to load PayPal SDK');
         setPaypalError(true);
-      }
+      };
+      
+      document.head.appendChild(script);
     };
-    
-    script.onerror = () => {
-      console.error('PayPal SDK failed to load');
-      setPaypalError(true);
-    };
-    
-    document.head.appendChild(script);
 
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
+    loadPayPalSDK();
   }, []);
 
-  // Initialize PayPal buttons when needed
+  // Render PayPal buttons when ready and selected
   useEffect(() => {
-    if (!paypalLoaded || 
-        !window.paypal || 
-        typeof window.paypal.Buttons !== 'function' ||
-        paymentMethod !== "paypal" || 
-        !paypalContainerRef.current ||
-        paypalInitialized.current ||
-        paypalError) {
+    if (!paypalReady || paymentMethod !== "paypal" || !paypalContainerRef.current || paypalError) {
       return;
     }
 
-    console.log('Initializing PayPal buttons...');
-    paypalInitialized.current = true;
+    // Clear previous buttons
+    if (paypalContainerRef.current) {
+      paypalContainerRef.current.innerHTML = '';
+    }
 
+    console.log('Rendering PayPal buttons...');
+    
     try {
       window.paypal.Buttons({
-        createOrder: (data: any, actions: any) => {
+        createOrder: function(data: any, actions: any) {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: numericPrice,
-                currency_code: 'USD'
-              },
-              description: reportTitle || 'Commercial Report Purchase'
+                value: numericPrice
+              }
             }]
           });
         },
-        onApprove: (data: any, actions: any) => {
-          return actions.order.capture().then(() => {
+        onApprove: function(data: any, actions: any) {
+          return actions.order.capture().then(function(details: any) {
             toast({
               title: "Payment Successful!",
               description: "Your PayPal payment has been processed successfully.",
@@ -107,8 +98,8 @@ const PaymentPage = () => {
             navigate("/commercial-report");
           });
         },
-        onError: (err: any) => {
-          console.error('PayPal error:', err);
+        onError: function(err: any) {
+          console.error('PayPal payment error:', err);
           toast({
             title: "Payment Error",
             description: "There was an error processing your PayPal payment.",
@@ -117,23 +108,13 @@ const PaymentPage = () => {
         }
       }).render(paypalContainerRef.current);
     } catch (error) {
-      console.error('Error initializing PayPal buttons:', error);
+      console.error('Error rendering PayPal buttons:', error);
       setPaypalError(true);
     }
-  }, [paypalLoaded, paymentMethod, paypalError]);
-
-  // Reset PayPal when switching away
-  useEffect(() => {
-    if (paymentMethod !== "paypal" && paypalInitialized.current) {
-      paypalInitialized.current = false;
-      if (paypalContainerRef.current) {
-        paypalContainerRef.current.innerHTML = '';
-      }
-    }
-  }, [paymentMethod]);
+  }, [paypalReady, paymentMethod, numericPrice, toast, navigate]);
 
   const generateUPILink = (app: string, upiId?: string) => {
-    const merchantUPI = upiId || "merchant@paytm"; // Default merchant UPI ID
+    const merchantUPI = upiId || "merchant@paytm";
     const amount = numericPrice;
     const note = `Payment for ${reportTitle}`;
     
@@ -154,10 +135,8 @@ const PaymentPage = () => {
   const handleUPIPayment = (app?: string) => {
     const upiLink = app ? generateUPILink(app, upiId) : generateUPILink('default', upiId);
     
-    // Try to open the UPI app
     window.open(upiLink, '_self');
     
-    // Simulate payment processing after a delay
     setTimeout(() => {
       toast({
         title: "Payment Initiated",
@@ -165,7 +144,6 @@ const PaymentPage = () => {
       });
       setIsProcessing(true);
       
-      // Simulate payment completion
       setTimeout(() => {
         toast({
           title: "Payment Successful!",
@@ -178,18 +156,12 @@ const PaymentPage = () => {
   };
 
   const handlePayment = async () => {
-    if (paymentMethod === "paypal") {
-      return; // PayPal handles its own flow
-    }
-
-    if (paymentMethod === "upi") {
-      handleUPIPayment();
+    if (paymentMethod === "paypal" || paymentMethod === "upi") {
       return;
     }
 
     setIsProcessing(true);
     
-    // Simulate payment processing
     setTimeout(() => {
       toast({
         title: "Payment Successful!",
@@ -305,7 +277,7 @@ const PaymentPage = () => {
                               <p className="text-sm">Please try another payment method</p>
                             </div>
                           </div>
-                        ) : !paypalLoaded ? (
+                        ) : !paypalReady ? (
                           <div className="text-center py-8">
                             <div className="inline-flex items-center space-x-2 text-gray-600">
                               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
@@ -314,7 +286,7 @@ const PaymentPage = () => {
                           </div>
                         ) : (
                           <div className="mt-4">
-                            <div ref={paypalContainerRef} className="min-h-[50px]"></div>
+                            <div ref={paypalContainerRef} className="min-h-[100px] w-full"></div>
                           </div>
                         )}
                       </CardContent>
