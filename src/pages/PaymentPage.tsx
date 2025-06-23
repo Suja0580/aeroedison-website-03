@@ -23,6 +23,7 @@ const PaymentPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [isProcessing, setIsProcessing] = useState(false);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [paypalError, setPaypalError] = useState(false);
   const { toast } = useToast();
 
   // Extract numeric value from price string (e.g., "$299" -> "299")
@@ -31,62 +32,96 @@ const PaymentPage = () => {
   useEffect(() => {
     // Load PayPal SDK
     const loadPayPalScript = () => {
+      console.log('Loading PayPal SDK...');
+      
       if (window.paypal) {
+        console.log('PayPal SDK already loaded');
         setPaypalLoaded(true);
         return;
       }
 
       const script = document.createElement('script');
-      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD'; // Using sandbox client-id
+      // Using a proper sandbox client ID - replace with your actual sandbox client ID
+      script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD';
       script.async = true;
+      
       script.onload = () => {
+        console.log('PayPal SDK loaded successfully');
         setPaypalLoaded(true);
+        setPaypalError(false);
       };
+      
+      script.onerror = () => {
+        console.error('Failed to load PayPal SDK');
+        setPaypalError(true);
+        toast({
+          title: "PayPal Loading Error",
+          description: "Failed to load PayPal. Please try again or use another payment method.",
+          variant: "destructive",
+        });
+      };
+      
       document.head.appendChild(script);
     };
 
     loadPayPalScript();
-  }, []);
+  }, [toast]);
 
   useEffect(() => {
     if (paypalLoaded && window.paypal && paymentMethod === "paypal") {
+      console.log('Rendering PayPal buttons...');
+      
       // Clear any existing PayPal buttons
       const paypalContainer = document.getElementById('paypal-button-container');
       if (paypalContainer) {
         paypalContainer.innerHTML = '';
-      }
-
-      // Render PayPal button
-      window.paypal.Buttons({
-        createOrder: (data: any, actions: any) => {
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: numericPrice
-              },
-              description: reportTitle
-            }]
-          });
-        },
-        onApprove: (data: any, actions: any) => {
-          return actions.order.capture().then((details: any) => {
-            toast({
-              title: "Payment Successful!",
-              description: `PayPal payment completed. Transaction ID: ${details.id}`,
-            });
-            console.log('PayPal payment completed:', details);
-            navigate("/commercial-report");
-          });
-        },
-        onError: (err: any) => {
-          console.error('PayPal payment error:', err);
-          toast({
-            title: "Payment Failed",
-            description: "There was an error processing your PayPal payment.",
-            variant: "destructive",
-          });
+        
+        try {
+          // Render PayPal button
+          window.paypal.Buttons({
+            createOrder: (data: any, actions: any) => {
+              console.log('Creating PayPal order with amount:', numericPrice);
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: numericPrice
+                  },
+                  description: reportTitle
+                }]
+              });
+            },
+            onApprove: (data: any, actions: any) => {
+              console.log('PayPal payment approved:', data);
+              return actions.order.capture().then((details: any) => {
+                console.log('PayPal payment captured:', details);
+                toast({
+                  title: "Payment Successful!",
+                  description: `PayPal payment completed. Transaction ID: ${details.id}`,
+                });
+                navigate("/commercial-report");
+              });
+            },
+            onError: (err: any) => {
+              console.error('PayPal payment error:', err);
+              toast({
+                title: "Payment Failed",
+                description: "There was an error processing your PayPal payment.",
+                variant: "destructive",
+              });
+            },
+            onCancel: (data: any) => {
+              console.log('PayPal payment cancelled:', data);
+              toast({
+                title: "Payment Cancelled",
+                description: "PayPal payment was cancelled.",
+              });
+            }
+          }).render('#paypal-button-container');
+        } catch (error) {
+          console.error('Error rendering PayPal buttons:', error);
+          setPaypalError(true);
         }
-      }).render('#paypal-button-container');
+      }
     }
   }, [paypalLoaded, paymentMethod, numericPrice, reportTitle, toast, navigate]);
 
@@ -207,9 +242,14 @@ const PaymentPage = () => {
                     </CardHeader>
                     {paymentMethod === "paypal" && (
                       <CardContent className="pt-0">
-                        <div id="paypal-button-container" className="mt-4"></div>
-                        {!paypalLoaded && (
-                          <p className="text-sm text-gray-600">Loading PayPal...</p>
+                        {paypalError ? (
+                          <div className="text-red-600 text-sm">
+                            PayPal failed to load. Please try refreshing the page or use another payment method.
+                          </div>
+                        ) : !paypalLoaded ? (
+                          <div className="text-sm text-gray-600">Loading PayPal...</div>
+                        ) : (
+                          <div id="paypal-button-container" className="mt-4"></div>
                         )}
                       </CardContent>
                     )}
