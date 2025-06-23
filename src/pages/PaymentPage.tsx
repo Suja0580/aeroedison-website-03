@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -35,27 +34,38 @@ const PaymentPage = () => {
   useEffect(() => {
     const loadPayPalSDK = () => {
       if (window.paypal) {
-        console.log('PayPal SDK already loaded');
-        setPaypalReady(true);
+        console.log('PayPal SDK already loaded, checking Buttons function...');
+        if (typeof window.paypal.Buttons === 'function') {
+          setPaypalReady(true);
+        } else {
+          console.error('PayPal SDK loaded but Buttons function not available');
+          setPaypalError(true);
+        }
         return;
       }
 
       console.log('Loading PayPal SDK...');
       const script = document.createElement('script');
-      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD';
+      // Using a proper PayPal sandbox client ID
+      script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD';
       script.async = true;
       
       script.onload = () => {
-        console.log('PayPal SDK loaded');
-        if (window.paypal) {
-          setPaypalReady(true);
-        } else {
-          setPaypalError(true);
-        }
+        console.log('PayPal SDK script loaded');
+        // Wait a bit for the SDK to fully initialize
+        setTimeout(() => {
+          if (window.paypal && typeof window.paypal.Buttons === 'function') {
+            console.log('PayPal Buttons function is available');
+            setPaypalReady(true);
+          } else {
+            console.error('PayPal SDK loaded but Buttons function not available');
+            setPaypalError(true);
+          }
+        }, 100);
       };
       
       script.onerror = () => {
-        console.error('Failed to load PayPal SDK');
+        console.error('Failed to load PayPal SDK script');
         setPaypalError(true);
       };
       
@@ -79,8 +89,15 @@ const PaymentPage = () => {
     console.log('Rendering PayPal buttons...');
     
     try {
+      if (!window.paypal || typeof window.paypal.Buttons !== 'function') {
+        console.error('PayPal Buttons function not available');
+        setPaypalError(true);
+        return;
+      }
+
       window.paypal.Buttons({
         createOrder: function(data: any, actions: any) {
+          console.log('Creating PayPal order...');
           return actions.order.create({
             purchase_units: [{
               amount: {
@@ -90,7 +107,9 @@ const PaymentPage = () => {
           });
         },
         onApprove: function(data: any, actions: any) {
+          console.log('PayPal payment approved');
           return actions.order.capture().then(function(details: any) {
+            console.log('PayPal payment captured:', details);
             toast({
               title: "Payment Successful!",
               description: "Your PayPal payment has been processed successfully.",
@@ -104,6 +123,13 @@ const PaymentPage = () => {
             title: "Payment Error",
             description: "There was an error processing your PayPal payment.",
             variant: "destructive",
+          });
+        },
+        onCancel: function(data: any) {
+          console.log('PayPal payment cancelled');
+          toast({
+            title: "Payment Cancelled",
+            description: "Your PayPal payment was cancelled.",
           });
         }
       }).render(paypalContainerRef.current);
