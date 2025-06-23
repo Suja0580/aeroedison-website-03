@@ -30,42 +30,56 @@ const PaymentPage = () => {
   // Extract numeric value from price string
   const numericPrice = price ? price.replace(/[^0-9.]/g, '') : '0';
 
-  // Load PayPal SDK
+  // Load PayPal SDK with better error handling
   useEffect(() => {
     const loadPayPalSDK = () => {
-      if (window.paypal) {
-        console.log('PayPal SDK already loaded, checking Buttons function...');
-        if (typeof window.paypal.Buttons === 'function') {
-          setPaypalReady(true);
-        } else {
-          console.error('PayPal SDK loaded but Buttons function not available');
-          setPaypalError(true);
-        }
+      // Reset states
+      setPaypalReady(false);
+      setPaypalError(false);
+
+      // Check if PayPal is already loaded and functional
+      if (window.paypal && typeof window.paypal.Buttons === 'function') {
+        console.log('PayPal SDK already loaded and ready');
+        setPaypalReady(true);
         return;
+      }
+
+      // Remove existing PayPal script if any
+      const existingScript = document.querySelector('script[src*="paypal.com/sdk"]');
+      if (existingScript) {
+        existingScript.remove();
       }
 
       console.log('Loading PayPal SDK...');
       const script = document.createElement('script');
-      // Using a proper PayPal sandbox client ID
-      script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD';
+      // Using PayPal's sandbox client ID - users should replace with their own
+      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD&disable-funding=credit,card';
       script.async = true;
       
       script.onload = () => {
-        console.log('PayPal SDK script loaded');
-        // Wait a bit for the SDK to fully initialize
-        setTimeout(() => {
+        console.log('PayPal SDK script loaded successfully');
+        
+        // Wait longer for PayPal to fully initialize
+        const checkPayPalReady = (attempts = 0) => {
+          if (attempts > 50) { // Max 5 seconds
+            console.error('PayPal SDK timeout - Buttons function not available after 5 seconds');
+            setPaypalError(true);
+            return;
+          }
+
           if (window.paypal && typeof window.paypal.Buttons === 'function') {
-            console.log('PayPal Buttons function is available');
+            console.log('PayPal Buttons function is now available');
             setPaypalReady(true);
           } else {
-            console.error('PayPal SDK loaded but Buttons function not available');
-            setPaypalError(true);
+            setTimeout(() => checkPayPalReady(attempts + 1), 100);
           }
-        }, 100);
+        };
+
+        checkPayPalReady();
       };
       
-      script.onerror = () => {
-        console.error('Failed to load PayPal SDK script');
+      script.onerror = (error) => {
+        console.error('Failed to load PayPal SDK script:', error);
         setPaypalError(true);
       };
       
@@ -73,6 +87,14 @@ const PaymentPage = () => {
     };
 
     loadPayPalSDK();
+
+    // Cleanup function
+    return () => {
+      const script = document.querySelector('script[src*="paypal.com/sdk"]');
+      if (script) {
+        script.remove();
+      }
+    };
   }, []);
 
   // Render PayPal buttons when ready and selected
@@ -90,26 +112,34 @@ const PaymentPage = () => {
     
     try {
       if (!window.paypal || typeof window.paypal.Buttons !== 'function') {
-        console.error('PayPal Buttons function not available');
+        console.error('PayPal Buttons function not available during render');
         setPaypalError(true);
         return;
       }
 
-      window.paypal.Buttons({
+      const paypalButtonsComponent = window.paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'blue',
+          shape: 'rect',
+          label: 'paypal'
+        },
         createOrder: function(data: any, actions: any) {
-          console.log('Creating PayPal order...');
+          console.log('Creating PayPal order for amount:', numericPrice);
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: numericPrice
-              }
+                value: numericPrice,
+                currency_code: 'USD'
+              },
+              description: reportTitle || 'Commercial Report Purchase'
             }]
           });
         },
         onApprove: function(data: any, actions: any) {
-          console.log('PayPal payment approved');
+          console.log('PayPal payment approved, capturing...');
           return actions.order.capture().then(function(details: any) {
-            console.log('PayPal payment captured:', details);
+            console.log('PayPal payment captured successfully:', details);
             toast({
               title: "Payment Successful!",
               description: "Your PayPal payment has been processed successfully.",
@@ -121,23 +151,32 @@ const PaymentPage = () => {
           console.error('PayPal payment error:', err);
           toast({
             title: "Payment Error",
-            description: "There was an error processing your PayPal payment.",
+            description: "There was an error processing your PayPal payment. Please try again.",
             variant: "destructive",
           });
         },
         onCancel: function(data: any) {
-          console.log('PayPal payment cancelled');
+          console.log('PayPal payment cancelled by user');
           toast({
             title: "Payment Cancelled",
             description: "Your PayPal payment was cancelled.",
           });
         }
-      }).render(paypalContainerRef.current);
+      });
+
+      if (paypalButtonsComponent && paypalContainerRef.current) {
+        paypalButtonsComponent.render(paypalContainerRef.current);
+      }
     } catch (error) {
       console.error('Error rendering PayPal buttons:', error);
       setPaypalError(true);
+      toast({
+        title: "PayPal Error",
+        description: "Unable to load PayPal payment option. Please try another payment method.",
+        variant: "destructive",
+      });
     }
-  }, [paypalReady, paymentMethod, numericPrice, toast, navigate]);
+  }, [paypalReady, paymentMethod, numericPrice, reportTitle, toast, navigate]);
 
   const generateUPILink = (app: string, upiId?: string) => {
     const merchantUPI = upiId || "merchant@paytm";
@@ -300,8 +339,15 @@ const PaymentPage = () => {
                           <div className="text-center py-8">
                             <div className="text-red-600 mb-4">
                               <p className="font-medium">PayPal is temporarily unavailable</p>
-                              <p className="text-sm">Please try another payment method</p>
+                              <p className="text-sm">Please try another payment method or refresh the page</p>
                             </div>
+                            <Button 
+                              variant="outline" 
+                              onClick={() => window.location.reload()}
+                              className="mt-2"
+                            >
+                              Refresh Page
+                            </Button>
                           </div>
                         ) : !paypalReady ? (
                           <div className="text-center py-8">
