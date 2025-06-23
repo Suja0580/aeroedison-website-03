@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,13 +24,15 @@ const PaymentPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [paypalReady, setPaypalReady] = useState(false);
   const [paypalError, setPaypalError] = useState(false);
+  const [paypalButtonsRendered, setPaypalButtonsRendered] = useState(false);
   const { toast } = useToast();
+  const paypalContainerRef = useRef<HTMLDivElement>(null);
 
-  // Extract numeric value from price string (e.g., "$299" -> "299")
+  // Extract numeric value from price string
   const numericPrice = price ? price.replace(/[^0-9.]/g, '') : '0';
 
+  // Load PayPal SDK once
   useEffect(() => {
-    // Only load PayPal if it's not already loaded
     if (window.paypal) {
       console.log('PayPal already loaded');
       setPaypalReady(true);
@@ -39,20 +41,12 @@ const PaymentPage = () => {
 
     console.log('Loading PayPal SDK...');
     const script = document.createElement('script');
-    
-    // Use PayPal's official test client ID that should work reliably
     script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD&intent=capture';
     script.async = true;
     
     script.onload = () => {
       console.log('PayPal SDK loaded successfully');
-      if (window.paypal?.Buttons) {
-        setPaypalReady(true);
-        setPaypalError(false);
-      } else {
-        console.error('PayPal Buttons not available');
-        setPaypalError(true);
-      }
+      setPaypalReady(true);
     };
     
     script.onerror = () => {
@@ -61,76 +55,86 @@ const PaymentPage = () => {
     };
     
     document.head.appendChild(script);
-
-    return () => {
-      // Cleanup: remove script on unmount
-      const scripts = document.querySelectorAll('script[src*="paypal.com"]');
-      scripts.forEach(s => s.remove());
-    };
   }, []);
 
+  // Render PayPal buttons only when needed and only once
   useEffect(() => {
-    if (paypalReady && paymentMethod === "paypal" && window.paypal?.Buttons) {
-      console.log('Initializing PayPal buttons...');
+    if (paypalReady && 
+        paymentMethod === "paypal" && 
+        !paypalButtonsRendered && 
+        !paypalError &&
+        paypalContainerRef.current) {
       
-      const container = document.getElementById('paypal-button-container');
-      if (container) {
-        // Clear any existing buttons
-        container.innerHTML = '';
-        
-        try {
-          window.paypal.Buttons({
-            style: {
-              layout: 'vertical',
-              color: 'blue',
-              shape: 'rect',
-              label: 'paypal'
-            },
-            createOrder: (data: any, actions: any) => {
-              console.log('Creating PayPal order...');
-              return actions.order.create({
-                purchase_units: [{
-                  amount: {
-                    value: numericPrice,
-                    currency_code: 'USD'
-                  },
-                  description: reportTitle || 'Commercial Report Purchase'
-                }]
-              });
-            },
-            onApprove: (data: any, actions: any) => {
-              console.log('PayPal payment approved');
-              return actions.order.capture().then(() => {
-                toast({
-                  title: "Payment Successful!",
-                  description: "Your PayPal payment has been processed successfully.",
-                });
-                navigate("/commercial-report");
-              });
-            },
-            onError: (err: any) => {
-              console.error('PayPal error:', err);
+      console.log('Rendering PayPal buttons...');
+      
+      try {
+        window.paypal.Buttons({
+          style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'paypal'
+          },
+          createOrder: (data: any, actions: any) => {
+            console.log('Creating PayPal order...');
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: numericPrice,
+                  currency_code: 'USD'
+                },
+                description: reportTitle || 'Commercial Report Purchase'
+              }]
+            });
+          },
+          onApprove: (data: any, actions: any) => {
+            console.log('PayPal payment approved');
+            return actions.order.capture().then(() => {
               toast({
-                title: "Payment Error",
-                description: "There was an error processing your PayPal payment.",
-                variant: "destructive",
+                title: "Payment Successful!",
+                description: "Your PayPal payment has been processed successfully.",
               });
-            },
-            onCancel: () => {
-              console.log('PayPal payment cancelled');
-              toast({
-                title: "Payment Cancelled",
-                description: "PayPal payment was cancelled.",
-              });
-            }
-          }).render('#paypal-button-container');
-        } catch (error) {
+              navigate("/commercial-report");
+            });
+          },
+          onError: (err: any) => {
+            console.error('PayPal error:', err);
+            toast({
+              title: "Payment Error",
+              description: "There was an error processing your PayPal payment.",
+              variant: "destructive",
+            });
+          },
+          onCancel: () => {
+            console.log('PayPal payment cancelled');
+            toast({
+              title: "Payment Cancelled",
+              description: "PayPal payment was cancelled.",
+            });
+          }
+        }).render(paypalContainerRef.current).then(() => {
+          console.log('PayPal buttons rendered successfully');
+          setPaypalButtonsRendered(true);
+        }).catch((error: any) => {
           console.error('Error rendering PayPal buttons:', error);
           setPaypalError(true);
-        }
+        });
+      } catch (error) {
+        console.error('Error initializing PayPal buttons:', error);
+        setPaypalError(true);
       }
     }
-  }, [paypalReady, paymentMethod, numericPrice, reportTitle, toast, navigate]);
+  }, [paypalReady, paymentMethod, paypalButtonsRendered, paypalError]);
+
+  // Reset PayPal buttons when switching away from PayPal
+  useEffect(() => {
+    if (paymentMethod !== "paypal" && paypalButtonsRendered) {
+      setPaypalButtonsRendered(false);
+      if (paypalContainerRef.current) {
+        paypalContainerRef.current.innerHTML = '';
+      }
+    }
+  }, [paymentMethod, paypalButtonsRendered]);
 
   const handlePayment = async () => {
     if (paymentMethod === "paypal") {
@@ -270,7 +274,7 @@ const PaymentPage = () => {
                           </div>
                         ) : (
                           <div className="mt-4">
-                            <div id="paypal-button-container" className="min-h-[50px]"></div>
+                            <div ref={paypalContainerRef} className="min-h-[50px]"></div>
                           </div>
                         )}
                       </CardContent>
