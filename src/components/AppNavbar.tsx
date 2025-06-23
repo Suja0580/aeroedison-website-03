@@ -36,8 +36,12 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
           <Menu className="h-5 w-5" />
         </Button>
         <div className="flex items-center mr-6">
-          <div className="bg-gradient-to-r from-pet-blue to-pet-purple w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold mr-2">P</div>
-          <h1 className="text-lg font-display font-semibold hidden sm:block">Paw-fect Health Hub</h1>
+          <img 
+            src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
+            alt="AeroEdison Logo" 
+            className="h-8 mr-2"
+          />
+          <h1 className="text-lg font-display font-semibold hidden sm:block">AeroEdison</h1>
         </div>
         
         <div className="hidden md:flex relative w-64">
@@ -53,52 +57,52 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="hover:bg-pet-soft-blue hover:text-pet-blue">
-                Health Checks
+              <NavigationMenuTrigger className="hover:bg-blue-50 hover:text-blue-600">
+                Aviation
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-pet-blue/20 to-pet-blue/50 p-6 no-underline outline-none focus:shadow-md"
-                        href="/health-checks"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-blue-600/20 to-blue-600/50 p-6 no-underline outline-none focus:shadow-md"
+                        href="/aviation-sector"
                       >
                         <div className="mb-2 mt-4 text-lg font-medium">
-                          Health Checks
+                          Aviation Solutions
                         </div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          Schedule and track your pet's health checks to keep them healthy and happy.
+                          Advanced aviation technology and engineering solutions.
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/health-checks/new" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-blue hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Schedule</div>
+                      <a href="/aviation-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Aircraft Systems</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Schedule a new health check for your pet
+                          Advanced aircraft system solutions
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/health-checks/history" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-blue hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">History</div>
+                      <a href="/aviation-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Maintenance</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          View past health checks and their results
+                          Aircraft maintenance and support services
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/health-checks/report" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-blue hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Reports</div>
+                      <a href="/aviation-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Consulting</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Generate health reports for your veterinarian
+                          Expert aviation consulting services
                         </p>
                       </a>
                     </NavigationMenuLink>
@@ -107,37 +111,37 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="hover:bg-pet-soft-green hover:text-green-600">
-                Feeding
+              <NavigationMenuTrigger className="hover:bg-green-50 hover:text-green-600">
+                Energy
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] md:grid-cols-2">
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/feeding" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-green hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Schedule</div>
+                      <a href="/energy-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-green-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Renewable Energy</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Create and manage feeding schedules
+                          Sustainable energy solutions and consulting
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/feeding/history" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-green hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">History</div>
+                      <a href="/energy-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-green-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Grid Solutions</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          View feeding history and track nutrition
+                          Smart grid technology and optimization
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li className="col-span-2">
                     <NavigationMenuLink asChild>
-                      <a href="/feeding/recommendations" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-green hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Recommendations</div>
+                      <a href="/energy-sector" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-green-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Energy Storage</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Get personalized food recommendations based on your pet's breed, age, and health conditions
+                          Advanced energy storage systems and battery technology solutions
                         </p>
                       </a>
                     </NavigationMenuLink>
@@ -146,37 +150,37 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="hover:bg-pet-soft-purple hover:text-purple-700">
-                Vet Appointments
+              <NavigationMenuTrigger className="hover:bg-purple-50 hover:text-purple-700">
+                Digital Solutions
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 p-4 md:w-[400px]">
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/vet" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-purple hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Schedule</div>
+                      <a href="/digital-transformation" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-purple-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Digital Transformation</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Schedule new vet appointments
+                          Cross-industry digital transformation solutions
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/vet/upcoming" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-purple hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Upcoming</div>
+                      <a href="/digital-transformation" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-purple-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">AI & Analytics</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          View and manage upcoming appointments
+                          Advanced AI and data analytics solutions
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a href="/vet/history" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-pet-soft-purple hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">History</div>
+                      <a href="/digital-transformation" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-purple-50 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Cloud Services</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          View past vet appointments and diagnoses
+                          Cloud infrastructure and migration services
                         </p>
                       </a>
                     </NavigationMenuLink>
@@ -195,7 +199,7 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
         <Button variant="outline" size="icon" className="rounded-full bg-gray-50 relative">
           <Bell className="h-4 w-4" />
           {notificationCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-pet-orange text-[10px] text-white">
+            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-orange-500 text-[10px] text-white">
               {notificationCount}
             </span>
           )}
@@ -205,7 +209,7 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
             <Button variant="ghost" className="rounded-full p-0">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="/placeholder.svg" alt="User" />
-                <AvatarFallback className="bg-pet-blue text-white">JD</AvatarFallback>
+                <AvatarFallback className="bg-blue-600 text-white">AE</AvatarFallback>
               </Avatar>
             </Button>
           </PopoverTrigger>
