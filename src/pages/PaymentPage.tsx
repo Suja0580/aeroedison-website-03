@@ -116,36 +116,27 @@ const PaymentPage = () => {
     }
   }, [paymentMethod]);
 
-  const generateUPILink = (app: string) => {
-    const merchantId = "your-merchant-id"; // Replace with actual merchant ID
+  const generateUPILink = (app: string, upiId?: string) => {
+    const merchantUPI = upiId || "merchant@paytm"; // Default merchant UPI ID
     const amount = numericPrice;
     const note = `Payment for ${reportTitle}`;
     
     switch (app) {
       case 'gpay':
-        return `tez://upi/pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+        return `tez://upi/pay?pa=${merchantUPI}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
       case 'phonepe':
-        return `phonepe://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+        return `phonepe://pay?pa=${merchantUPI}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
       case 'amazonpay':
-        return `https://pay.amazon.in/upi/pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+        return `https://pay.amazon.in/upi/pay?pa=${merchantUPI}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
       case 'paytm':
-        return `paytmmp://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+        return `paytmmp://pay?pa=${merchantUPI}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
       default:
-        return `upi://pay?pa=${upiId}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
+        return `upi://pay?pa=${merchantUPI}&pn=Merchant&am=${amount}&tn=${encodeURIComponent(note)}`;
     }
   };
 
   const handleUPIPayment = (app?: string) => {
-    if (!upiId) {
-      toast({
-        title: "UPI ID Required",
-        description: "Please enter a valid UPI ID to proceed.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const upiLink = app ? generateUPILink(app) : generateUPILink('default');
+    const upiLink = app ? generateUPILink(app, upiId) : generateUPILink('default', upiId);
     
     // Try to open the UPI app
     window.open(upiLink, '_self');
@@ -154,7 +145,7 @@ const PaymentPage = () => {
     setTimeout(() => {
       toast({
         title: "Payment Initiated",
-        description: "Please complete the payment in your UPI app.",
+        description: `Please complete the payment in your ${app ? app.toUpperCase() : 'UPI'} app.`,
       });
       setIsProcessing(true);
       
@@ -322,7 +313,7 @@ const PaymentPage = () => {
                       <CardContent className="pt-0">
                         <div className="space-y-4">
                           <Input 
-                            placeholder="Enter UPI ID (e.g., user@paytm)" 
+                            placeholder="Enter UPI ID (optional - for custom payments)" 
                             value={upiId}
                             onChange={(e) => setUpiId(e.target.value)}
                           />
@@ -333,7 +324,7 @@ const PaymentPage = () => {
                               <Button
                                 variant="outline"
                                 onClick={() => handleUPIPayment('gpay')}
-                                disabled={!upiId || isProcessing}
+                                disabled={isProcessing}
                                 className="flex items-center space-x-2"
                               >
                                 <div className="w-5 h-5 bg-blue-500 rounded"></div>
@@ -343,7 +334,7 @@ const PaymentPage = () => {
                               <Button
                                 variant="outline"
                                 onClick={() => handleUPIPayment('phonepe')}
-                                disabled={!upiId || isProcessing}
+                                disabled={isProcessing}
                                 className="flex items-center space-x-2"
                               >
                                 <div className="w-5 h-5 bg-purple-600 rounded"></div>
@@ -353,7 +344,7 @@ const PaymentPage = () => {
                               <Button
                                 variant="outline"
                                 onClick={() => handleUPIPayment('amazonpay')}
-                                disabled={!upiId || isProcessing}
+                                disabled={isProcessing}
                                 className="flex items-center space-x-2"
                               >
                                 <div className="w-5 h-5 bg-orange-500 rounded"></div>
@@ -363,7 +354,7 @@ const PaymentPage = () => {
                               <Button
                                 variant="outline"
                                 onClick={() => handleUPIPayment('paytm')}
-                                disabled={!upiId || isProcessing}
+                                disabled={isProcessing}
                                 className="flex items-center space-x-2"
                               >
                                 <div className="w-5 h-5 bg-blue-700 rounded"></div>
@@ -392,7 +383,7 @@ const PaymentPage = () => {
                   <Button 
                     onClick={handlePayment} 
                     className="w-full bg-blue-900 hover:bg-blue-950 mt-6"
-                    disabled={isProcessing || !upiId}
+                    disabled={isProcessing}
                     size="lg"
                   >
                     {isProcessing ? "Processing..." : `Pay ${price} via UPI`}
