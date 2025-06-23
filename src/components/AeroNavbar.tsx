@@ -23,8 +23,8 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         </Button>
         <Link to="/" className="flex items-center">
           <img 
-            src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
-            alt="Company Logo" 
+            src="/lovable-uploads/4149ec7b-aa55-475c-8b40-70402e2e16c3.png" 
+            alt="AeroEdison Logo" 
             className="h-16 mr-3"
           />
         </Link>
