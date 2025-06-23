@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -24,70 +25,85 @@ const PaymentPage = () => {
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [paypalError, setPaypalError] = useState(false);
   const [paypalLoading, setPaypalLoading] = useState(false);
+  const [scriptRetryCount, setScriptRetryCount] = useState(0);
   const { toast } = useToast();
 
   // Extract numeric value from price string (e.g., "$299" -> "299")
   const numericPrice = price ? price.replace(/[^0-9.]/g, '') : '0';
 
-  useEffect(() => {
-    const loadPayPalScript = () => {
-      console.log('Attempting to load PayPal SDK...');
-      
-      if (window.paypal) {
-        console.log('PayPal SDK already exists');
-        setPaypalLoaded(true);
-        setPaypalError(false);
-        return;
-      }
+  const loadPayPalScript = () => {
+    console.log('Loading PayPal SDK attempt:', scriptRetryCount + 1);
+    
+    // Remove any existing PayPal scripts
+    const existingScripts = document.querySelectorAll('script[src*="paypal.com/sdk"]');
+    existingScripts.forEach(script => script.remove());
+    
+    // Reset PayPal object
+    if (window.paypal) {
+      delete window.paypal;
+    }
 
-      // Check if script is already in the DOM
-      const existingScript = document.querySelector('script[src*="paypal.com/sdk"]');
-      if (existingScript) {
-        console.log('PayPal script already in DOM, waiting for load...');
-        setPaypalLoading(true);
-        return;
-      }
-
-      setPaypalLoading(true);
-      const script = document.createElement('script');
-      // Using PayPal's test client ID that should work for sandbox testing
-      script.src = 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD&intent=capture';
-      script.async = true;
+    setPaypalLoading(true);
+    setPaypalError(false);
+    
+    const script = document.createElement('script');
+    // Using PayPal's demo client ID for testing
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD&intent=capture&debug=true';
+    script.async = true;
+    
+    script.onload = () => {
+      console.log('PayPal SDK script loaded');
+      setPaypalLoading(false);
       
-      script.onload = () => {
-        console.log('PayPal SDK script loaded successfully');
-        setPaypalLoading(false);
-        if (window.paypal) {
-          console.log('PayPal object is available');
+      // Wait a bit for PayPal to initialize
+      setTimeout(() => {
+        if (window.paypal && window.paypal.Buttons) {
+          console.log('PayPal Buttons available');
           setPaypalLoaded(true);
           setPaypalError(false);
+          setScriptRetryCount(0);
         } else {
-          console.error('PayPal script loaded but window.paypal is not available');
-          setPaypalError(true);
+          console.error('PayPal Buttons not available after script load');
+          handlePayPalError();
         }
-      };
-      
-      script.onerror = (error) => {
-        console.error('Failed to load PayPal SDK script:', error);
-        setPaypalLoading(false);
-        setPaypalError(true);
-        toast({
-          title: "PayPal Loading Error",
-          description: "Unable to load PayPal. Please try refreshing the page.",
-          variant: "destructive",
-        });
-      };
-      
-      document.head.appendChild(script);
-      console.log('PayPal script added to DOM');
+      }, 500);
     };
+    
+    script.onerror = (error) => {
+      console.error('PayPal SDK script failed to load:', error);
+      handlePayPalError();
+    };
+    
+    document.head.appendChild(script);
+  };
 
-    loadPayPalScript();
-  }, [toast]);
+  const handlePayPalError = () => {
+    setPaypalLoading(false);
+    
+    if (scriptRetryCount < 2) {
+      console.log('Retrying PayPal script load...');
+      setScriptRetryCount(prev => prev + 1);
+      setTimeout(() => {
+        loadPayPalScript();
+      }, 1000);
+    } else {
+      console.error('PayPal failed to load after retries');
+      setPaypalError(true);
+      toast({
+        title: "PayPal Unavailable",
+        description: "PayPal failed to load. Please try refreshing the page or use another payment method.",
+        variant: "destructive",
+      });
+    }
+  };
 
   useEffect(() => {
-    if (paypalLoaded && window.paypal && paymentMethod === "paypal") {
-      console.log('Setting up PayPal buttons...');
+    loadPayPalScript();
+  }, []);
+
+  useEffect(() => {
+    if (paypalLoaded && window.paypal && window.paypal.Buttons && paymentMethod === "paypal") {
+      console.log('Rendering PayPal buttons...');
       
       const paypalContainer = document.getElementById('paypal-button-container');
       if (paypalContainer) {
@@ -99,10 +115,11 @@ const PaymentPage = () => {
               layout: 'vertical',
               color: 'blue',
               shape: 'rect',
-              label: 'paypal'
+              label: 'paypal',
+              height: 40
             },
             createOrder: (data: any, actions: any) => {
-              console.log('Creating PayPal order for amount:', numericPrice);
+              console.log('Creating PayPal order for:', numericPrice);
               return actions.order.create({
                 purchase_units: [{
                   amount: {
@@ -114,9 +131,9 @@ const PaymentPage = () => {
               });
             },
             onApprove: (data: any, actions: any) => {
-              console.log('PayPal payment approved:', data);
+              console.log('PayPal payment approved:', data.orderID);
               return actions.order.capture().then((details: any) => {
-                console.log('PayPal payment captured:', details);
+                console.log('Payment captured:', details);
                 toast({
                   title: "Payment Successful!",
                   description: `Payment completed successfully. Order ID: ${data.orderID}`,
@@ -127,24 +144,26 @@ const PaymentPage = () => {
             onError: (err: any) => {
               console.error('PayPal payment error:', err);
               toast({
-                title: "Payment Failed",
+                title: "Payment Error",
                 description: "There was an error processing your payment. Please try again.",
                 variant: "destructive",
               });
             },
             onCancel: (data: any) => {
-              console.log('PayPal payment cancelled:', data);
+              console.log('PayPal payment cancelled');
               toast({
                 title: "Payment Cancelled",
                 description: "You cancelled the payment process.",
               });
             }
-          }).render('#paypal-button-container').catch((error: any) => {
+          }).render('#paypal-button-container').then(() => {
+            console.log('PayPal buttons rendered successfully');
+          }).catch((error: any) => {
             console.error('Error rendering PayPal buttons:', error);
             setPaypalError(true);
           });
         } catch (error) {
-          console.error('Error setting up PayPal buttons:', error);
+          console.error('Error in PayPal button setup:', error);
           setPaypalError(true);
         }
       }
@@ -170,6 +189,13 @@ const PaymentPage = () => {
 
   const handleGoBack = () => {
     navigate(-1);
+  };
+
+  const retryPayPal = () => {
+    setScriptRetryCount(0);
+    setPaypalError(false);
+    setPaypalLoaded(false);
+    loadPayPalScript();
   };
 
   if (!reportTitle || !price) {
@@ -240,10 +266,10 @@ const PaymentPage = () => {
                     {paymentMethod === "card" && (
                       <CardContent className="pt-0">
                         <div className="space-y-3">
-                          <Input placeholder="Card Number" />
+                          <Input placeholder="Card Number" maxLength={19} />
                           <div className="grid grid-cols-2 gap-3">
-                            <Input placeholder="MM/YY" />
-                            <Input placeholder="CVV" />
+                            <Input placeholder="MM/YY" maxLength={5} />
+                            <Input placeholder="CVV" maxLength={4} />
                           </div>
                           <Input placeholder="Cardholder Name" />
                         </div>
@@ -267,26 +293,33 @@ const PaymentPage = () => {
                     {paymentMethod === "paypal" && (
                       <CardContent className="pt-0">
                         {paypalError ? (
-                          <div className="text-red-600 text-sm bg-red-50 p-3 rounded">
-                            <p>PayPal is currently unavailable. This could be due to:</p>
-                            <ul className="list-disc list-inside mt-2 space-y-1">
-                              <li>Network connectivity issues</li>
-                              <li>PayPal service temporarily down</li>
-                              <li>Browser blocking the PayPal script</li>
-                            </ul>
-                            <p className="mt-2">Please try refreshing the page or use another payment method.</p>
+                          <div className="text-red-600 text-sm bg-red-50 p-4 rounded border border-red-200">
+                            <p className="font-medium mb-2">PayPal is currently unavailable</p>
+                            <p className="mb-3">This could be due to network issues or PayPal service being temporarily down.</p>
+                            <Button 
+                              onClick={retryPayPal}
+                              size="sm"
+                              variant="outline"
+                              className="text-red-600 border-red-300 hover:bg-red-50"
+                            >
+                              Try Again
+                            </Button>
                           </div>
                         ) : paypalLoading ? (
-                          <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded">
-                            <div className="flex items-center space-x-2">
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                          <div className="text-center py-8">
+                            <div className="inline-flex items-center space-x-2 text-gray-600">
+                              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
                               <span>Loading PayPal...</span>
                             </div>
                           </div>
                         ) : paypalLoaded ? (
-                          <div id="paypal-button-container" className="mt-4"></div>
+                          <div className="mt-4">
+                            <div id="paypal-button-container" className="min-h-[50px]"></div>
+                          </div>
                         ) : (
-                          <div className="text-sm text-gray-600">Initializing PayPal...</div>
+                          <div className="text-center py-4 text-gray-500">
+                            Initializing PayPal...
+                          </div>
                         )}
                       </CardContent>
                     )}
