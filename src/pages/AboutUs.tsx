@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Users, Target, Award } from "lucide-react";
@@ -28,45 +27,51 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Our Story</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-gray-600 mb-4">
-                  Founded with the vision of bridging the gap between traditional consulting and modern technological solutions, 
-                  AeroEdison has grown to become a trusted partner for leading organizations across multiple industries.
-                </p>
-                <p className="text-gray-600">
-                  Our unique approach combines deep sector knowledge with cutting-edge analytical capabilities, 
-                  enabling us to deliver insights and strategies that drive real business impact.
-                </p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Our Values</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                    Innovation-driven solutions
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                    Data-backed insights
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                    Sustainable practices
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-                    Client-centric approach
-                  </li>
-                </ul>
-              </div>
+            <div className="text-center">
+              <p className="text-gray-600 mb-4">
+                Founded with the vision of bridging the gap between traditional consulting and modern technological solutions, 
+                AeroEdison has grown to become a trusted partner for leading organizations across multiple industries.
+              </p>
+              <p className="text-gray-600">
+                Our unique approach combines deep sector knowledge with cutting-edge analytical capabilities, 
+                enabling us to deliver insights and strategies that drive real business impact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">Our Values</h2>
+            <div className="bg-blue-50 p-8 rounded-lg">
+              <ul className="grid md:grid-cols-2 gap-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-blue-600 mr-3" />
+                  Innovation-driven solutions
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-blue-600 mr-3" />
+                  Data-backed insights
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-blue-600 mr-3" />
+                  Sustainable practices
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-5 w-5 text-blue-600 mr-3" />
+                  Client-centric approach
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="bg-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center">Our Leadership</h2>
