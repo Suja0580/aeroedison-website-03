@@ -262,8 +262,6 @@ const AboutUs = () => {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Vision, Mission, Purpose and Values</h2>
-            
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card>
                 <CardHeader>
@@ -294,7 +292,7 @@ const AboutUs = () => {
               </Card>
             </div>
 
-            <div className="mb-8">
+            <div className="grid md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -308,37 +306,37 @@ const AboutUs = () => {
                   </p>
                 </CardContent>
               </Card>
-            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-center text-2xl">Values</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-semibold text-blue-600 mb-2">Unyielding Integrity:</h4>
-                    <p className="text-gray-600 text-sm">Upholding the highest ethical standards in all our actions</p>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-center text-2xl">Values</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-blue-600 mb-2">Unyielding Integrity:</h4>
+                      <p className="text-gray-600 text-sm">Upholding the highest ethical standards in all our actions</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-600 mb-2">Excellence:</h4>
+                      <p className="text-gray-600 text-sm">Striving for exceptional quality in our work and deliverables</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-600 mb-2">Innovation:</h4>
+                      <p className="text-gray-600 text-sm">Continuously pushing boundaries and embracing new ideas</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-600 mb-2">Collaboration:</h4>
+                      <p className="text-gray-600 text-sm">Fostering partnerships and teamwork to achieve shared goals</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-600 mb-2">Sustainability:</h4>
+                      <p className="text-gray-600 text-sm">Promoting environmentally responsible practices and solutions</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-600 mb-2">Excellence:</h4>
-                    <p className="text-gray-600 text-sm">Striving for exceptional quality in our work and deliverables</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-600 mb-2">Innovation:</h4>
-                    <p className="text-gray-600 text-sm">Continuously pushing boundaries and embracing new ideas</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-blue-600 mb-2">Collaboration:</h4>
-                    <p className="text-gray-600 text-sm">Fostering partnerships and teamwork to achieve shared goals</p>
-                  </div>
-                  <div className="md:col-span-2">
-                    <h4 className="font-semibold text-blue-600 mb-2">Sustainability:</h4>
-                    <p className="text-gray-600 text-sm">Promoting environmentally responsible practices and solutions</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
