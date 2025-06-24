@@ -265,9 +265,6 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card>
                 <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Target className="h-8 w-8 text-blue-600" />
-                  </div>
                   <CardTitle className="text-center text-2xl">Vision</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -279,9 +276,6 @@ const AboutUs = () => {
 
               <Card>
                 <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Zap className="h-8 w-8 text-green-600" />
-                  </div>
                   <CardTitle className="text-center text-2xl">Mission</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -295,9 +289,6 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-8 w-8 text-purple-600" />
-                  </div>
                   <CardTitle className="text-center text-2xl">Purpose</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -309,6 +300,9 @@ const AboutUs = () => {
 
               <Card>
                 <CardHeader>
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Award className="h-8 w-8 text-blue-600" />
+                  </div>
                   <CardTitle className="text-center text-2xl">Values</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
