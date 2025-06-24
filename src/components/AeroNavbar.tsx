@@ -1,8 +1,8 @@
 
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Menu, Mail, Phone, ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 interface AeroNavbarProps {
   onMenuClick?: () => void;
@@ -10,9 +10,11 @@ interface AeroNavbarProps {
 
 const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
   const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleNavigate = (path: string) => {
     navigate(path);
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -35,34 +37,39 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
         <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium">About Us</Link>
         <Link to="/services" className="text-gray-700 hover:text-blue-600 font-medium">Services</Link>
         
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 font-medium p-0 h-auto focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 border-none">
-              Industries
-              <ChevronDown className="ml-1 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-64 bg-white border shadow-lg z-50">
-            <DropdownMenuItem 
-              onClick={() => handleNavigate("/aviation-sector")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
-            >
-              Aviation Sector
-            </DropdownMenuItem>
-            <DropdownMenuItem 
-              onClick={() => handleNavigate("/energy-sector")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
-            >
-              Energy Sector
-            </DropdownMenuItem>
-            <DropdownMenuItem 
-              onClick={() => handleNavigate("/digital-transformation")}
-              className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 focus:bg-blue-50 focus:text-blue-600"
-            >
-              Cross-Industry Digital Transformation
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+        >
+          <div className="text-gray-700 hover:text-blue-600 font-medium cursor-pointer flex items-center">
+            Industries
+            <ChevronDown className="ml-1 h-4 w-4" />
+          </div>
+          
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 mt-1 w-64 bg-white border shadow-lg rounded-md z-50">
+              <div 
+                onClick={() => handleNavigate("/aviation-sector")}
+                className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm border-b border-gray-100"
+              >
+                Aviation Sector
+              </div>
+              <div 
+                onClick={() => handleNavigate("/energy-sector")}
+                className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm border-b border-gray-100"
+              >
+                Energy Sector
+              </div>
+              <div 
+                onClick={() => handleNavigate("/digital-transformation")}
+                className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm"
+              >
+                Cross-Industry Digital Transformation
+              </div>
+            </div>
+          )}
+        </div>
         
         <Link to="/commercial-report" className="text-gray-700 hover:text-blue-600 font-medium">Commercial Report</Link>
         <Link to="/contact" className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
