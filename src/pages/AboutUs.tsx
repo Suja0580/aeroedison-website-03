@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -10,20 +11,23 @@ const AboutUs = () => {
       <AeroNavbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Pioneering Integrated Consulting Solutions</h1>
-            <p className="text-xl leading-relaxed mb-8">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+              Pioneering Integrated Consulting Solutions
+            </h1>
+            
+            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
               AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
               industry practices and futuristic technologies. Our team of seasoned experts brings together 
               decades of experience in Aviation, Energy, and Digital Transformation to deliver unparalleled 
               insights and strategies.
             </p>
             
-            <div className="mt-12 text-left max-w-3xl mx-auto">
-              <h3 className="text-2xl font-semibold mb-4">Our Mission:</h3>
-              <p className="text-lg">
+            <div className="text-center max-w-2xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-semibold mb-3">Our Mission</h3>
+              <p className="text-base md:text-lg leading-relaxed">
                 To empower organizations to navigate complex challenges and seize opportunities through 
                 expert guidance, cutting-edge research, and tailored strategies.
               </p>
