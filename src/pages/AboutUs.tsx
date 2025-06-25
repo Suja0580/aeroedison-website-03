@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -305,33 +304,25 @@ const AboutUs = () => {
             <div className="max-w-4xl mx-auto">
               <Card>
                 <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-8 w-8 text-blue-600" />
-                  </div>
                   <CardTitle className="text-center text-2xl">Values</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div>
-                      <h4 className="font-semibold text-blue-600 mb-2">Unyielding Integrity:</h4>
-                      <p className="text-gray-600 text-sm">Upholding the highest ethical standards in all our actions</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600 mb-2">Excellence:</h4>
-                      <p className="text-gray-600 text-sm">Striving for exceptional quality in our work and deliverables</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600 mb-2">Innovation:</h4>
-                      <p className="text-gray-600 text-sm">Continuously pushing boundaries and embracing new ideas</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600 mb-2">Collaboration:</h4>
-                      <p className="text-gray-600 text-sm">Fostering partnerships and teamwork to achieve shared goals</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-blue-600 mb-2">Sustainability:</h4>
-                      <p className="text-gray-600 text-sm">Promoting environmentally responsible practices and solutions</p>
-                    </div>
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-blue-600">Unyielding Integrity:</span> Upholding the highest ethical standards in all our actions
+                    </p>
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-blue-600">Excellence:</span> Striving for exceptional quality in our work and deliverables
+                    </p>
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-blue-600">Innovation:</span> Continuously pushing boundaries and embracing new ideas
+                    </p>
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-blue-600">Collaboration:</span> Fostering partnerships and teamwork to achieve shared goals
+                    </p>
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-blue-600">Sustainability:</span> Promoting environmentally responsible practices and solutions
+                    </p>
                   </div>
                 </CardContent>
               </Card>
