@@ -265,7 +265,8 @@ const AboutUs = () => {
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Vision, Mission, Purpose - Side by Side */}
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-center text-2xl">Vision</CardTitle>
@@ -287,9 +288,7 @@ const AboutUs = () => {
                   </p>
                 </CardContent>
               </Card>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="text-center text-2xl">Purpose</CardTitle>
@@ -300,7 +299,10 @@ const AboutUs = () => {
                   </p>
                 </CardContent>
               </Card>
+            </div>
 
+            {/* Values - Full Width Below */}
+            <div className="max-w-4xl mx-auto">
               <Card>
                 <CardHeader>
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
