@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -21,14 +20,6 @@ const AboutUs = () => {
               decades of experience in Aviation, Energy, and Digital Transformation to deliver unparalleled 
               insights and strategies.
             </p>
-            
-            <div className="mt-12 text-left max-w-3xl mx-auto bg-white/10 p-8 rounded-lg backdrop-blur-sm">
-              <h3 className="text-2xl font-semibold mb-4">Our Mission:</h3>
-              <p className="text-lg">
-                To empower organizations to navigate complex challenges and seize opportunities through 
-                expert guidance, cutting-edge research, and tailored strategies.
-              </p>
-            </div>
           </div>
         </div>
       </section>
