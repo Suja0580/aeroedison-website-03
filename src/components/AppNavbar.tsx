@@ -39,7 +39,7 @@ const AppNavbar = ({ onMenuClick }: AppNavbarProps) => {
           <img 
             src="/lovable-uploads/4149ec7b-aa55-475c-8b40-70402e2e16c3.png" 
             alt="AeroEdison Logo" 
-            className="h-8 mr-2"
+            className="h-20 mr-2"
           />
           <h1 className="text-lg font-display font-semibold hidden sm:block">AeroEdison</h1>
         </div>
