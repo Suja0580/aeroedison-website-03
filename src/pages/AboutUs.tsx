@@ -12,19 +12,19 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               Pioneering Integrated Consulting Solutions
             </h1>
             
-            <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl leading-relaxed">
               AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
               industry practices and futuristic technologies. Our team of seasoned experts brings together 
               decades of experience in Aviation, Energy, and Digital Transformation to deliver unparalleled 
               insights and strategies.
             </p>
             
-            <div className="text-center max-w-2xl mx-auto">
+            <div className="text-center">
               <h3 className="text-xl md:text-2xl font-semibold mb-3">Our Mission</h3>
               <p className="text-base md:text-lg leading-relaxed">
                 To empower organizations to navigate complex challenges and seize opportunities through 
@@ -300,14 +300,14 @@ const AboutUs = () => {
               </Card>
             </div>
 
-            {/* Values - Full Width Below */}
-            <div className="max-w-4xl mx-auto">
+            {/* Values - Centered and Compact */}
+            <div className="max-w-2xl mx-auto">
               <Card>
-                <CardHeader>
+                <CardHeader className="pb-4">
                   <CardTitle className="text-center text-2xl">Values</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
+                <CardContent className="px-8 pb-8">
+                  <div className="space-y-3 text-center">
                     <p className="text-gray-600">
                       <span className="font-semibold text-blue-600">Unyielding Integrity:</span> Upholding the highest ethical standards in all our actions
                     </p>
