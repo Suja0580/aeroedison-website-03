@@ -1,16 +1,10 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Download } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
 import { useToast } from "@/hooks/use-toast";
-import { createClient } from "@supabase/supabase-js";
-
-// Initialize Supabase client
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 const CommercialReport = () => {
   const [processingPayment, setProcessingPayment] = useState<string | null>(null);
