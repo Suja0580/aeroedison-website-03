@@ -22,32 +22,36 @@ import Wireframe from "./pages/Wireframe";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AeroEdisonHome />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/commercial-report" element={<CommercialReport />} />
-          <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/payment-success" element={<PaymentSuccess />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/aviation-sector" element={<AviationSector />} />
-          <Route path="/energy-sector" element={<EnergySector />} />
-          <Route path="/digital-transformation" element={<DigitalTransformation />} />
-          <Route path="/recommendations" element={<RecommendationDashboard />} />
-          <Route path="/system-architecture" element={<SystemArchitecture />} />
-          <Route path="/wireframe" element={<Wireframe />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  console.log("App component is rendering");
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AeroEdisonHome />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/commercial-report" element={<CommercialReport />} />
+            <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/aviation-sector" element={<AviationSector />} />
+            <Route path="/energy-sector" element={<EnergySector />} />
+            <Route path="/digital-transformation" element={<DigitalTransformation />} />
+            <Route path="/recommendations" element={<RecommendationDashboard />} />
+            <Route path="/system-architecture" element={<SystemArchitecture />} />
+            <Route path="/wireframe" element={<Wireframe />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

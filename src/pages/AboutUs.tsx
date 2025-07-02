@@ -5,8 +5,11 @@ import { CheckCircle, Users, Target, Award, Globe, Lightbulb, Shield, Star, Zap 
 import AeroNavbar from "@/components/AeroNavbar";
 
 const AboutUs = () => {
+  console.log("AboutUs component is rendering");
+  
   return (
     <div className="min-h-screen bg-gray-50">
+      <h1>About Us Page is Loading</h1>
       <AeroNavbar />
       
       {/* Hero Section */}
@@ -19,18 +22,8 @@ const AboutUs = () => {
             
             <p className="text-lg md:text-xl leading-relaxed">
               AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
-              industry practices and futuristic technologies. Our team of seasoned experts brings together 
-              decades of experience in Aviation, Energy, and Digital Transformation to deliver unparalleled 
-              insights and strategies.
+              industry practices and futuristic technologies.
             </p>
-            
-            <div className="text-center">
-              <h3 className="text-xl md:text-2xl font-semibold mb-3">Our Mission</h3>
-              <p className="text-base md:text-lg leading-relaxed">
-                To empower organizations to navigate complex challenges and seize opportunities through 
-                expert guidance, cutting-edge research, and tailored strategies.
-              </p>
-            </div>
           </div>
         </div>
       </section>
