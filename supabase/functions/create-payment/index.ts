@@ -1,7 +1,6 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@14.21.0";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,41 +13,24 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Create Supabase client using the anon key for user authentication
-  const supabaseClient = createClient(
-    Deno.env.get("SUPABASE_URL") ?? "",
-    Deno.env.get("SUPABASE_ANON_KEY") ?? ""
-  );
-
   try {
-    // Retrieve authenticated user
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader) {
-      throw new Error("No authorization header provided");
-    }
-
-    const token = authHeader.replace("Bearer ", "");
-    const { data } = await supabaseClient.auth.getUser(token);
-    const user = data.user;
-    
-    if (!user?.email) {
-      throw new Error("User not authenticated or email not available");
-    }
-
     // Get request body
-    const { reportTitle, price, priceAmount } = await req.json();
+    const { reportTitle, price, priceAmount, customerEmail } = await req.json();
     
     if (!reportTitle || !price || !priceAmount) {
       throw new Error("Missing required fields: reportTitle, price, or priceAmount");
     }
+
+    // Use provided email or default to guest email
+    const email = customerEmail || "guest@example.com";
 
     // Initialize Stripe
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2023-10-16",
     });
 
-    // Check if a Stripe customer record exists for this user
-    const customers = await stripe.customers.list({ email: user.email, limit: 1 });
+    // Check if a Stripe customer record exists for this email
+    const customers = await stripe.customers.list({ email: email, limit: 1 });
     let customerId;
     if (customers.data.length > 0) {
       customerId = customers.data[0].id;
@@ -57,7 +39,7 @@ serve(async (req) => {
     // Create a one-time payment session
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
-      customer_email: customerId ? undefined : user.email,
+      customer_email: customerId ? undefined : email,
       line_items: [
         {
           price_data: {
@@ -75,14 +57,14 @@ serve(async (req) => {
       success_url: `${req.headers.get("origin")}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get("origin")}/commercial-report`,
       metadata: {
-        user_id: user.id,
-        user_email: user.email,
+        customer_email: email,
         report_title: reportTitle,
         price: price,
+        is_guest: customerEmail ? "false" : "true",
       },
     });
 
-    console.log(`Payment session created for user ${user.email}: ${session.id}`);
+    console.log(`Payment session created for ${email}: ${session.id}`);
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },

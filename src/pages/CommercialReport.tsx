@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,44 +20,30 @@ const CommercialReport = () => {
     setProcessingPayment(title);
     
     try {
-      // Check if user is authenticated
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
-      
-      if (authError || !user) {
-        toast({
-          title: "Authentication Required",
-          description: "Please log in to purchase commercial reports.",
-          variant: "destructive",
-        });
-        setProcessingPayment(null);
-        return;
-      }
-
       // Extract numeric value from price string for Stripe
       const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
       
-      // Get session token
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session?.access_token) {
-        throw new Error("No valid session found");
-      }
-
-      // Call the payment edge function
-      const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: {
+      // Call the payment edge function directly without authentication
+      const response = await fetch('/api/functions/v1/create-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           reportTitle: title,
           price: price,
-          priceAmount: priceAmount
-        },
-        headers: {
-          Authorization: `Bearer ${session.access_token}`,
-        },
+          priceAmount: priceAmount,
+          // For guest checkout, we can optionally collect email later in Stripe checkout
+          customerEmail: null
+        }),
       });
 
-      if (error) {
-        throw new Error(error.message || 'Failed to create payment session');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create payment session');
       }
+
+      const data = await response.json();
 
       if (data?.url) {
         // Open Stripe checkout in a new tab
@@ -114,6 +99,9 @@ const CommercialReport = () => {
             <p className="text-xl leading-relaxed">
               Access Deep Market Insights. Download Commercial Reports.
             </p>
+            <p className="text-sm mt-4 bg-blue-800 bg-opacity-50 px-4 py-2 rounded-lg inline-block">
+              🎯 Guest checkout enabled for easy testing - no login required!
+            </p>
           </div>
         </div>
       </section>
@@ -154,7 +142,7 @@ const CommercialReport = () => {
                         ) : (
                           <>
                             <Download className="h-4 w-4 mr-2" />
-                            Buy Now
+                            Buy Now (Guest Checkout)
                           </>
                         )}
                       </Button>
