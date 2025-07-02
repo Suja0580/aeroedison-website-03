@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,17 +16,17 @@ const CommercialReport = () => {
       // Extract numeric value from price string for Stripe
       const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
       
-      // Call the payment edge function directly without authentication
-      const response = await fetch('/api/functions/v1/create-payment', {
+      // Call the payment edge function with correct URL
+      const response = await fetch('https://your-project.supabase.co/functions/v1/create-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
           reportTitle: title,
           price: price,
           priceAmount: priceAmount,
-          // For guest checkout, we can optionally collect email later in Stripe checkout
           customerEmail: null
         }),
       });
