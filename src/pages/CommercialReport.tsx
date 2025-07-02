@@ -59,22 +59,22 @@ const CommercialReport = () => {
     {
       title: "India's MRO Growth Opportunity – 2025 Outlook",
       description: "Comprehensive analysis of India's Maintenance, Repair, and Overhaul market opportunities for 2025.",
-      price: "$299"
+      price: "$0.20"
     },
     {
       title: "eVTOL Regulatory & Market Landscape",
       description: "In-depth analysis of electric Vertical Take-Off and Landing aircraft regulations and market dynamics.",
-      price: "$399"
+      price: "$0.20"
     },
     {
       title: "Hydrogen Strategy India: Policy, Players, and Investments",
       description: "Strategic overview of India's hydrogen economy including policy framework, key players, and investment landscape.",
-      price: "$349"
+      price: "$0.20"
     },
     {
       title: "Digital Aviation Readiness – Benchmarking Top OEMs",
       description: "Benchmarking study of digital transformation readiness across leading Original Equipment Manufacturers.",
-      price: "$449"
+      price: "$0.20"
     }
   ];
 
