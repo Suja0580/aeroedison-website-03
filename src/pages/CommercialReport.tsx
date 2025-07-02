@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Download } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const CommercialReport = () => {
   const [processingPayment, setProcessingPayment] = useState<string | null>(null);
@@ -16,27 +17,24 @@ const CommercialReport = () => {
       // Extract numeric value from price string for Stripe
       const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
       
-      // Call the payment edge function with correct URL
-      const response = await fetch('https://your-project.supabase.co/functions/v1/create-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-        },
-        body: JSON.stringify({
+      console.log('Calling create-payment function with:', { reportTitle: title, price, priceAmount });
+      
+      // Call the payment edge function using Supabase functions invoke
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: {
           reportTitle: title,
           price: price,
           priceAmount: priceAmount,
           customerEmail: null
-        }),
+        },
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to create payment session');
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw new Error(error.message || 'Failed to create payment session');
       }
 
-      const data = await response.json();
+      console.log('Payment function response:', data);
 
       if (data?.url) {
         // Open Stripe checkout in a new tab
