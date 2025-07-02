@@ -10,6 +10,7 @@ import Services from "./pages/Services";
 import ContactUs from "./pages/ContactUs";
 import CommercialReport from "./pages/CommercialReport";
 import PaymentPage from "./pages/PaymentPage";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 import Industries from "./pages/Industries";
 import AviationSector from "./pages/AviationSector";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/commercial-report" element={<CommercialReport />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/aviation-sector" element={<AviationSector />} />
           <Route path="/energy-sector" element={<EnergySector />} />

@@ -1,20 +1,82 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Download } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
+import { useToast } from "@/hooks/use-toast";
+import { createClient } from "@supabase/supabase-js";
+
+// Initialize Supabase client
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 const CommercialReport = () => {
-  const navigate = useNavigate();
+  const [processingPayment, setProcessingPayment] = useState<string | null>(null);
+  const { toast } = useToast();
 
-  const handleBuyNow = (title: string, price: string) => {
-    navigate("/payment", {
-      state: {
-        reportTitle: title,
-        price: price,
-      },
-    });
+  const handleBuyNow = async (title: string, price: string) => {
+    setProcessingPayment(title);
+    
+    try {
+      // Check if user is authenticated
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      
+      if (authError || !user) {
+        toast({
+          title: "Authentication Required",
+          description: "Please log in to purchase commercial reports.",
+          variant: "destructive",
+        });
+        setProcessingPayment(null);
+        return;
+      }
+
+      // Extract numeric value from price string for Stripe
+      const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
+      
+      // Get session token
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session?.access_token) {
+        throw new Error("No valid session found");
+      }
+
+      // Call the payment edge function
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: {
+          reportTitle: title,
+          price: price,
+          priceAmount: priceAmount
+        },
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+      });
+
+      if (error) {
+        throw new Error(error.message || 'Failed to create payment session');
+      }
+
+      if (data?.url) {
+        // Open Stripe checkout in a new tab
+        window.open(data.url, '_blank');
+      } else {
+        throw new Error('No checkout URL received');
+      }
+
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast({
+        title: "Payment Error",
+        description: error instanceof Error ? error.message : "Failed to initiate payment",
+        variant: "destructive",
+      });
+    } finally {
+      setProcessingPayment(null);
+    }
   };
 
   const reports = [
@@ -82,9 +144,19 @@ const CommercialReport = () => {
                       <Button 
                         className="w-full bg-blue-900 hover:bg-blue-950"
                         onClick={() => handleBuyNow(report.title, report.price)}
+                        disabled={processingPayment === report.title}
                       >
-                        <Download className="h-4 w-4 mr-2" />
-                        Buy Now
+                        {processingPayment === report.title ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="h-4 w-4 mr-2" />
+                            Buy Now
+                          </>
+                        )}
                       </Button>
                     </div>
                   </CardContent>
