@@ -9,7 +9,7 @@ const Services = () => {
       <AeroNavbar />
         
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16" style={{backgroundImage: 'url(/lovable-uploads/b0d71fe4-e75d-4e3b-adc7-f70b6b3b7ddd.png)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+        <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16" style={{backgroundImage: 'url(/lovable-uploads/74a29bb6-522a-40c1-b736-b9b5f0874e3c.png)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
           <div className="absolute inset-0 bg-blue-600/80"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
