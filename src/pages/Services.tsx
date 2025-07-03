@@ -5,31 +5,22 @@ import AeroNavbar from "@/components/AeroNavbar";
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <AeroNavbar />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-5xl font-bold mb-6">Our Services</h1>
-                <p className="text-xl leading-relaxed">
-                  At AeroEdison Consulting, we offer comprehensive consulting solutions at the intersection of Aviation, Energy, and Digital Transformation. Our integrated approach allows us to deliver innovative strategies that drive efficiency, sustainability, and growth for our clients.
-                </p>
-              </div>
-              <div className="flex justify-center">
-                <img 
-                  src="/lovable-uploads/b0d71fe4-e75d-4e3b-adc7-f70b6b3b7ddd.png" 
-                  alt="Digital transformation and consulting services" 
-                  className="max-w-full h-auto rounded-lg shadow-2xl"
-                />
-              </div>
+    <div className="min-h-screen bg-gray-50 relative" style={{backgroundImage: 'url(/lovable-uploads/b0d71fe4-e75d-4e3b-adc7-f70b6b3b7ddd.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed'}}>
+      <div className="absolute inset-0 bg-gray-50/90"></div>
+      <div className="relative z-10">
+        <AeroNavbar />
+        
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-5xl font-bold mb-6">Our Services</h1>
+              <p className="text-xl leading-relaxed">
+                At AeroEdison Consulting, we offer comprehensive consulting solutions at the intersection of Aviation, Energy, and Digital Transformation. Our integrated approach allows us to deliver innovative strategies that drive efficiency, sustainability, and growth for our clients.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Core Services */}
       <section className="py-16">
@@ -194,6 +185,7 @@ const Services = () => {
           </Button>
         </div>
       </section>
+      </div>
     </div>
   );
 };
