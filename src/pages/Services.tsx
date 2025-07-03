@@ -5,14 +5,13 @@ import AeroNavbar from "@/components/AeroNavbar";
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-gray-50 relative" style={{backgroundImage: 'url(/lovable-uploads/b0d71fe4-e75d-4e3b-adc7-f70b6b3b7ddd.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed'}}>
-      <div className="absolute inset-0 bg-gray-50/90"></div>
-      <div className="relative z-10">
-        <AeroNavbar />
+    <div className="min-h-screen bg-gray-50">
+      <AeroNavbar />
         
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-          <div className="container mx-auto px-4">
+        <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16" style={{backgroundImage: 'url(/lovable-uploads/b0d71fe4-e75d-4e3b-adc7-f70b6b3b7ddd.png)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+          <div className="absolute inset-0 bg-blue-600/80"></div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-5xl font-bold mb-6">Our Services</h1>
               <p className="text-xl leading-relaxed">
@@ -185,7 +184,6 @@ const Services = () => {
           </Button>
         </div>
       </section>
-      </div>
     </div>
   );
 };
