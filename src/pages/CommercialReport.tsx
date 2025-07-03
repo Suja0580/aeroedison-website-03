@@ -169,7 +169,7 @@ const CommercialReport = () => {
                 <img 
                   src="/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png" 
                   alt="AeroEdison Logo" 
-                  className="h-8 mr-3"
+                  className="h-[30px] mr-3"
                 />
               </div>
               <p className="text-gray-600 text-sm">
