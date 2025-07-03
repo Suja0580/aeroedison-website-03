@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, Users, Lightbulb, Settings, ArrowRight, CheckCircle } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
+import aviationImage from "@/assets/aviation-consulting.jpg";
 
 const Services = () => {
   return (
@@ -30,8 +31,12 @@ const Services = () => {
             <div className="grid md:grid-cols-3 gap-8 mb-16">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <BarChart3 className="h-8 w-8 text-blue-600" />
+                  <div className="w-full h-32 mb-4 rounded-lg overflow-hidden">
+                    <img 
+                      src={aviationImage} 
+                      alt="Aviation Consulting" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <CardTitle className="text-2xl">Aviation Consulting</CardTitle>
                 </CardHeader>
