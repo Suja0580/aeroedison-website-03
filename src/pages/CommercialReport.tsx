@@ -55,7 +55,7 @@ const CommercialReport = () => {
     setProcessingPayment(title);
     const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
 
-    if (!window.paypal) {
+    if (!window.paypal || !paypalLoaded) {
       toast({
         title: "PayPal Error",
         description: "PayPal SDK not loaded. Please try again.",
@@ -65,7 +65,7 @@ const CommercialReport = () => {
       return;
     }
 
-    window.paypal.Buttons({
+    const paypalButtonsConfig = {
       createOrder: function(data: any, actions: any) {
         return actions.order.create({
           purchase_units: [{
@@ -102,7 +102,18 @@ const CommercialReport = () => {
         });
         setProcessingPayment(null);
       }
-    }).render('#paypal-button-container-' + title.replace(/[^a-zA-Z0-9]/g, ''));
+    };
+
+    // Create PayPal buttons and render directly
+    window.paypal.Buttons(paypalButtonsConfig).render(`#paypal-button-container-${title.replace(/[^a-zA-Z0-9]/g, '')}`).catch((err: any) => {
+      console.error('PayPal render error:', err);
+      toast({
+        title: "PayPal Error",
+        description: "Failed to initialize PayPal. Please try again.",
+        variant: "destructive",
+      });
+      setProcessingPayment(null);
+    });
   };
 
   const handleRazorpayPayment = (title: string, price: string) => {
@@ -260,8 +271,8 @@ const CommercialReport = () => {
                         )}
                       </Button>
 
-                      {/* PayPal Button Container (hidden, used by PayPal SDK) */}
-                      <div id={`paypal-button-container-${report.title.replace(/[^a-zA-Z0-9]/g, '')}`} className="hidden"></div>
+                      {/* PayPal Button Container */}
+                      <div id={`paypal-button-container-${report.title.replace(/[^a-zA-Z0-9]/g, '')}`} style={{ minHeight: '0px' }}></div>
                     </div>
                   </CardContent>
                 </Card>
