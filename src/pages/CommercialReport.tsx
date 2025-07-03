@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, Download } from "lucide-react";
+import { ExternalLink, ShoppingCart } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
-import { useToast } from "@/hooks/use-toast";
+import PaymentModal from "@/components/PaymentModal";
 
 // Declare global types for payment gateways
 declare global {
@@ -14,10 +14,9 @@ declare global {
 }
 
 const CommercialReport = () => {
-  const [processingPayment, setProcessingPayment] = useState<string | null>(null);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
-  const { toast } = useToast();
+  const [selectedReport, setSelectedReport] = useState<{title: string, price: string} | null>(null);
 
   // Load PayPal SDK
   useEffect(() => {
@@ -51,120 +50,8 @@ const CommercialReport = () => {
     };
   }, []);
 
-  const handlePayPalPayment = (title: string, price: string) => {
-    setProcessingPayment(title);
-    const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
-
-    if (!window.paypal || !paypalLoaded) {
-      toast({
-        title: "PayPal Error",
-        description: "PayPal SDK not loaded. Please try again.",
-        variant: "destructive",
-      });
-      setProcessingPayment(null);
-      return;
-    }
-
-    const paypalButtonsConfig = {
-      createOrder: function(data: any, actions: any) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: priceAmount.toString(),
-              currency_code: 'USD'
-            },
-            description: title
-          }]
-        });
-      },
-      onApprove: function(data: any, actions: any) {
-        return actions.order.capture().then(function(details: any) {
-          toast({
-            title: "Payment Successful!",
-            description: `Your PayPal payment for "${title}" has been processed.`,
-          });
-          setProcessingPayment(null);
-        });
-      },
-      onError: function(err: any) {
-        console.error('PayPal error:', err);
-        toast({
-          title: "Payment Error",
-          description: "PayPal payment failed. Please try again.",
-          variant: "destructive",
-        });
-        setProcessingPayment(null);
-      },
-      onCancel: function(data: any) {
-        toast({
-          title: "Payment Cancelled",
-          description: "Your payment was cancelled.",
-        });
-        setProcessingPayment(null);
-      }
-    };
-
-    // Create PayPal buttons and render directly
-    window.paypal.Buttons(paypalButtonsConfig).render(`#paypal-button-container-${title.replace(/[^a-zA-Z0-9]/g, '')}`).catch((err: any) => {
-      console.error('PayPal render error:', err);
-      toast({
-        title: "PayPal Error",
-        description: "Failed to initialize PayPal. Please try again.",
-        variant: "destructive",
-      });
-      setProcessingPayment(null);
-    });
-  };
-
-  const handleRazorpayPayment = (title: string, price: string) => {
-    setProcessingPayment(title);
-    const priceAmount = parseFloat(price.replace(/[^0-9.]/g, '')) * 100; // Convert to paise
-
-    if (!window.Razorpay) {
-      toast({
-        title: "Razorpay Error",
-        description: "Razorpay SDK not loaded. Please try again.",
-        variant: "destructive",
-      });
-      setProcessingPayment(null);
-      return;
-    }
-
-    const options = {
-      key: 'rzp_test_1DP5mmOlF5G5ag', // Test key - replace with your actual key
-      amount: Math.round(priceAmount),
-      currency: 'USD',
-      name: 'AeroEdison Consulting',
-      description: title,
-      image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
-      handler: function (response: any) {
-        toast({
-          title: "Payment Successful!",
-          description: `Your Razorpay payment for "${title}" has been processed.`,
-        });
-        setProcessingPayment(null);
-      },
-      prefill: {
-        name: 'Guest User',
-        email: 'guest@example.com',
-        contact: '9999999999'
-      },
-      theme: {
-        color: '#1e3a8a'
-      },
-      modal: {
-        ondismiss: function() {
-          toast({
-            title: "Payment Cancelled",
-            description: "Your payment was cancelled.",
-          });
-          setProcessingPayment(null);
-        }
-      }
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+  const handleBuyNow = (report: {title: string, price: string}) => {
+    setSelectedReport(report);
   };
 
   const reports = [
@@ -233,46 +120,13 @@ const CommercialReport = () => {
                         Preview Link
                       </Button>
                       
-                      {/* PayPal Payment Button */}
                       <Button 
                         className="w-full bg-blue-600 hover:bg-blue-700"
-                        onClick={() => handlePayPalPayment(report.title, report.price)}
-                        disabled={processingPayment === report.title || !paypalLoaded}
+                        onClick={() => handleBuyNow(report)}
                       >
-                        {processingPayment === report.title ? (
-                          <>
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            <Download className="h-4 w-4 mr-2" />
-                            Pay with PayPal {report.price}
-                          </>
-                        )}
+                        <ShoppingCart className="h-4 w-4 mr-2" />
+                        Buy Now {report.price}
                       </Button>
-
-                      {/* Razorpay Payment Button */}
-                      <Button 
-                        className="w-full bg-blue-800 hover:bg-blue-900"
-                        onClick={() => handleRazorpayPayment(report.title, report.price)}
-                        disabled={processingPayment === report.title || !razorpayLoaded}
-                      >
-                        {processingPayment === report.title ? (
-                          <>
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            <Download className="h-4 w-4 mr-2" />
-                            Pay with Razorpay {report.price}
-                          </>
-                        )}
-                      </Button>
-
-                      {/* PayPal Button Container */}
-                      <div id={`paypal-button-container-${report.title.replace(/[^a-zA-Z0-9]/g, '')}`} style={{ minHeight: '0px' }}></div>
                     </div>
                   </CardContent>
                 </Card>
@@ -282,6 +136,16 @@ const CommercialReport = () => {
           </div>
         </div>
       </section>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={selectedReport !== null}
+        onClose={() => setSelectedReport(null)}
+        title={selectedReport?.title || ""}
+        price={selectedReport?.price || ""}
+        paypalLoaded={paypalLoaded}
+        razorpayLoaded={razorpayLoaded}
+      />
 
       {/* Call to Action */}
       <section className="bg-blue-900 text-white py-16">
