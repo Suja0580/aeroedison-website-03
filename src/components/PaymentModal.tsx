@@ -37,60 +37,71 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       return;
     }
 
-    // Clear any existing PayPal buttons
-    const container = document.getElementById('modal-paypal-container');
-    if (container) {
-      container.innerHTML = '';
-    }
+    // Set payment method first to show the container
+    setPaymentMethod('paypal');
 
-    const paypalButtonsConfig = {
-      createOrder: function(data: any, actions: any) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: priceAmount.toString(),
-              currency_code: 'USD'
-            },
-            description: title
-          }]
-        });
-      },
-      onApprove: function(data: any, actions: any) {
-        return actions.order.capture().then(function(details: any) {
-          toast({
-            title: "Payment Successful!",
-            description: `Your PayPal payment for "${title}" has been processed.`,
-          });
-          onClose();
-        });
-      },
-      onError: function(err: any) {
-        console.error('PayPal error:', err);
+    // Use setTimeout to ensure DOM is updated
+    setTimeout(() => {
+      // Clear any existing PayPal buttons
+      const container = document.getElementById('modal-paypal-container');
+      if (!container) {
         toast({
-          title: "Payment Error",
-          description: "PayPal payment failed. Please try again.",
+          title: "PayPal Error",
+          description: "PayPal container not found. Please try again.",
           variant: "destructive",
         });
-      },
-      onCancel: function(data: any) {
-        toast({
-          title: "Payment Cancelled",
-          description: "Your payment was cancelled.",
-        });
+        return;
       }
-    };
+      
+      container.innerHTML = '';
 
-    // Render PayPal buttons
-    window.paypal.Buttons(paypalButtonsConfig).render('#modal-paypal-container').catch((err: any) => {
-      console.error('PayPal render error:', err);
-      toast({
-        title: "PayPal Error",
-        description: "Failed to initialize PayPal. Please try again.",
-        variant: "destructive",
+      const paypalButtonsConfig = {
+        createOrder: function(data: any, actions: any) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: priceAmount.toString(),
+                currency_code: 'USD'
+              },
+              description: title
+            }]
+          });
+        },
+        onApprove: function(data: any, actions: any) {
+          return actions.order.capture().then(function(details: any) {
+            toast({
+              title: "Payment Successful!",
+              description: `Your PayPal payment for "${title}" has been processed.`,
+            });
+            onClose();
+          });
+        },
+        onError: function(err: any) {
+          console.error('PayPal error:', err);
+          toast({
+            title: "Payment Error",
+            description: "PayPal payment failed. Please try again.",
+            variant: "destructive",
+          });
+        },
+        onCancel: function(data: any) {
+          toast({
+            title: "Payment Cancelled",
+            description: "Your payment was cancelled.",
+          });
+        }
+      };
+
+      // Render PayPal buttons
+      window.paypal.Buttons(paypalButtonsConfig).render('#modal-paypal-container').catch((err: any) => {
+        console.error('PayPal render error:', err);
+        toast({
+          title: "PayPal Error",
+          description: "Failed to initialize PayPal. Please try again.",
+          variant: "destructive",
+        });
       });
-    });
-
-    setPaymentMethod('paypal');
+    }, 100);
   };
 
   const handleRazorpayPayment = () => {
