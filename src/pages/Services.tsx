@@ -29,40 +29,34 @@ const Services = () => {
             <h2 className="text-3xl font-bold mb-12 text-center">Core Service Areas</h2>
             
             <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-full h-32 mb-4 rounded-lg overflow-hidden">
-                    <img 
-                      src={aviationImage} 
-                      alt="Aviation Consulting" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardTitle className="text-2xl">Aviation Consulting</CardTitle>
+              <Card className="hover:shadow-lg transition-shadow relative overflow-hidden" style={{backgroundImage: `url(${aviationImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                <div className="absolute inset-0 bg-blue-900/80"></div>
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-2xl text-white">Aviation Consulting</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
+                <CardContent className="relative z-10">
+                  <p className="text-white mb-6">
                     Optimizing operations, enhancing safety, and driving innovation in the aviation sector.
                   </p>
-                  <ul className="space-y-3 text-gray-600 mb-6">
+                  <ul className="space-y-3 text-white mb-6">
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Market entry and expansion strategies
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Competitive positioning and differentiation
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Portfolio optimization and restructuring
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Sustainability and ESG strategy development
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20">
                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
