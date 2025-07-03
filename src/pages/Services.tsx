@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, Users, Lightbulb, Settings, ArrowRight, CheckCircle } from "lucide-react";
 import AeroNavbar from "@/components/AeroNavbar";
 import aviationImage from "@/assets/aviation-consulting.jpg";
+import energyImage from "@/assets/energy-consulting.jpg";
+import digitalImage from "@/assets/digital-transformation.jpg";
 
 const Services = () => {
   return (
@@ -62,71 +64,67 @@ const Services = () => {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                    <Lightbulb className="h-8 w-8 text-green-600" />
-                  </div>
-                  <CardTitle className="text-2xl">Energy Consulting</CardTitle>
+              <Card className="hover:shadow-lg transition-shadow relative overflow-hidden" style={{backgroundImage: `url(${energyImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                <div className="absolute inset-0 bg-green-900/80"></div>
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-2xl text-white">Energy Consulting</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
+                <CardContent className="relative z-10">
+                  <p className="text-white mb-6">
                     Guiding the transition to sustainable energy solutions and improving energy efficiency.
                   </p>
-                  <ul className="space-y-3 text-gray-600 mb-6">
+                  <ul className="space-y-3 text-white mb-6">
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Industry trend analysis and forecasting
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Competitive landscape assessments
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Customer behavior and preference studies
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Regulatory impact analysis
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20">
                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
-                    <Settings className="h-8 w-8 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-2xl">Digital Transformation Consulting</CardTitle>
+              <Card className="hover:shadow-lg transition-shadow relative overflow-hidden" style={{backgroundImage: `url(${digitalImage})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                <div className="absolute inset-0 bg-purple-900/80"></div>
+                <CardHeader className="relative z-10">
+                  <CardTitle className="text-2xl text-white">Digital Transformation Consulting</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-6">
+                <CardContent className="relative z-10">
+                  <p className="text-white mb-6">
                     Leveraging cutting-edge technologies to revolutionize business processes and customer experiences.
                   </p>
-                  <ul className="space-y-3 text-gray-600 mb-6">
+                  <ul className="space-y-3 text-white mb-6">
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Process optimization and automation
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Performance management systems
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Cost reduction and efficiency programs
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                       Quality management and compliance
                     </li>
                   </ul>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full bg-white/10 text-white border-white/20 hover:bg-white/20">
                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
