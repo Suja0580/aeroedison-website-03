@@ -19,6 +19,10 @@ import DigitalTransformation from "./pages/DigitalTransformation";
 import RecommendationDashboard from "./pages/RecommendationDashboard";
 import SystemArchitecture from "./pages/SystemArchitecture";
 import Wireframe from "./pages/Wireframe";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import CancellationRefund from "./pages/CancellationRefund";
+import ShippingDelivery from "./pages/ShippingDelivery";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +50,10 @@ const App = () => {
             <Route path="/recommendations" element={<RecommendationDashboard />} />
             <Route path="/system-architecture" element={<SystemArchitecture />} />
             <Route path="/wireframe" element={<Wireframe />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/cancellation-refund" element={<CancellationRefund />} />
+            <Route path="/shipping-delivery" element={<ShippingDelivery />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

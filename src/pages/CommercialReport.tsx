@@ -163,7 +163,7 @@ const CommercialReport = () => {
       {/* Footer */}
       <footer className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-5 gap-8">
             <div>
               <div className="flex items-center mb-4">
                 <img 
@@ -192,6 +192,16 @@ const CommercialReport = () => {
                 <li><a href="/about" className="hover:text-blue-600">About Us</a></li>
                 <li><a href="#" className="hover:text-blue-600">Our Team</a></li>
                 <li><a href="#" className="hover:text-blue-600">Careers</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li><a href="/privacy-policy" className="hover:text-blue-600">Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions" className="hover:text-blue-600">Terms & Conditions</a></li>
+                <li><a href="/cancellation-refund" className="hover:text-blue-600">Cancellation & Refund</a></li>
+                <li><a href="/shipping-delivery" className="hover:text-blue-600">Digital Delivery</a></li>
               </ul>
             </div>
             
