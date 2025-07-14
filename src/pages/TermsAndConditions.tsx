@@ -79,7 +79,7 @@ const TermsAndConditions = () => {
                 <br />
                 Email: info@aeroedison.com
                 <br />
-                Phone: +1 (555) 123-4567
+                Phone: +919620622877
               </p>
             </section>
           </div>

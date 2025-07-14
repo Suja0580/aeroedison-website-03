@@ -100,7 +100,7 @@ const ShippingDelivery = () => {
                 <br />
                 Subject: Delivery Support - [Order Number]
                 <br />
-                Phone: +1 (555) 123-4567
+                Phone: +919620622877
                 <br />
                 Response Time: Within 24 hours during business days
               </p>

@@ -382,7 +382,7 @@ const AboutUs = () => {
               <h4 className="font-semibold text-gray-900 mb-4">Contact</h4>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>info@aeroedison.com</li>
-                <li>+1 (555) 123-4567</li>
+                <li>+919620622877</li>
               </ul>
             </div>
           </div>

@@ -103,7 +103,7 @@ const ContactUs = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-900 font-medium">+1 (555) 123-4567</p>
+                    <p className="text-gray-900 font-medium">+919620622877</p>
                     <p className="text-gray-600 text-sm mt-1">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
                   </CardContent>
                 </Card>
@@ -304,7 +304,7 @@ const ContactUs = () => {
               <h4 className="font-semibold text-gray-900 mb-4">Contact</h4>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>info@aeroedison.com</li>
-                <li>+1 (555) 123-4567</li>
+                <li>+919620622877</li>
               </ul>
             </div>
           </div>
