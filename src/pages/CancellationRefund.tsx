@@ -14,11 +14,11 @@ const CancellationRefund = () => {
         <div className="max-w-4xl mx-auto">
           <Button 
             variant="ghost" 
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/commercial-report")}
             className="mb-6 hover:bg-gray-100"
           >
             <ChevronLeft className="h-4 w-4 mr-2" />
-            Back
+            Back to Commercial Reports
           </Button>
           <h1 className="text-4xl font-bold mb-8">Cancellation and Refund Policy</h1>
           <div className="prose prose-lg max-w-none">
