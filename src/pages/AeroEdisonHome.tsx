@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Plane, Zap, Cpu, Award, Users, ArrowRight, Mail, Phone, Star, Globe, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
 
 const AeroEdisonHome = () => {
@@ -302,18 +303,18 @@ const AeroEdisonHome = () => {
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-blue-600">Aviation Consulting</a></li>
-                <li><a href="#" className="hover:text-blue-600">Energy Solutions</a></li>
-                <li><a href="#" className="hover:text-blue-600">Digital Transformation</a></li>
+                <li><Link to="/aviation-sector" className="hover:text-blue-600">Aviation Consulting</Link></li>
+                <li><Link to="/energy-sector" className="hover:text-blue-600">Energy Solutions</Link></li>
+                <li><Link to="/digital-transformation" className="hover:text-blue-600">Digital Transformation</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-blue-600">About Us</a></li>
-                <li><a href="#" className="hover:text-blue-600">Our Team</a></li>
-                <li><a href="#" className="hover:text-blue-600">Careers</a></li>
+                <li><Link to="/about" className="hover:text-blue-600">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-blue-600">Contact Us</Link></li>
+                <li><Link to="/commercial-report" className="hover:text-blue-600">Commercial Reports</Link></li>
               </ul>
             </div>
             

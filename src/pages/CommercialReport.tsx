@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
 import PaymentModal from "@/components/PaymentModal";
 
@@ -180,28 +181,28 @@ const CommercialReport = () => {
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-blue-600">Aviation Consulting</a></li>
-                <li><a href="#" className="hover:text-blue-600">Energy Solutions</a></li>
-                <li><a href="#" className="hover:text-blue-600">Digital Transformation</a></li>
+                <li><Link to="/aviation-sector" className="hover:text-blue-600">Aviation Consulting</Link></li>
+                <li><Link to="/energy-sector" className="hover:text-blue-600">Energy Solutions</Link></li>
+                <li><Link to="/digital-transformation" className="hover:text-blue-600">Digital Transformation</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="/about" className="hover:text-blue-600">About Us</a></li>
-                <li><a href="#" className="hover:text-blue-600">Our Team</a></li>
-                <li><a href="#" className="hover:text-blue-600">Careers</a></li>
+                <li><Link to="/about" className="hover:text-blue-600">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-blue-600">Contact Us</Link></li>
+                <li><Link to="/services" className="hover:text-blue-600">Services</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Legal</h4>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="/privacy-policy" className="hover:text-blue-600">Privacy Policy</a></li>
-                <li><a href="/terms-and-conditions" className="hover:text-blue-600">Terms & Conditions</a></li>
-                <li><a href="/cancellation-refund" className="hover:text-blue-600">Cancellation & Refund</a></li>
-                <li><a href="/shipping-delivery" className="hover:text-blue-600">Digital Delivery</a></li>
+                <li><Link to="/privacy-policy" className="hover:text-blue-600">Privacy Policy</Link></li>
+                <li><Link to="/terms-and-conditions" className="hover:text-blue-600">Terms & Conditions</Link></li>
+                <li><Link to="/cancellation-refund" className="hover:text-blue-600">Cancellation & Refund</Link></li>
+                <li><Link to="/shipping-delivery" className="hover:text-blue-600">Digital Delivery</Link></li>
               </ul>
             </div>
             

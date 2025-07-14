@@ -240,18 +240,18 @@ const AviationSector = () => {
             <div>
               <h4 className="font-semibold text-blue-400 mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Aviation Consulting</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Energy Solutions</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Digital Transformation</a></li>
+                <li><Link to="/aviation-sector" className="hover:text-blue-400 transition-colors">Aviation Consulting</Link></li>
+                <li><Link to="/energy-sector" className="hover:text-blue-400 transition-colors">Energy Solutions</Link></li>
+                <li><Link to="/digital-transformation" className="hover:text-blue-400 transition-colors">Digital Transformation</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold text-blue-400 mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Our Team</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Careers</a></li>
+                <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact Us</Link></li>
+                <li><Link to="/commercial-report" className="hover:text-blue-400 transition-colors">Commercial Reports</Link></li>
               </ul>
             </div>
             
