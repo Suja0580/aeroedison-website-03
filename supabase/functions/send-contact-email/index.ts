@@ -26,10 +26,10 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { name, email, company, subject, message }: ContactEmailRequest = await req.json();
 
-    // Send email to info@aeroedison.com
+    // Send email to sujanew@gmail.com
     const emailResponse = await resend.emails.send({
       from: "AeroEdison Contact <onboarding@resend.dev>",
-      to: ["info@aeroedison.com"],
+      to: ["sujanew@gmail.com"],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
