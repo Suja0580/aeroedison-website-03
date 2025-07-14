@@ -128,7 +128,7 @@ const ContactUs = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-900 font-medium">+919620622877</p>
-                    <p className="text-gray-600 text-sm mt-1">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+                    <p className="text-gray-600 text-sm mt-1">Monday - Friday, 9:00 AM - 6:00 PM IST</p>
                   </CardContent>
                 </Card>
 
@@ -140,13 +140,13 @@ const ContactUs = () => {
                       </div>
                       <div>
                         <CardTitle className="text-xl">Visit Us</CardTitle>
-                        <CardDescription>Our headquarters</CardDescription>
+                        <CardDescription>Office Address</CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-900 font-medium">123 Business District</p>
-                    <p className="text-gray-900 font-medium">Suite 456, New York, NY 10001</p>
+                    <p className="text-gray-900 font-medium">B-20, 3rd Cross, Anugraha Layout,</p>
+                    <p className="text-gray-900 font-medium">Kodigehalli Main Road, Near Hoodi Railway Station, Bangalore-560048</p>
                     <p className="text-gray-600 text-sm mt-1">By appointment only</p>
                   </CardContent>
                 </Card>
@@ -165,8 +165,8 @@ const ContactUs = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-1">
-                      <p className="text-gray-900 font-medium">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                      <p className="text-gray-900 font-medium">Saturday: 10:00 AM - 2:00 PM EST</p>
+                      <p className="text-gray-900 font-medium">Monday - Friday: 9:00 AM - 6:00 PM IST</p>
+                      <p className="text-gray-900 font-medium">Saturday: 10:00 AM - 2:00 PM IST</p>
                       <p className="text-gray-900 font-medium">Sunday: Closed</p>
                     </div>
                   </CardContent>
