@@ -1,12 +1,25 @@
 import AeroNavbar from "@/components/AeroNavbar";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react";
 
 const ShippingDelivery = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <AeroNavbar />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate(-1)}
+            className="mb-6 hover:bg-gray-100"
+          >
+            <ChevronLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
           <h1 className="text-4xl font-bold mb-8">Digital Delivery Policy</h1>
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
