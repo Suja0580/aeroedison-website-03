@@ -11,6 +11,8 @@ import * as z from "zod";
 import { Link } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useState } from "react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -22,6 +24,7 @@ const contactSchema = z.object({
 
 const ContactUs = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -34,13 +37,33 @@ const ContactUs = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof contactSchema>) => {
-    console.log("Contact form submitted:", values);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-    });
-    form.reset();
+  const onSubmit = async (values: z.infer<typeof contactSchema>) => {
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: values
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -237,9 +260,9 @@ const ContactUs = () => {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
                         <Send className="mr-2 h-5 w-5" />
-                        Send Message
+                        {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>
                     </form>
                   </Form>
