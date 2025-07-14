@@ -71,13 +71,19 @@ const ContactUs = () => {
       <AeroNavbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-16">
-        <div className="max-w-7xl mx-auto px-6">
+      <section 
+        className="relative py-16 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/lovable-uploads/5c603dff-defb-4fdf-8450-84c3b4934a15.png')`
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-light text-gray-900 mb-4">
-              Get in <span className="font-semibold text-blue-600">Touch</span>
+            <h1 className="text-4xl font-light text-white mb-4">
+              Get in <span className="font-semibold text-blue-400">Touch</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               Ready to transform your business? Let's discuss how AeroEdison Consulting can help you navigate the future of your industry.
             </p>
           </div>
