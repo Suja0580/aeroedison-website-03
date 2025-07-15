@@ -160,20 +160,13 @@ const AviationSector = () => {
                 Core Offerings
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-4 mb-8">
-                <div className="space-y-3">
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Strategy Consulting - Strategic guidance for aviation industry leaders</span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Market Research and Intelligence - Data-driven insights for informed decision making</span>
-                  </div>
-                </div>
-              </div>
+              <p className="text-gray-700 mb-6">
+                Strategy Consulting - Strategic guidance for aviation industry leaders
+              </p>
+              
+              <p className="text-gray-700 mb-8">
+                Market Research and Intelligence - Data-driven insights for informed decision making
+              </p>
               
               <div className="border-t border-blue-100 pt-8">
                 <h4 className="font-bold mb-6 text-gray-900 text-lg">Work Products in Demand:</h4>
@@ -231,32 +224,65 @@ const AviationSector = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h5 className="font-bold mb-3 text-gray-800 text-lg">Challenges:</h5>
-                      <ul className="text-lg text-gray-700 space-y-2">
-                        <li>– Navigating post-pandemic recovery strategies</li>
-                        <li>– Adapting to changing consumer behaviors and expectations</li>
-                        <li>– Integrating sustainable practices across member airlines</li>
-                        <li>– Harmonizing digital transformation efforts among alliance members</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Navigating post-pandemic recovery strategies</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Adapting to changing consumer behaviors and expectations</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Integrating sustainable practices across member airlines</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Harmonizing digital transformation efforts among alliance members</span>
+                        </div>
+                      </div>
                     </div>
                     
                     <div>
                       <h5 className="font-bold mb-3 text-gray-800 text-lg">Goals:</h5>
-                      <ul className="text-lg text-gray-700 space-y-2">
-                        <li>– Develop alliance-wide strategic plans</li>
-                        <li>– Identify new market opportunities</li>
-                        <li>– Enhance competitive positioning against other alliances and emerging players</li>
-                        <li>– Guide sustainable technology adoption across member airlines</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Develop alliance-wide strategic plans</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Identify new market opportunities</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Enhance competitive positioning against other alliances and emerging players</span>
+                        </div>
+                        <div className="text-lg text-gray-700 flex items-start">
+                          <span className="text-blue-600 mr-2">•</span>
+                          <span>Guide sustainable technology adoption across member airlines</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
                   <div className="mt-6">
                     <h5 className="font-bold mb-3 text-gray-800 text-lg">Decision Makers:</h5>
-                    <ul className="text-lg text-gray-700 space-y-1">
-                      <li>– Alliance CEO</li>
-                      <li>– Head of Strategy and Business Development</li>
-                      <li>– Chief Sustainability Officer</li>
-                    </ul>
+                    <div className="space-y-1">
+                      <div className="text-lg text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>Alliance CEO</span>
+                      </div>
+                      <div className="text-lg text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>Head of Strategy and Business Development</span>
+                      </div>
+                      <div className="text-lg text-gray-700 flex items-start">
+                        <span className="text-blue-600 mr-2">•</span>
+                        <span>Chief Sustainability Officer</span>
+                      </div>
+                    </div>
                   </div>
                   
                   <div className="mt-6 bg-blue-100 p-4 rounded border border-blue-200">
