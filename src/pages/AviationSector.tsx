@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plane, ArrowLeft } from "lucide-react";
+import { Plane, ArrowLeft, Navigation, Leaf, Smartphone, Zap, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import AeroNavbar from "@/components/AeroNavbar";
 
@@ -37,34 +37,86 @@ const AviationSector = () => {
       </section>
 
       {/* Key Focus Areas */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center text-gray-900">Key Focus Areas</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-800">Next-generation air traffic management systems</h3>
+            <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Key Focus Areas</h2>
+            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+              Transforming aviation through innovative solutions and strategic expertise
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Navigation className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">Next-generation air traffic management systems</h3>
+                      <p className="text-sm text-gray-600">Advanced navigation and control systems for safer, more efficient airspace management</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-800">Sustainable aviation fuels and practices</h3>
+
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-green-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 to-emerald-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Leaf className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">Sustainable aviation fuels and practices</h3>
+                      <p className="text-sm text-gray-600">Eco-friendly solutions driving the future of carbon-neutral aviation</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-800">Passenger experience enhancement through digital technologies</h3>
+
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-purple-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-indigo-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Smartphone className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">Passenger experience enhancement through digital technologies</h3>
+                      <p className="text-sm text-gray-600">Seamless digital journeys from booking to destination</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-800">Unmanned aerial systems (UAS) integration</h3>
+
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-orange-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-red-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Zap className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">Unmanned aerial systems (UAS) integration</h3>
+                      <p className="text-sm text-gray-600">Seamlessly integrating drones into existing aviation infrastructure</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-              <Card className="border-l-4 border-l-blue-600 hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-800">Aviation cybersecurity</h3>
+
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-red-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-pink-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Shield className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">Aviation cybersecurity</h3>
+                      <p className="text-sm text-gray-600">Protecting critical aviation systems from emerging digital threats</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
