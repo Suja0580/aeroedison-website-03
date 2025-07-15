@@ -10,20 +10,26 @@ const AviationSector = () => {
       <AeroNavbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
-        <div className="container mx-auto px-4">
+      <section 
+        className="relative text-white py-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/lovable-uploads/9445ca23-d27e-4b36-aa64-b5e8788061b9.png')`
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <Link to="/industries" className="inline-flex items-center text-blue-200 hover:text-white mb-8 transition-colors">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Industries
             </Link>
             <div className="flex items-center mb-8">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mr-6">
+              <div className="w-16 h-16 bg-blue-600/80 rounded-full flex items-center justify-center mr-6">
                 <Plane className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-5xl font-bold text-white">Aviation Sector</h1>
             </div>
-            <p className="text-xl leading-relaxed text-blue-100 max-w-3xl">
+            <p className="text-xl leading-relaxed text-gray-200 max-w-3xl">
               The aviation industry is undergoing rapid transformation, driven by technological advancements, changing consumer expectations, and sustainability imperatives. We help aviation businesses navigate these challenges and capitalize on emerging opportunities.
             </p>
           </div>
