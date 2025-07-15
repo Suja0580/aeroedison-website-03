@@ -122,39 +122,32 @@ const AviationSector = () => {
             </div>
 
             {/* We Work With */}
-            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
-                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+            <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900">
                 We work with:
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
                   <span className="font-medium">Airlines</span>
                 </div>
-                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
                   <span className="font-medium">Airports</span>
                 </div>
-                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
                   <span className="font-medium">Air navigation service providers</span>
                 </div>
-                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
                   <span className="font-medium">Aircraft manufacturers</span>
                 </div>
-                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
                   <span className="font-medium">Aviation regulators</span>
                 </div>
               </div>
             </div>
 
             {/* Core Offerings */}
-            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
-                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+            <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900">
                 Core Offerings
               </h3>
               
@@ -179,34 +172,28 @@ const AviationSector = () => {
                 </div>
               </div>
               
-              <div className="border-t border-blue-200 pt-8">
+              <div className="border-t border-blue-100 pt-8">
                 <h4 className="font-bold mb-6 text-gray-900 text-lg">Work Products in Demand:</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-3">
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Aviation Market Trend Analysis Reports</span>
                     </div>
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Competitive Landscape Assessments</span>
                     </div>
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Strategic Growth Plans for Airlines and Airports</span>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Sustainable Aviation Technology Adoption Strategies</span>
                     </div>
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Regulatory Impact Analyses</span>
                     </div>
-                    <div className="flex items-start space-x-3 text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <div className="text-gray-700">
                       <span>Future of Air Mobility Studies</span>
                     </div>
                   </div>
@@ -215,9 +202,8 @@ const AviationSector = () => {
             </div>
 
             {/* Work Products */}
-            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
-                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+            <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900">
                 Work Products
               </h3>
               
@@ -226,12 +212,12 @@ const AviationSector = () => {
               </p>
               
               <div className="bg-white/70 p-8 rounded-lg">
-                <h4 className="font-bold mb-6 text-gray-900 text-lg">Ideal Customer Profiles (ICPs):</h4>
+                <h4 className="font-bold mb-6 text-gray-900 text-xl">Ideal Customer Profiles (ICPs):</h4>
                 
                 <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg border border-blue-100">
-                  <p className="font-bold mb-2 text-gray-900">Organization: Global Airline Alliance</p>
-                  <p className="text-sm text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
-                  <p className="text-sm text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
+                  <p className="font-bold mb-2 text-gray-900 text-lg">Organization: Global Airline Alliance</p>
+                  <p className="text-base text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
+                  <p className="text-base text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
