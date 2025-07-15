@@ -122,8 +122,8 @@ const AviationSector = () => {
             </div>
 
             {/* We Work With */}
-            <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-gray-500 text-white">
+            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
+              <CardHeader className="bg-blue-600 text-white">
                 <CardTitle>We work with:</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -157,55 +157,80 @@ const AviationSector = () => {
             </Card>
 
             {/* Core Offerings */}
-            <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-gray-500 text-white">
+            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
+              <CardHeader className="bg-blue-600 text-white">
                 <CardTitle>Core Offerings</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-l-blue-600">
-                    <h3 className="text-xl font-semibold text-gray-900">Strategy Consulting</h3>
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl border border-blue-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                        <Navigation className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Strategy Consulting</h3>
+                        <p className="text-sm text-gray-600">Strategic guidance for aviation industry leaders</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-l-blue-600">
-                    <h3 className="text-xl font-semibold text-gray-900">Market Research and Intelligence</h3>
+                  <div className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl border border-blue-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-500"></div>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
+                        <Smartphone className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Market Research and Intelligence</h3>
+                        <p className="text-sm text-gray-600">Data-driven insights for informed decision making</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="font-bold mb-4 text-gray-900">Work Products in Demand:</h4>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Aviation Market Trend Analysis Reports
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Competitive Landscape Assessments
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Strategic Growth Plans for Airlines and Airports
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Sustainable Aviation Technology Adoption Strategies
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Regulatory Impact Analyses
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Future of Air Mobility Studies
-                    </li>
-                  </ul>
+                <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl border border-blue-200 shadow-inner">
+                  <h4 className="font-bold mb-6 text-gray-900 text-lg flex items-center">
+                    <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                    Work Products in Demand:
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Aviation Market Trend Analysis Reports</span>
+                      </div>
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Competitive Landscape Assessments</span>
+                      </div>
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Strategic Growth Plans for Airlines and Airports</span>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Sustainable Aviation Technology Adoption Strategies</span>
+                      </div>
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Regulatory Impact Analyses</span>
+                      </div>
+                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
+                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                        <span className="text-gray-700 text-sm">Future of Air Mobility Studies</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Work Products */}
-            <Card className="mb-12 shadow-lg bg-white">
-              <CardHeader className="bg-gray-500 text-white">
+            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
+              <CardHeader className="bg-blue-600 text-white">
                 <CardTitle>Work Products</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
