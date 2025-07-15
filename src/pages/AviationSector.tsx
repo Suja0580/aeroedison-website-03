@@ -40,7 +40,7 @@ const AviationSector = () => {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Key Focus Areas</h2>
+            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600">Key Focus Areas</h2>
             <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
               Transforming aviation through innovative solutions and strategic expertise
             </p>
@@ -123,31 +123,71 @@ const AviationSector = () => {
 
             {/* We Work With */}
             <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
+              <h3 className="text-2xl font-bold mb-6 text-blue-600">
                 We work with:
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="font-medium">Airlines</span>
-                </div>
-                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="font-medium">Airports</span>
-                </div>
-                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="font-medium">Air navigation service providers</span>
-                </div>
-                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="font-medium">Aircraft manufacturers</span>
-                </div>
-                <div className="text-gray-700 p-3 bg-white/70 rounded-lg">
-                  <span className="font-medium">Aviation regulators</span>
-                </div>
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                        <Plane className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium text-gray-900">Airlines</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-green-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 to-emerald-500"></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
+                        <Navigation className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium text-gray-900">Airports</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-purple-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-indigo-500"></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
+                        <Shield className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium text-gray-900">Air navigation service providers</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-orange-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-red-500"></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-700 rounded-lg flex items-center justify-center">
+                        <Zap className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium text-gray-900">Aircraft manufacturers</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-red-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-pink-500"></div>
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center">
+                        <Shield className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="font-medium text-gray-900">Aviation regulators</span>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
 
             {/* Core Offerings */}
             <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
+              <h3 className="text-2xl font-bold mb-6 text-blue-600">
                 Core Offerings
               </h3>
               
@@ -176,24 +216,30 @@ const AviationSector = () => {
                 <h4 className="font-bold mb-6 text-gray-900 text-lg">Work Products in Demand:</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-3">
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Aviation Market Trend Analysis Reports</span>
                     </div>
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Competitive Landscape Assessments</span>
                     </div>
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Strategic Growth Plans for Airlines and Airports</span>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Sustainable Aviation Technology Adoption Strategies</span>
                     </div>
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Regulatory Impact Analyses</span>
                     </div>
-                    <div className="text-gray-700">
+                    <div className="text-gray-700 flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
                       <span>Future of Air Mobility Studies</span>
                     </div>
                   </div>
@@ -203,7 +249,7 @@ const AviationSector = () => {
 
             {/* Work Products */}
             <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
+              <h3 className="text-2xl font-bold mb-6 text-blue-600">
                 Work Products
               </h3>
               
@@ -216,13 +262,13 @@ const AviationSector = () => {
                 
                 <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg border border-blue-100">
                   <p className="font-bold mb-2 text-gray-900 text-lg">Organization: Global Airline Alliance</p>
-                  <p className="text-base text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
-                  <p className="text-base text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
+                  <p className="text-lg text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
+                  <p className="text-lg text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className="font-bold mb-3 text-gray-800">Challenges:</h5>
-                      <ul className="text-sm text-gray-700 space-y-2">
+                      <h5 className="font-bold mb-3 text-gray-800 text-lg">Challenges:</h5>
+                      <ul className="text-lg text-gray-700 space-y-2">
                         <li>– Navigating post-pandemic recovery strategies</li>
                         <li>– Adapting to changing consumer behaviors and expectations</li>
                         <li>– Integrating sustainable practices across member airlines</li>
@@ -231,8 +277,8 @@ const AviationSector = () => {
                     </div>
                     
                     <div>
-                      <h5 className="font-bold mb-3 text-gray-800">Goals:</h5>
-                      <ul className="text-sm text-gray-700 space-y-2">
+                      <h5 className="font-bold mb-3 text-gray-800 text-lg">Goals:</h5>
+                      <ul className="text-lg text-gray-700 space-y-2">
                         <li>– Develop alliance-wide strategic plans</li>
                         <li>– Identify new market opportunities</li>
                         <li>– Enhance competitive positioning against other alliances and emerging players</li>
@@ -242,8 +288,8 @@ const AviationSector = () => {
                   </div>
                   
                   <div className="mt-6">
-                    <h5 className="font-bold mb-3 text-gray-800">Decision Makers:</h5>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <h5 className="font-bold mb-3 text-gray-800 text-lg">Decision Makers:</h5>
+                    <ul className="text-lg text-gray-700 space-y-1">
                       <li>– Alliance CEO</li>
                       <li>– Head of Strategy and Business Development</li>
                       <li>– Chief Sustainability Officer</li>
@@ -251,7 +297,7 @@ const AviationSector = () => {
                   </div>
                   
                   <div className="mt-6 bg-blue-100 p-4 rounded border border-blue-200">
-                    <p className="text-sm font-bold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
+                    <p className="text-lg font-bold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
                   </div>
                 </div>
               </div>
