@@ -126,62 +126,31 @@ const AviationSector = () => {
               <h3 className="text-2xl font-bold mb-6 text-blue-600">
                 We work with:
               </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                        <Plane className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="font-medium text-gray-900">Airlines</span>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-green-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 to-emerald-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
-                        <Navigation className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="font-medium text-gray-900">Airports</span>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-purple-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-indigo-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
-                        <Shield className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="font-medium text-gray-900">Air navigation service providers</span>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-orange-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 to-red-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-700 rounded-lg flex items-center justify-center">
-                        <Zap className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="font-medium text-gray-900">Aircraft manufacturers</span>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-red-50/50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-pink-500"></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center">
-                        <Shield className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="font-medium text-gray-900">Aviation regulators</span>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Airlines</span>
+                  </div>
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Airports</span>
+                  </div>
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Air navigation service providers</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Aircraft manufacturers</span>
+                  </div>
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Aviation regulators</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -191,23 +160,17 @@ const AviationSector = () => {
                 Core Offerings
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div className="flex items-start space-x-4 p-6 bg-white/70 rounded-lg">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                    <Navigation className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Strategy Consulting</h4>
-                    <p className="text-gray-600">Strategic guidance for aviation industry leaders</p>
+              <div className="grid md:grid-cols-2 gap-4 mb-8">
+                <div className="space-y-3">
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Strategy Consulting - Strategic guidance for aviation industry leaders</span>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4 p-6 bg-white/70 rounded-lg">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
-                    <Smartphone className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Market Research and Intelligence</h4>
-                    <p className="text-gray-600">Data-driven insights for informed decision making</p>
+                <div className="space-y-3">
+                  <div className="text-gray-700 flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Market Research and Intelligence - Data-driven insights for informed decision making</span>
                   </div>
                 </div>
               </div>
