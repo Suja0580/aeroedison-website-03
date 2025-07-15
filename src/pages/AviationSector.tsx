@@ -127,74 +127,94 @@ const AviationSector = () => {
                 We work with:
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Airlines</span>
+                  <div className="space-y-3">
+                    <div className="text-gray-700 flex items-start text-lg">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Airlines</span>
+                    </div>
+                    <div className="text-gray-700 flex items-start text-lg">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Airports</span>
+                    </div>
+                    <div className="text-gray-700 flex items-start text-lg">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Air navigation service providers</span>
+                    </div>
                   </div>
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Airports</span>
+                  <div className="space-y-3">
+                    <div className="text-gray-700 flex items-start text-lg">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Aircraft manufacturers</span>
+                    </div>
+                    <div className="text-gray-700 flex items-start text-lg">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Aviation regulators</span>
+                    </div>
                   </div>
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Air navigation service providers</span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Aircraft manufacturers</span>
-                  </div>
-                  <div className="text-gray-700 flex items-start">
-                    <span className="text-blue-600 mr-2">•</span>
-                    <span>Aviation regulators</span>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Core Offerings */}
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Shield className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight text-blue-600">Strategy Consulting</h3>
+                      <p className="text-sm text-gray-600 text-lg">Strategic guidance for aviation industry leaders</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-white to-green-50/50 border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 to-emerald-500"></div>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Navigation className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight text-blue-600">Market Research and Intelligence</h3>
+                      <p className="text-sm text-gray-600 text-lg">Data-driven insights for informed decision making</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+              
             <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
-              <h3 className="text-2xl font-bold mb-6 text-blue-600">
-                Core Offerings
-              </h3>
-              
-              <p className="text-gray-700 mb-6">
-                Strategy Consulting - Strategic guidance for aviation industry leaders
-              </p>
-              
-              <p className="text-gray-700 mb-8">
-                Market Research and Intelligence - Data-driven insights for informed decision making
-              </p>
-              
               <div className="border-t border-blue-100 pt-8">
-                <h4 className="font-bold mb-6 text-gray-900 text-lg">Work Products in Demand:</h4>
+                <h4 className="font-bold mb-6 text-gray-900 text-lg text-blue-600">Work Products in Demand:</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-3">
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Aviation Market Trend Analysis Reports</span>
                     </div>
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Competitive Landscape Assessments</span>
                     </div>
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Strategic Growth Plans for Airlines and Airports</span>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Sustainable Aviation Technology Adoption Strategies</span>
                     </div>
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Regulatory Impact Analyses</span>
                     </div>
-                    <div className="text-gray-700 flex items-start">
+                    <div className="text-gray-700 flex items-start text-lg">
                       <span className="text-blue-600 mr-2">•</span>
                       <span>Future of Air Mobility Studies</span>
                     </div>
@@ -209,7 +229,7 @@ const AviationSector = () => {
                 Work Products
               </h3>
               
-              <p className="text-gray-700 mb-6 font-medium">
+              <p className="text-gray-700 mb-6 font-medium text-lg">
                 Work products and ICPs with Strategy and Market Research and Intelligence as core offerings for AeroEdison Consulting (AE).
               </p>
               
