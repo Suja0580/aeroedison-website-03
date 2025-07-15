@@ -122,170 +122,154 @@ const AviationSector = () => {
             </div>
 
             {/* We Work With */}
-            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
-              <CardHeader className="bg-blue-600 text-white">
-                <CardTitle>We work with:</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <ul className="space-y-3">
-                    <li className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Airlines
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Airports
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Air navigation service providers
-                    </li>
-                  </ul>
-                  <ul className="space-y-3">
-                    <li className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Aircraft manufacturers
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                      Aviation regulators
-                    </li>
-                  </ul>
+            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                We work with:
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                  <span className="font-medium">Airlines</span>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                  <span className="font-medium">Airports</span>
+                </div>
+                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                  <span className="font-medium">Air navigation service providers</span>
+                </div>
+                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                  <span className="font-medium">Aircraft manufacturers</span>
+                </div>
+                <div className="flex items-center text-gray-700 p-3 bg-white/70 rounded-lg">
+                  <span className="w-3 h-3 bg-blue-600 rounded-full mr-3 flex-shrink-0"></span>
+                  <span className="font-medium">Aviation regulators</span>
+                </div>
+              </div>
+            </div>
 
             {/* Core Offerings */}
-            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
-              <CardHeader className="bg-blue-600 text-white">
-                <CardTitle>Core Offerings</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  <div className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl border border-blue-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-500"></div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
-                        <Navigation className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Strategy Consulting</h3>
-                        <p className="text-sm text-gray-600">Strategic guidance for aviation industry leaders</p>
-                      </div>
+            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                Core Offerings
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="flex items-start space-x-4 p-6 bg-white/70 rounded-lg">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                    <Navigation className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Strategy Consulting</h4>
+                    <p className="text-gray-600">Strategic guidance for aviation industry leaders</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4 p-6 bg-white/70 rounded-lg">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
+                    <Smartphone className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Market Research and Intelligence</h4>
+                    <p className="text-gray-600">Data-driven insights for informed decision making</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="border-t border-blue-200 pt-8">
+                <h4 className="font-bold mb-6 text-gray-900 text-lg">Work Products in Demand:</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Aviation Market Trend Analysis Reports</span>
+                    </div>
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Competitive Landscape Assessments</span>
+                    </div>
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Strategic Growth Plans for Airlines and Airports</span>
                     </div>
                   </div>
-                  <div className="group relative overflow-hidden bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl border border-blue-200 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-500"></div>
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
-                        <Smartphone className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Market Research and Intelligence</h3>
-                        <p className="text-sm text-gray-600">Data-driven insights for informed decision making</p>
-                      </div>
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Sustainable Aviation Technology Adoption Strategies</span>
+                    </div>
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Regulatory Impact Analyses</span>
+                    </div>
+                    <div className="flex items-start space-x-3 text-gray-700">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                      <span>Future of Air Mobility Studies</span>
                     </div>
                   </div>
                 </div>
-                
-                <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl border border-blue-200 shadow-inner">
-                  <h4 className="font-bold mb-6 text-gray-900 text-lg flex items-center">
-                    <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
-                    Work Products in Demand:
-                  </h4>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Aviation Market Trend Analysis Reports</span>
-                      </div>
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Competitive Landscape Assessments</span>
-                      </div>
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Strategic Growth Plans for Airlines and Airports</span>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Sustainable Aviation Technology Adoption Strategies</span>
-                      </div>
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Regulatory Impact Analyses</span>
-                      </div>
-                      <div className="flex items-start space-x-3 p-3 bg-white rounded-lg border border-blue-100">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm">Future of Air Mobility Studies</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Work Products */}
-            <Card className="mb-12 shadow-lg bg-blue-50 border-blue-200">
-              <CardHeader className="bg-blue-600 text-white">
-                <CardTitle>Work Products</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <p className="text-gray-700 mb-6 font-bold">
-                  Work products and ICPs with Strategy and Market Research and Intelligence as core offerings for AeroEdison Consulting (AE).
-                </p>
+            <div className="mb-16 p-8 bg-blue-100 rounded-xl border border-blue-200">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
+                <span className="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                Work Products
+              </h3>
+              
+              <p className="text-gray-700 mb-6 font-medium">
+                Work products and ICPs with Strategy and Market Research and Intelligence as core offerings for AeroEdison Consulting (AE).
+              </p>
+              
+              <div className="bg-white/70 p-8 rounded-lg">
+                <h4 className="font-bold mb-6 text-gray-900 text-lg">Ideal Customer Profiles (ICPs):</h4>
                 
-                <div className="space-y-8">
-                  <div className="bg-white p-6 rounded-lg border border-gray-200">
-                    <h4 className="font-bold mb-4 text-gray-900">Ideal Customer Profiles (ICPs):</h4>
+                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg border border-blue-100">
+                  <p className="font-bold mb-2 text-gray-900">Organization: Global Airline Alliance</p>
+                  <p className="text-sm text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
+                  <p className="text-sm text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className="font-bold mb-3 text-gray-800">Challenges:</h5>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>– Navigating post-pandemic recovery strategies</li>
+                        <li>– Adapting to changing consumer behaviors and expectations</li>
+                        <li>– Integrating sustainable practices across member airlines</li>
+                        <li>– Harmonizing digital transformation efforts among alliance members</li>
+                      </ul>
+                    </div>
                     
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                      <p className="font-bold mb-2 text-gray-900">Organization: Global Airline Alliance</p>
-                      <p className="text-sm text-gray-600 mb-2">Size: Representing 15+ major airlines</p>
-                      <p className="text-sm text-gray-600 mb-6">Location: Worldwide operations, headquarters in a major global city</p>
-                      
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h5 className="font-bold mb-3 text-gray-800">Challenges:</h5>
-                          <ul className="text-sm text-gray-700 space-y-2">
-                            <li>– Navigating post-pandemic recovery strategies</li>
-                            <li>– Adapting to changing consumer behaviors and expectations</li>
-                            <li>– Integrating sustainable practices across member airlines</li>
-                            <li>– Harmonizing digital transformation efforts among alliance members</li>
-                          </ul>
-                        </div>
-                        
-                        <div>
-                          <h5 className="font-bold mb-3 text-gray-800">Goals:</h5>
-                          <ul className="text-sm text-gray-700 space-y-2">
-                            <li>– Develop alliance-wide strategic plans</li>
-                            <li>– Identify new market opportunities</li>
-                            <li>– Enhance competitive positioning against other alliances and emerging players</li>
-                            <li>– Guide sustainable technology adoption across member airlines</li>
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6">
-                        <h5 className="font-bold mb-3 text-gray-800">Decision Makers:</h5>
-                        <ul className="text-sm text-gray-700 space-y-1">
-                          <li>– Alliance CEO</li>
-                          <li>– Head of Strategy and Business Development</li>
-                          <li>– Chief Sustainability Officer</li>
-                        </ul>
-                      </div>
-                      
-                      <div className="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
-                        <p className="text-sm font-bold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
-                      </div>
+                    <div>
+                      <h5 className="font-bold mb-3 text-gray-800">Goals:</h5>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>– Develop alliance-wide strategic plans</li>
+                        <li>– Identify new market opportunities</li>
+                        <li>– Enhance competitive positioning against other alliances and emerging players</li>
+                        <li>– Guide sustainable technology adoption across member airlines</li>
+                      </ul>
                     </div>
                   </div>
+                  
+                  <div className="mt-6">
+                    <h5 className="font-bold mb-3 text-gray-800">Decision Makers:</h5>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>– Alliance CEO</li>
+                      <li>– Head of Strategy and Business Development</li>
+                      <li>– Chief Sustainability Officer</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="mt-6 bg-blue-100 p-4 rounded border border-blue-200">
+                    <p className="text-sm font-bold text-blue-800">Budget: $2-5 million for strategic consulting and market intelligence annually</p>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
