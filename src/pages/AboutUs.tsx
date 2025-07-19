@@ -145,40 +145,40 @@ const AboutUs = () => {
             
             <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100 animate-fade-in hover-scale" style={{animationDelay: '0.2s'}}>
               <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">1</div>
+                <div className="flex items-start space-x-4 animate-fade-in" style={{animationDelay: '0.3s'}}>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold hover-scale">1</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-blue-600">Deep Understanding</h3>
                     <p className="text-gray-700 text-lg">We begin by thoroughly understanding your unique challenges, industry context, and strategic objectives.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">2</div>
+                <div className="flex items-start space-x-4 animate-fade-in" style={{animationDelay: '0.4s'}}>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold hover-scale">2</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-blue-600">Multi-disciplinary Analysis</h3>
                     <p className="text-gray-700 text-lg">Our team of experts from various fields collaborates to analyze the situation from all angles.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">3</div>
+                <div className="flex items-start space-x-4 animate-fade-in" style={{animationDelay: '0.5s'}}>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold hover-scale">3</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-blue-600">Innovative Solution Design</h3>
                     <p className="text-gray-700 text-lg">We leverage our cross-sector expertise to design innovative integrated solutions.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">4</div>
+                <div className="flex items-start space-x-4 animate-fade-in" style={{animationDelay: '0.6s'}}>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold hover-scale">4</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-blue-600">Implementation Support</h3>
                     <p className="text-gray-700 text-lg">We don't just advise; we partner with our clients throughout the implementation process.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">5</div>
+                <div className="flex items-start space-x-4 animate-fade-in" style={{animationDelay: '0.7s'}}>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold hover-scale">5</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-blue-600">Continuous Improvement</h3>
                     <p className="text-gray-700 text-lg">We believe in long-term partnerships, continuously monitoring and optimizing our solutions.</p>
