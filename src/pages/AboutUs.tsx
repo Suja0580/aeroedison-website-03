@@ -20,13 +20,13 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center mb-8">
-              <div className="w-16 h-16 bg-blue-600/80 rounded-full flex items-center justify-center mr-6">
+            <div className="flex items-center mb-8 animate-fade-in">
+              <div className="w-16 h-16 bg-blue-600/80 rounded-full flex items-center justify-center mr-6 hover-scale">
                 <Building2 className="h-8 w-8 text-white" />
               </div>
               <h1 className="text-6xl font-bold text-white">Pioneering Integrated Consulting Solutions</h1>
             </div>
-            <div className="space-y-6 max-w-4xl">
+            <div className="space-y-6 max-w-4xl animate-fade-in" style={{animationDelay: '0.2s'}}>
               <p className="text-xl leading-relaxed text-gray-200">
                 AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
                 industry practices and futuristic technologies. Our team of seasoned experts brings together 
@@ -34,7 +34,7 @@ const AboutUs = () => {
                 insights and strategies.
               </p>
               
-              <div className="mt-8">
+              <div className="mt-8 animate-fade-in" style={{animationDelay: '0.4s'}}>
                 <h2 className="text-2xl font-bold text-white mb-4">Our Mission:</h2>
                 <p className="text-xl leading-relaxed text-gray-200">
                   To empower organizations to navigate complex challenges and seize opportunities through 
@@ -50,8 +50,8 @@ const AboutUs = () => {
       <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600">Our Values</h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600 animate-fade-in">Our Values</h2>
+            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.1s'}}>
               Core principles that guide everything we do at AeroEdison Consulting
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -138,12 +138,12 @@ const AboutUs = () => {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600">Our Approach to Consulting</h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600 animate-fade-in">Our Approach to Consulting</h2>
+            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.1s'}}>
               At AeroEdison Consulting, we believe in a holistic, client-centric approach
             </p>
             
-            <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100">
+            <div className="mb-16 p-8 bg-blue-50 rounded-xl border border-blue-100 animate-fade-in hover-scale" style={{animationDelay: '0.2s'}}>
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 text-xl font-bold">1</div>
@@ -188,8 +188,8 @@ const AboutUs = () => {
             </div>
 
             {/* What Sets AE Apart */}
-            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600">What Sets AE Apart</h2>
-            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-4 text-center text-blue-600 animate-fade-in">What Sets AE Apart</h2>
+            <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.1s'}}>
               AeroEdison Consulting distinguishes itself through innovative expertise and proven results
             </p>
             
