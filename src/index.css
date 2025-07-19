@@ -45,6 +45,16 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Energy Sector - Light Green Theme */
+    --energy-primary: 142 71% 85%; /* light green */
+    --energy-secondary: 142 100% 97%; /* very light green */
+    --energy-accent: 142 76% 90%; /* soft green */
+    
+    /* Digital Transformation - Light Purple Theme */
+    --digital-primary: 262 83% 75%; /* light purple */
+    --digital-secondary: 262 100% 98%; /* very light purple */
+    --digital-accent: 262 91% 91%; /* soft purple */
   }
 
   .dark {
@@ -83,26 +93,6 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
-    /* Energy Sector - Light Green Theme */
-    --energy-primary: 134 239 172; /* light green */
-    --energy-secondary: 240 253 244; /* very light green */
-    --energy-accent: 187 247 208; /* soft green */
-    
-    /* Digital Transformation - Light Purple Theme */
-    --digital-primary: 196 181 253; /* light purple */
-    --digital-secondary: 245 243 255; /* very light purple */
-    --digital-accent: 221 214 254; /* soft purple */
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-foreground)));
-    --gradient-energy: linear-gradient(135deg, hsl(var(--energy-primary)), hsl(var(--energy-accent)));
-    --gradient-digital: linear-gradient(135deg, hsl(var(--digital-primary)), hsl(var(--digital-accent)));
-    
-    /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-energy: 0 10px 30px -10px hsl(var(--energy-primary) / 0.3);
-    --shadow-digital: 0 10px 30px -10px hsl(var(--digital-primary) / 0.3);
   }
 }
 
