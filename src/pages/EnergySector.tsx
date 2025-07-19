@@ -13,7 +13,7 @@ const EnergySector = () => {
       <section 
         className="relative text-white py-20 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/041561f3-d3e9-4790-8791-293c835c4fa7.png')`
+          backgroundImage: `url('/lovable-uploads/27ee4535-a025-4442-8161-befe895ec99d.png')`
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
