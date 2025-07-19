@@ -79,6 +79,16 @@ export default {
 					'soft-orange': '#FDE1D3',
 					'soft-green-dark': '#D1E9C9',
 					'soft-gray': '#F1F0FB'
+				},
+				energy: {
+					primary: 'hsl(var(--energy-primary))',
+					secondary: 'hsl(var(--energy-secondary))',
+					accent: 'hsl(var(--energy-accent))'
+				},
+				digital: {
+					primary: 'hsl(var(--digital-primary))',
+					secondary: 'hsl(var(--digital-secondary))',
+					accent: 'hsl(var(--digital-accent))'
 				}
 			},
 			borderRadius: {
