@@ -17,7 +17,7 @@ const AboutUs = () => {
           backgroundImage: `url('/lovable-uploads/b6ae1c25-a7e8-46d2-b61e-9cd45cd4a371.png')`
         }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center mb-8">
