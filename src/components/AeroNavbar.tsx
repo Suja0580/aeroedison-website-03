@@ -48,7 +48,7 @@ const AeroNavbar = ({ onMenuClick }: AeroNavbarProps) => {
           </div>
           
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-1 w-64 bg-white border shadow-lg rounded-md z-50">
+            <div className="absolute top-full left-0 w-64 bg-white border shadow-lg rounded-md z-50">
               <div 
                 onClick={() => handleNavigate("/aviation-sector")}
                 className="cursor-pointer hover:bg-blue-50 hover:text-blue-600 px-4 py-3 text-sm border-b border-gray-100"
