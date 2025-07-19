@@ -14,7 +14,7 @@ const AboutUs = () => {
       <section 
         className="relative text-white py-20 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/0b97542a-fe86-422e-bb51-ce0716322147.png')`
+          backgroundImage: `url('/lovable-uploads/b6ae1c25-a7e8-46d2-b61e-9cd45cd4a371.png')`
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
