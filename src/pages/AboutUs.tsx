@@ -24,13 +24,24 @@ const AboutUs = () => {
               <div className="w-16 h-16 bg-blue-600/80 rounded-full flex items-center justify-center mr-6">
                 <Building2 className="h-8 w-8 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-white">About Us</h1>
+              <h1 className="text-6xl font-bold text-white">Pioneering Integrated Consulting Solutions</h1>
             </div>
-            <p className="text-xl leading-relaxed text-gray-200 max-w-3xl">
-              AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
-              industry practices and futuristic technologies. We are pioneering integrated consulting solutions 
-              across Aviation, Energy, and Digital Transformation sectors.
-            </p>
+            <div className="space-y-6 max-w-4xl">
+              <p className="text-xl leading-relaxed text-gray-200">
+                AeroEdison Consulting was founded in 2024 with a vision to bridge the gap between traditional 
+                industry practices and futuristic technologies. Our team of seasoned experts brings together 
+                decades of experience in Aviation, Energy, and Digital Transformation to deliver unparalleled 
+                insights and strategies.
+              </p>
+              
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Our Mission:</h2>
+                <p className="text-xl leading-relaxed text-gray-200">
+                  To empower organizations to navigate complex challenges and seize opportunities through 
+                  expert guidance, cutting-edge research, and tailored strategies.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
