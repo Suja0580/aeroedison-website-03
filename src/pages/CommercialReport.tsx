@@ -22,7 +22,7 @@ const CommercialReport = () => {
   // Load PayPal SDK
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD';
+    script.src = 'https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=INR';
     script.async = true;
     script.onload = () => setPaypalLoaded(true);
     document.head.appendChild(script);

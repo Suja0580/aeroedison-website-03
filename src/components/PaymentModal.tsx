@@ -95,7 +95,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
             purchase_units: [{
               amount: {
                 value: priceAmount.toString(),
-                currency_code: 'USD'
+                currency_code: 'INR'
               },
               description: title
             }]
@@ -160,7 +160,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     const options = {
       key: 'rzp_test_1DP5mmOlF5G5ag', // Test key - replace with your actual key
       amount: Math.round(priceAmount),
-      currency: 'USD',
+      currency: 'INR',
       name: 'AeroEdison Consulting',
       description: title,
       image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
