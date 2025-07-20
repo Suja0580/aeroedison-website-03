@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CreditCard, Wallet, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 // Declare global types for payment gateways
 declare global {
@@ -162,19 +163,14 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     }
 
     try {
-      // Get Razorpay key from edge function
-      const response = await fetch('https://zhawsdrsaqecdmcawgms.supabase.co/functions/v1/get-razorpay-config', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      // Get Razorpay key from edge function using supabase client
+      const { data, error } = await supabase.functions.invoke('get-razorpay-config');
       
-      if (!response.ok) {
-        throw new Error('Failed to get Razorpay configuration');
+      if (error) {
+        throw new Error(error.message || 'Failed to get Razorpay configuration');
       }
       
-      const { key } = await response.json();
+      const { key } = data;
 
       const options = {
         key: key,
