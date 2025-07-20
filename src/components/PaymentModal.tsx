@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { CreditCard, Wallet } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CreditCard, Wallet, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 // Declare global types for payment gateways
@@ -23,9 +25,41 @@ interface PaymentModalProps {
 
 const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoaded }: PaymentModalProps) => {
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const { toast } = useToast();
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (emailError && validateEmail(value)) {
+      setEmailError("");
+    }
+  };
+
+  const checkEmailBeforePayment = (): boolean => {
+    if (!email.trim()) {
+      setEmailError("Email is required");
+      return false;
+    }
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      return false;
+    }
+    setEmailError("");
+    return true;
+  };
+
   const handlePayPalPayment = () => {
+    if (!checkEmailBeforePayment()) {
+      return;
+    }
+
     const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
 
     if (!window.paypal || !paypalLoaded) {
@@ -73,6 +107,9 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
               title: "Payment Successful!",
               description: `Your PayPal payment for "${title}" has been processed.`,
             });
+            // Redirect to success page with payment details
+            const successUrl = `/payment-success?session_id=${data.orderID}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
+            window.location.href = successUrl;
             onClose();
           });
         },
@@ -105,6 +142,10 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
   };
 
   const handleRazorpayPayment = () => {
+    if (!checkEmailBeforePayment()) {
+      return;
+    }
+
     const priceAmount = parseFloat(price.replace(/[^0-9.]/g, '')) * 100; // Convert to paise
 
     if (!window.Razorpay) {
@@ -128,11 +169,14 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
           title: "Payment Successful!",
           description: `Your Razorpay payment for "${title}" has been processed.`,
         });
+        // Redirect to success page with payment details
+        const successUrl = `/payment-success?session_id=${response.razorpay_payment_id}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
+        window.location.href = successUrl;
         onClose();
       },
       prefill: {
         name: 'Guest User',
-        email: 'guest@example.com',
+        email: email,
         contact: '9999999999'
       },
       theme: {
@@ -152,10 +196,12 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     rzp.open();
   };
 
-  // Reset payment method when modal closes
+  // Reset payment method and email when modal closes
   useEffect(() => {
     if (!isOpen) {
       setPaymentMethod(null);
+      setEmail("");
+      setEmailError("");
     }
   }, [isOpen]);
 
@@ -170,6 +216,29 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
           <div className="text-center">
             <h3 className="font-semibold text-lg mb-2">{title}</h3>
             <p className="text-2xl font-bold text-blue-900">{price}</p>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email" className="text-sm font-medium">
+              Email Address
+            </Label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={handleEmailChange}
+                className={`pl-10 ${emailError ? 'border-red-500' : ''}`}
+              />
+            </div>
+            {emailError && (
+              <p className="text-sm text-red-500">{emailError}</p>
+            )}
+            <p className="text-xs text-gray-500">
+              The report will be sent to this email address after payment
+            </p>
           </div>
 
           {paymentMethod === null && (
