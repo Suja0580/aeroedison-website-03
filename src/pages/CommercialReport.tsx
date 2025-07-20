@@ -72,7 +72,7 @@ const CommercialReport = () => {
       price: "$0.50"
     },
     {
-      title: "Digital Aviation Readiness – Benchmarking Top OEMs",
+      title: "Digital Aviation Readiness_Benchmarking Top OEMs",
       description: "Benchmarking study of digital transformation readiness across leading Original Equipment Manufacturers.",
       price: "$0.50"
     }
