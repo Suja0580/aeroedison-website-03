@@ -141,12 +141,16 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     }, 100);
   };
 
-  const handleRazorpayPayment = () => {
+  const handleRazorpayPayment = async () => {
     if (!checkEmailBeforePayment()) {
       return;
     }
 
-    const priceAmount = parseFloat(price.replace(/[^0-9.]/g, '')) * 100; // Convert to paise
+    // Extract numeric value from "Rs. 100" format
+    const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
+    const amountInPaise = Math.round(priceAmount * 100); // Convert to paise
+
+    console.log('Price:', price, 'Extracted amount:', priceAmount, 'Amount in paise:', amountInPaise);
 
     if (!window.Razorpay) {
       toast({
@@ -157,43 +161,88 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       return;
     }
 
-    const options = {
-      key: 'rzp_test_1DP5mmOlF5G5ag', // Test key - replace with your actual key
-      amount: Math.round(priceAmount),
-      currency: 'INR',
-      name: 'AeroEdison Consulting',
-      description: title,
-      image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
-      handler: function (response: any) {
-        toast({
-          title: "Payment Successful!",
-          description: `Your Razorpay payment for "${title}" has been processed.`,
-        });
-        // Redirect to success page with payment details
-        const successUrl = `/payment-success?session_id=${response.razorpay_payment_id}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
-        window.location.href = successUrl;
-        onClose();
-      },
-      prefill: {
-        name: 'Guest User',
-        email: email,
-        contact: '9999999999'
-      },
-      theme: {
-        color: '#1e3a8a'
-      },
-      modal: {
-        ondismiss: function() {
-          toast({
-            title: "Payment Cancelled",
-            description: "Your payment was cancelled.",
-          });
-        }
-      }
-    };
+    try {
+      // Get Razorpay key from edge function
+      const response = await fetch('/api/get-razorpay-key');
+      const { key } = await response.json();
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+      const options = {
+        key: key || 'rzp_test_1DP5mmOlF5G5ag', // Fallback to test key
+        amount: amountInPaise,
+        currency: 'INR',
+        name: 'AeroEdison Consulting',
+        description: title,
+        image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
+        handler: function (response: any) {
+          toast({
+            title: "Payment Successful!",
+            description: `Your Razorpay payment for "${title}" has been processed.`,
+          });
+          // Redirect to success page with payment details
+          const successUrl = `/payment-success?session_id=${response.razorpay_payment_id}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
+          window.location.href = successUrl;
+          onClose();
+        },
+        prefill: {
+          name: 'Guest User',
+          email: email,
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#1e3a8a'
+        },
+        modal: {
+          ondismiss: function() {
+            toast({
+              title: "Payment Cancelled",
+              description: "Your payment was cancelled.",
+            });
+          }
+        }
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error('Razorpay configuration error:', error);
+      // Fallback to direct configuration
+      const options = {
+        key: 'rzp_test_1DP5mmOlF5G5ag',
+        amount: amountInPaise,
+        currency: 'INR',
+        name: 'AeroEdison Consulting',
+        description: title,
+        image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
+        handler: function (response: any) {
+          toast({
+            title: "Payment Successful!",
+            description: `Your Razorpay payment for "${title}" has been processed.`,
+          });
+          const successUrl = `/payment-success?session_id=${response.razorpay_payment_id}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
+          window.location.href = successUrl;
+          onClose();
+        },
+        prefill: {
+          name: 'Guest User',
+          email: email,
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#1e3a8a'
+        },
+        modal: {
+          ondismiss: function() {
+            toast({
+              title: "Payment Cancelled",
+              description: "Your payment was cancelled.",
+            });
+          }
+        }
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    }
   };
 
   // Reset payment method and email when modal closes
