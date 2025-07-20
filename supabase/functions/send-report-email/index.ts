@@ -1,7 +1,14 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+// Initialize Supabase client
+const supabase = createClient(
+  Deno.env.get('SUPABASE_URL') ?? '',
+  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -62,7 +69,7 @@ const handler = async (req: Request): Promise<Response> => {
       attachments: [
         {
           filename: `${reportTitle.replace(/[^a-zA-Z0-9]/g, '_')}_Report.pdf`,
-          content: generateReportPDF(reportTitle),
+          content: await getReportFromStorage(reportTitle),
           contentType: 'application/pdf'
         }
       ]
@@ -96,86 +103,36 @@ const handler = async (req: Request): Promise<Response> => {
   }
 };
 
-// Simple PDF generation function (in a real implementation, you'd use a proper PDF library)
-function generateReportPDF(reportTitle: string): Uint8Array {
-  // This is a simple placeholder - in production you'd generate a real PDF
-  const pdfContent = `%PDF-1.4
-1 0 obj
-<<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-
-2 0 obj
-<<
-/Type /Pages
-/Kids [3 0 R]
-/Count 1
->>
-endobj
-
-3 0 obj
-<<
-/Type /Page
-/Parent 2 0 R
-/MediaBox [0 0 612 792]
-/Contents 4 0 R
-/Resources <<
-/Font <<
-/F1 5 0 R
->>
->>
->>
-endobj
-
-4 0 obj
-<<
-/Length 200
->>
-stream
-BT
-/F1 12 Tf
-50 750 Td
-(${reportTitle}) Tj
-0 -20 Td
-(Commercial Report) Tj
-0 -40 Td
-(This is a sample commercial report containing) Tj
-0 -15 Td
-(industry insights and analysis.) Tj
-0 -40 Td
-(Report generated on: ${new Date().toLocaleDateString()}) Tj
-ET
-endstream
-endobj
-
-5 0 obj
-<<
-/Type /Font
-/Subtype /Type1
-/BaseFont /Helvetica
->>
-endobj
-
-xref
-0 6
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000274 00000 n 
-0000000526 00000 n 
-trailer
-<<
-/Size 6
-/Root 1 0 R
->>
-startxref
-625
-%%EOF`;
-
-  return new TextEncoder().encode(pdfContent);
+// Function to retrieve report from Supabase Storage
+async function getReportFromStorage(reportTitle: string): Promise<Uint8Array> {
+  try {
+    // Create a filename from the report title
+    const filename = `${reportTitle.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
+    
+    console.log(`Retrieving report: ${filename} from storage bucket 'reports'`);
+    
+    // Download the file from Supabase Storage
+    const { data, error } = await supabase.storage
+      .from('reports')
+      .download(filename);
+    
+    if (error) {
+      console.error('Error downloading report from storage:', error);
+      throw new Error(`Failed to retrieve report: ${error.message}`);
+    }
+    
+    if (!data) {
+      throw new Error(`Report file not found: ${filename}`);
+    }
+    
+    // Convert the blob to Uint8Array
+    const arrayBuffer = await data.arrayBuffer();
+    return new Uint8Array(arrayBuffer);
+    
+  } catch (error) {
+    console.error('Error in getReportFromStorage:', error);
+    throw error;
+  }
 }
 
 serve(handler);
