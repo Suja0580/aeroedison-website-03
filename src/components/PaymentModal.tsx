@@ -163,11 +163,21 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
 
     try {
       // Get Razorpay key from edge function
-      const response = await fetch('/api/get-razorpay-key');
+      const response = await fetch('https://zhawsdrsaqecdmcawgms.supabase.co/functions/v1/get-razorpay-config', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to get Razorpay configuration');
+      }
+      
       const { key } = await response.json();
 
       const options = {
-        key: key || 'rzp_test_1DP5mmOlF5G5ag', // Fallback to test key
+        key: key,
         amount: amountInPaise,
         currency: 'INR',
         name: 'AeroEdison Consulting',
@@ -205,43 +215,11 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       rzp.open();
     } catch (error) {
       console.error('Razorpay configuration error:', error);
-      // Fallback to direct configuration
-      const options = {
-        key: 'rzp_test_1DP5mmOlF5G5ag',
-        amount: amountInPaise,
-        currency: 'INR',
-        name: 'AeroEdison Consulting',
-        description: title,
-        image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
-        handler: function (response: any) {
-          toast({
-            title: "Payment Successful!",
-            description: `Your Razorpay payment for "${title}" has been processed.`,
-          });
-          const successUrl = `/payment-success?session_id=${response.razorpay_payment_id}&report_title=${encodeURIComponent(title)}&email=${encodeURIComponent(email)}`;
-          window.location.href = successUrl;
-          onClose();
-        },
-        prefill: {
-          name: 'Guest User',
-          email: email,
-          contact: '9999999999'
-        },
-        theme: {
-          color: '#1e3a8a'
-        },
-        modal: {
-          ondismiss: function() {
-            toast({
-              title: "Payment Cancelled",
-              description: "Your payment was cancelled.",
-            });
-          }
-        }
-      };
-
-      const rzp = new window.Razorpay(options);
-      rzp.open();
+      toast({
+        title: "Razorpay Error",
+        description: "Failed to initialize Razorpay. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 
