@@ -151,6 +151,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
     const amountInPaise = Math.round(priceAmount * 100); // Convert to paise
 
+    console.log('=== RAZORPAY PAYMENT DEBUG ===');
     console.log('Raw price:', price);
     console.log('Extracted amount:', priceAmount);
     console.log('Amount in paise:', amountInPaise);
@@ -169,19 +170,25 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       const { data, error } = await supabase.functions.invoke('get-razorpay-config');
       
       if (error) {
+        console.error('Supabase function error:', error);
         throw new Error(error.message || 'Failed to get Razorpay configuration');
       }
       
+      console.log('Razorpay config data:', data);
       const { key } = data;
 
+      // Use a fixed amount for testing - 10000 paise = Rs. 100
+      const testAmount = 10000;
+      
       const options = {
         key: key,
-        amount: amountInPaise,
+        amount: testAmount, // Using fixed amount for testing
         currency: 'INR',
         name: 'AeroEdison Consulting',
         description: title,
         image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
         handler: function (response: any) {
+          console.log('Payment success response:', response);
           toast({
             title: "Payment Successful!",
             description: `Your Razorpay payment for "${title}" has been processed.`,
@@ -201,6 +208,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
         },
         modal: {
           ondismiss: function() {
+            console.log('Payment cancelled by user');
             toast({
               title: "Payment Cancelled",
               description: "Your payment was cancelled.",
@@ -209,6 +217,8 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
         }
       };
 
+      console.log('Razorpay options:', options);
+      
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (error) {
