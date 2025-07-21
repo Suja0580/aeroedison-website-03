@@ -151,7 +151,9 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
     const amountInPaise = Math.round(priceAmount * 100); // Convert to paise
 
-    console.log('Price:', price, 'Extracted amount:', priceAmount, 'Amount in paise:', amountInPaise);
+    console.log('Raw price:', price);
+    console.log('Extracted amount:', priceAmount);
+    console.log('Amount in paise:', amountInPaise);
 
     if (!window.Razorpay) {
       toast({
