@@ -95,8 +95,8 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: priceAmount.toString(),
-                currency_code: 'INR'
+                value: (priceAmount / 83).toFixed(2), // Convert INR to USD (approximate rate)
+                currency_code: 'USD'
               },
               description: title
             }]
