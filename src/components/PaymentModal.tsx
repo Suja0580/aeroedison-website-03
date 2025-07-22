@@ -176,13 +176,10 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       
       console.log('Razorpay config data:', data);
       const { key } = data;
-
-      // Use a fixed amount for testing - 10000 paise = Rs. 100
-      const testAmount = 10000;
       
       const options = {
         key: key,
-        amount: testAmount, // Using fixed amount for testing
+        amount: amountInPaise,
         currency: 'INR',
         name: 'AeroEdison Consulting',
         description: title,
