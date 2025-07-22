@@ -112,9 +112,6 @@ const CommercialReport = () => {
                     <p className="text-gray-600 mb-4">
                       {report.description}
                     </p>
-                    <div className="mb-6">
-                      <span className="text-2xl font-bold text-blue-900">{report.price}</span>
-                    </div>
                     <div className="flex flex-col gap-3">
                       <Button variant="outline" className="w-full">
                         <ExternalLink className="h-4 w-4 mr-2" />
@@ -126,7 +123,7 @@ const CommercialReport = () => {
                         onClick={() => handleBuyNow(report)}
                       >
                         <ShoppingCart className="h-4 w-4 mr-2" />
-                        Buy Now {report.price}
+                        Buy Now
                       </Button>
                     </div>
                   </CardContent>
