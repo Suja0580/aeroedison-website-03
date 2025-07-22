@@ -108,10 +108,16 @@ async function getReportFromStorage(reportTitle: string): Promise<Uint8Array> {
   try {
     console.log(`Retrieving report: ${reportTitle} from storage bucket 'reports'`);
     
-    // For testing, use the existing PDF file in storage
-    // In production, you would map report titles to actual filenames
-    const filename = 'Digital Aviation Readiness_Benchmarking Top OEMs.pdf';
-    console.log(`Using existing file: ${filename}`);
+    // Map report titles to actual PDF filenames
+    const reportFileMap: { [key: string]: string } = {
+      "Digital Aviation Readiness_Benchmarking Top OEMs": "Digital Aviation Readiness_Benchmarking Top OEMs.pdf",
+      "India's MRO Growth Opportunity – 2025 Outlook": "Digital Aviation Readiness_Benchmarking Top OEMs.pdf", // Using same file for demo
+      "eVTOL Regulatory & Market Landscape": "Digital Aviation Readiness_Benchmarking Top OEMs.pdf", // Using same file for demo
+      "Hydrogen Strategy India: Policy, Players, and Investments": "Digital Aviation Readiness_Benchmarking Top OEMs.pdf" // Using same file for demo
+    };
+    
+    const filename = reportFileMap[reportTitle] || "Digital Aviation Readiness_Benchmarking Top OEMs.pdf";
+    console.log(`Using file: ${filename} for report: ${reportTitle}`);
     
     // Download the file from Supabase Storage
     const { data, error } = await supabase.storage
