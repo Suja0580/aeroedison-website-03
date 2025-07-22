@@ -147,12 +147,14 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
       return;
     }
 
-    // Extract numeric value from "Rs. 100" format
-    const priceAmount = parseFloat(price.replace(/[^0-9.]/g, ''));
+    // Extract numeric value from "Rs. 100" format more carefully
+    const priceString = price.replace(/[^\d.]/g, ''); // Remove everything except digits and dots
+    const priceAmount = parseFloat(priceString) || 0;
     const amountInPaise = Math.round(priceAmount * 100); // Convert to paise
 
     console.log('=== RAZORPAY PAYMENT DEBUG ===');
     console.log('Raw price:', price);
+    console.log('Price string after cleanup:', priceString);
     console.log('Extracted amount:', priceAmount);
     console.log('Amount in paise:', amountInPaise);
 
