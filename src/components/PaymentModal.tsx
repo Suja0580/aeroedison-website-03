@@ -158,6 +158,17 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
     console.log('Extracted amount:', priceAmount);
     console.log('Amount in paise:', amountInPaise);
 
+    // Validation check
+    if (amountInPaise <= 0 || amountInPaise < 100) { // Minimum 1 rupee = 100 paise
+      console.error('Invalid amount detected:', amountInPaise);
+      toast({
+        title: "Payment Error",
+        description: `Invalid amount detected: ${amountInPaise} paise. Please check the price format.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!window.Razorpay) {
       toast({
         title: "Razorpay Error",
@@ -186,7 +197,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
         name: 'AeroEdison Consulting',
         description: title,
         image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
-        order_id: undefined, // Remove any order_id to use direct payment
+        // Completely remove order_id instead of setting undefined
         handler: function (response: any) {
           console.log('Payment success response:', response);
           toast({
@@ -217,7 +228,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
         }
       };
 
-      console.log('Razorpay options:', options);
+      console.log('Final Razorpay options about to be sent:', JSON.stringify(options, null, 2));
       
       const rzp = new window.Razorpay(options);
       rzp.open();
