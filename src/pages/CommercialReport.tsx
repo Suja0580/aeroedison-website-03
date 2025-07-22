@@ -112,6 +112,9 @@ const CommercialReport = () => {
                     <p className="text-gray-600 mb-4">
                       {report.description}
                     </p>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl font-bold text-blue-600">{report.price}</span>
+                    </div>
                     <div className="flex flex-col gap-3">
                       <Button variant="outline" className="w-full">
                         <ExternalLink className="h-4 w-4 mr-2" />
