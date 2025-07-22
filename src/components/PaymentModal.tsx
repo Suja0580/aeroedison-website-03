@@ -184,6 +184,7 @@ const PaymentModal = ({ isOpen, onClose, title, price, paypalLoaded, razorpayLoa
         name: 'AeroEdison Consulting',
         description: title,
         image: '/lovable-uploads/9db9cc1e-f920-4f2b-9645-75af25c39acf.png',
+        order_id: undefined, // Remove any order_id to use direct payment
         handler: function (response: any) {
           console.log('Payment success response:', response);
           toast({
